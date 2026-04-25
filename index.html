@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Александр & Ангелина | Свадьба с котом Федей</title>
+    <title>Александр & Ангелина · Кото-свадьба с Федей</title>
     <style>
         * {
             margin: 0;
@@ -13,164 +13,140 @@
 
         body {
             font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
-            background: #fffaf5;
+            background: #fffbf7;
             color: #2c2c2c;
             scroll-behavior: smooth;
-        }
-
-        /* Типографика */
-        h1, h2, h3 {
-            font-weight: 400;
-            letter-spacing: 1px;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Шапка */
-        .hero {
-            min-height: 90vh;
-            background: linear-gradient(120deg, #fdf8f0 0%, #f9ede0 100%);
-            display: flex;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            width: 100%;
-            z-index: 2;
-        }
-
-        .cat-whiskers {
-            font-size: 3rem;
-            opacity: 0.5;
-            margin-bottom: 1rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 300;
-            color: #b56a4c;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero .names {
-            font-size: 2rem;
-            font-weight: 400;
-            color: #5e3a2c;
-            margin: 1rem 0;
-        }
-
-        .date-badge {
-            background: #fff;
-            display: inline-block;
-            padding: 0.5rem 1.8rem;
-            border-radius: 40px;
-            font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-top: 1rem;
+            padding: 0 24px;
         }
 
         /* Секции */
         section {
-            padding: 80px 0;
-            border-bottom: 1px solid #f0e2d4;
+            padding: 70px 0;
+            border-bottom: 1px solid #f3e5da;
         }
-
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            color: #b56a4c;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #b15e3a;
+            letter-spacing: 1px;
+            font-weight: 400;
             position: relative;
         }
         .section-title:after {
             content: "🐾";
             display: block;
-            font-size: 1.6rem;
-            margin-top: 0.5rem;
-            opacity: 0.6;
+            font-size: 1.8rem;
+            margin-top: 8px;
         }
 
-        /* Сетка для двух колонок */
-        .two-columns {
+        .intro {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Сетка */
+        .grid-2 {
             display: flex;
             flex-wrap: wrap;
             gap: 40px;
             align-items: center;
         }
-        .col {
+        .grid-2 > div {
             flex: 1;
-            min-width: 250px;
+            min-width: 260px;
         }
 
-        /* Программа */
+        /* Программа дня */
+        .timeline {
+            max-width: 600px;
+            margin: 0 auto;
+        }
         .timeline-item {
             display: flex;
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
             align-items: baseline;
+            background: #fffaf5;
+            padding: 8px 16px;
+            border-radius: 48px;
         }
         .timeline-time {
             font-weight: bold;
             font-size: 1.2rem;
             color: #b56a4c;
-            min-width: 100px;
+            min-width: 90px;
         }
 
         /* Дресс-код */
-        .color-dots {
+        .color-palette {
             display: flex;
-            gap: 15px;
+            gap: 20px;
+            justify-content: center;
             margin: 20px 0;
         }
-        .color-dot {
-            width: 50px;
-            height: 50px;
+        .color-circle {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            background: #d9b48b;
+            background: #e8cfb3;
+            border: 2px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        .color-dot:nth-child(2) { background: #bca48f; }
-        .color-dot:nth-child(3) { background: #c79a6e; }
+        .color-circle:nth-child(2) { background: #c7a57b; }
+        .color-circle:nth-child(3) { background: #f1dbc4; }
 
         /* Карта */
-        .map-container {
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            margin-top: 20px;
+        .map-button {
+            background: #e8cfb3;
+            padding: 14px 24px;
+            border-radius: 60px;
+            display: inline-block;
+            text-decoration: none;
+            color: #5e3a2c;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .map-button:hover {
+            background: #dbbc98;
+            transform: scale(0.97);
         }
 
-        /* Форма */
+        /* Форма RSVP */
         .rsvp-form {
             background: #ffffffdd;
             backdrop-filter: blur(4px);
             padding: 2rem;
-            border-radius: 32px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 48px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             border: 1px solid #f5e2d2;
+            max-width: 700px;
+            margin: 0 auto;
         }
         .form-group {
             margin-bottom: 20px;
         }
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 600;
             color: #5e3a2c;
         }
         input, select, textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #eddccf;
-            border-radius: 28px;
+            padding: 12px 16px;
+            border: 1px solid #edd9cb;
+            border-radius: 40px;
             font-family: inherit;
-            background: #fefaf5;
+            background: #fffbf7;
         }
         button {
             background: #b56a4c;
@@ -182,9 +158,22 @@
             cursor: pointer;
             transition: 0.2s;
             width: 100%;
+            font-weight: bold;
         }
         button:hover {
             background: #8f523a;
+        }
+
+        /* Контакты и низ */
+        .contacts {
+            text-align: center;
+        }
+        .waiting-block {
+            background: #fdf2e9;
+            border-radius: 60px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 20px;
         }
 
         /* Футер */
@@ -192,138 +181,187 @@
             text-align: center;
             padding: 30px;
             font-size: 0.8rem;
-            color: #ab8a72;
+            color: #c9ac91;
         }
 
-        /* Падающие рыбки (только для декора) */
-        .floating-fish {
+        /* Котики-анимация */
+        .floating-cat {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            font-size: 2rem;
-            opacity: 0.3;
+            font-size: 2.2rem;
+            opacity: 0.2;
             pointer-events: none;
-            animation: floatFish 6s infinite;
+            animation: floatCat 7s infinite;
             z-index: 99;
         }
-        @keyframes floatFish {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
-            50% { transform: translateY(-20px) rotate(5deg); opacity: 0.5; }
-            100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+        @keyframes floatCat {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
+            50% { transform: translateY(-15px) rotate(3deg); opacity: 0.4; }
+            100% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .section-title { font-size: 1.6rem; }
+            .section-title { font-size: 1.8rem; }
+            .timeline-item { flex-direction: column; gap: 8px; background: transparent; }
         }
     </style>
 </head>
 <body>
-    <div class="floating-fish">🐟 🐠 🐈</div>
 
-    <!-- Главный экран -->
-    <div class="hero">
-        <div class="container hero-content">
-            <div class="cat-whiskers">~~ミ😺彡~~</div>
-            <h1>Мы женимся!</h1>
-            <div class="names">Александр & Ангелина<br>+ кот Федя (свидетель)</div>
-            <div class="date-badge">17 июля 2026 · 16:00 · Деревня Пешково</div>
+<div class="floating-cat">🐟 🐈 🐾</div>
+
+<!-- 1) Дорогие и любимые -->
+<section style="padding-top: 100px;">
+    <div class="container">
+        <div style="text-align: center;">
+            <span style="font-size: 3rem;">~~😺~~</span>
+            <h1 style="font-size: 3rem; font-weight: 300; color:#b56a4c;">Дорогие и любимые</h1>
+            <p class="intro" style="margin: 2rem auto;">
+                Мы, Александр и Ангелина, вместе с нашим котом Федей приглашаем вас стать частью нашей семьи. 
+                Этот день будет полон любви, тепла и, конечно, кошачьих сюрпризов. 
+                Будем рады разделить его с вами!
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; margin: 30px 0;">
+                <!-- Ваши фотографии, которые лежат рядом с index.html -->
+                <img src="IMG_2739.jpg" alt="Наше фото" style="width: 180px; height: 180px; object-fit: cover; border-radius: 60px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                <img src="IMG_2560.jpg" alt="Кот Федя" style="width: 180px; height: 180px; object-fit: cover; border-radius: 60px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+            </div>
+            <div class="date-badge" style="background: #edddcf; display: inline-block; padding: 8px 28px; border-radius: 60px; font-size: 1.2rem;">
+                📅 17 июля 2026 · 16:00
+            </div>
         </div>
     </div>
+</section>
 
-    <!-- История и о нас -->
-    <section>
-        <div class="container two-columns">
-            <div class="col">
-                <h2 class="section-title" style="text-align:left; margin-bottom:1.5rem;">Наша история</h2>
-                <p style="font-size:1.1rem; line-height:1.5;">Всё началось с мурчания. Однажды мы встретились в кафе, где жил пушистый Федя. Он нас и познакомил — подошёл к обоим за одним столиком. С тех пор мы не расстаёмся: вместе путешествуем, любим готовить, играть с Федей и строим уютный дом.</p>
-                <p style="margin-top:1rem;">И теперь, спустя годы, приглашаем вас стать частью нашей семьи. Будет много объятий, смеха, вкусной еды и, конечно, кошачьих сюрпризов.</p>
+<!-- 2) Программа дня -->
+<section>
+    <div class="container">
+        <h2 class="section-title">Программа дня</h2>
+        <div class="timeline">
+            <div class="timeline-item"><span class="timeline-time">16:00</span> <span>Встреча гостей, приветственное мяу и шампанское</span></div>
+            <div class="timeline-item"><span class="timeline-time">16:30</span> <span>Церемония и клятвы (кольца принесёт Федя)</span></div>
+            <div class="timeline-item"><span class="timeline-time">17:30</span> <span>Фуршет и живая музыка</span></div>
+            <div class="timeline-item"><span class="timeline-time">18:30</span> <span>Банкет, тосты и кошачьи конкурсы</span></div>
+            <div class="timeline-item"><span class="timeline-time">21:00</span> <span>Торт, танцы и фото с Федей</span></div>
+            <div class="timeline-item"><span class="timeline-time">23:00</span> <span>Завершение вечера, тёплые проводы</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- 3) Место проведения + Яндекс карта -->
+<section>
+    <div class="container">
+        <h2 class="section-title">Место проведения</h2>
+        <div class="grid-2">
+            <div>
+                <p><strong>🌿 Деревня Пешково, банкетный зал «Уютное гнездо»</strong></p>
+                <p>Атмосферная усадьба в окружении леса, с террасой и видом на пруд. Рядом есть парковка.</p>
+                <p style="margin-top: 20px;">📍 Точный адрес: Московская область, деревня Пешково.</p>
+                <a href="https://yandex.ru/maps/geo/derevnya_peshkovo/53063152/?ll=38.401923%2C55.855782&z=15" target="_blank" class="map-button">🗺️ Открыть карту (Яндекс.Карты)</a>
+                <p style="margin-top: 20px;">🚗 Трансфер от метро «Аннино» будет в 15:00. Укажите в анкете, если нужен.</p>
             </div>
-            <div class="col">
-                <img src="https://placekitten.com/500/400" alt="Кот Федя" style="width:100%; border-radius: 48px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);" onerror="this.src='https://placekitten.com/500/400'">
-                <p style="text-align:center; margin-top:0.5rem;">⭐ Кот Федя — главный хранитель уюта ⭐</p>
+            <div style="background:#e7dacf; border-radius: 48px; padding: 20px; text-align: center;">
+                <span style="font-size: 4rem;">🐈 🏡</span>
+                <p>Уютный зал с камином и кошачьими лежанками. Федя уже всё проверил — одобрено!</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Программа -->
-    <section style="background: #fefaf5;">
-        <div class="container">
-            <h2 class="section-title">Программа праздника</h2>
-            <div style="max-width:600px; margin:0 auto;">
-                <div class="timeline-item"><span class="timeline-time">16:00</span> <span>Сбор гостей, приветственное мяу</span></div>
-                <div class="timeline-item"><span class="timeline-time">16:30</span> <span>Церемония и клятвы (Федя принесёт кольца)</span></div>
-                <div class="timeline-item"><span class="timeline-time">17:30</span> <span>Фуршет и шампанское</span></div>
-                <div class="timeline-item"><span class="timeline-time">18:30</span> <span>Банкет, танцы и кошачьи сюрпризы</span></div>
-                <div class="timeline-item"><span class="timeline-time">22:00</span> <span>Торт и дискотека с Федей</span></div>
+<!-- 4) Дресс-код -->
+<section style="background: #fefaf5;">
+    <div class="container">
+        <h2 class="section-title">Дресс-код</h2>
+        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+            <p>Мы будем рады, если вы поддержите нежную, природную гамму:</p>
+            <div class="color-palette">
+                <div class="color-circle"></div>
+                <div class="color-circle"></div>
+                <div class="color-circle"></div>
             </div>
+            <p>🍂 Оттенки бежевого, карамельного, молочного. И никакой строгости — главное, чтобы вам было комфортно.</p>
+            <p style="margin-top: 1rem;">🐱 Бонус: если в вашем образе будет кошачий аксессуар (брошь, галстук с лапками, усы) — вас ждёт маленький сюрприз от Феди!</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Дресс-код и место -->
-    <section>
-        <div class="container two-columns">
-            <div class="col">
-                <h2 class="section-title" style="text-align:left;">Дресс-код</h2>
-                <p>Поддержите нашу стилистику — нежные, тёплые оттенки. И не забудьте удобную обувь, чтобы танцевать с нами до утра.</p>
-                <div class="color-dots">
-                    <div class="color-dot"></div>
-                    <div class="color-dot"></div>
-                    <div class="color-dot"></div>
-                </div>
-                <p>Маленький бонус: если найдёте в своём образе кошачий элемент (брошь, принт, усы), получите приз от Феди! 🐈</p>
-            </div>
-            <div class="col">
-                <h2 class="section-title" style="text-align:left;">Как добраться</h2>
-                <p>📍 Деревня Пешково, банкетный зал «Уютное гнездо»</p>
-                <p>Трансфер от метро «Аннино» будет отправляться в 15:00. Пожалуйста, сообщите, если нужен трансфер, в форме ниже.</p>
-                <div class="map-container">
-                    <div style="background:#e2d5c8; height:200px; display:flex; align-items:center; justify-content:center; border-radius:24px;">🗺️ Карта здесь (вставьте реальную ссылку Яндекс.Карт)</div>
-                </div>
-            </div>
+<!-- 5) Пожелания -->
+<section>
+    <div class="container">
+        <h2 class="section-title">Пожелания</h2>
+        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+            <p>Нам важно не столько количество подарков, сколько ваше присутствие и любовь. Но если вы захотите порадовать нас, мы будем благодарны:</p>
+            <ul style="text-align: left; margin-top: 20px; list-style: none;">
+                <li>🏷️ · Конверт с тёплыми словами (для нашего семейного бюджета)</li>
+                <li>📚 · Подарки для нашего кота Феди (игрушки, вкусняшки)</li>
+                <li>🖼️ · Что-то сделанное своими руками — это бесценно</li>
+            </ul>
+            <p style="margin-top: 30px;"><em>Главное — будьте с нами в этот день, а остальное неважно.</em></p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- RSVP форма -->
-    <section style="background: #f3ede7;">
-        <div class="container">
-            <h2 class="section-title">Подтвердите присутствие</h2>
-            <div class="rsvp-form">
-                <form id="weddingForm">
-                    <div class="form-group"><label>Ваше имя</label><input type="text" id="name" required placeholder="Как к вам обращаться?"></div>
-                    <div class="form-group"><label>Планируете ли вы прийти?</label><select id="attending"><option value="Да">Да, с радостью!</option><option value="Нет">Увы, не смогу</option></select></div>
-                    <div class="form-group"><label>Какие напитки предпочитаете?</label><select id="drinks"><option value="Шампанское">Шампанское</option><option value="Вино">Вино</option><option value="Безалкогольное">Морс/лимонад</option></select></div>
-                    <div class="form-group"><label>Есть ли у вас ограничения в еде?</label><textarea rows="2" id="diet" placeholder="Аллергии, вегетарианство и т.д."></textarea></div>
-                    <div class="form-group"><label>Нужен ли вам трансфер от метро?</label><select id="transfer"><option value="Нет">Нет, приеду сам</option><option value="Да">Да, нужен</option></select></div>
-                    <button type="submit">📩 Отправить ответ</button>
-                </form>
-                <p style="font-size:0.75rem; margin-top:1rem; text-align:center;">Нажимая на кнопку, вы соглашаетесь получить подтверждение на почту (письмо придёт автоматически).</p>
-            </div>
+<!-- 6) Анкета гостя + отправка на nasonov.al17@gmail.com -->
+<section style="background: #fefaf5;">
+    <div class="container">
+        <h2 class="section-title">Анкета гостя</h2>
+        <div class="rsvp-form">
+            <form id="weddingForm">
+                <div class="form-group"><label>Ваше имя и фамилия</label><input type="text" id="name" required placeholder="Как к вам обращаться?"></div>
+                <div class="form-group"><label>Вы придёте?</label><select id="attending"><option value="Да, с радостью!">Да, с радостью!</option><option value="Нет, не смогу">Нет, не смогу</option></select></div>
+                <div class="form-group"><label>Какие напитки предпочитаете?</label><select id="drinks"><option value="Шампанское">Шампанское</option><option value="Вино">Вино</option><option value="Безалкогольное">Безалкогольное (морс/лимонад)</option></select></div>
+                <div class="form-group"><label>Есть ли аллергии или ограничения в еде?</label><textarea rows="2" id="diet" placeholder="Напишите, если важно"></textarea></div>
+                <div class="form-group"><label>Нужен ли вам трансфер от метро Аннино (15:00)?</label><select id="transfer"><option value="Нет">Нет, приеду сам</option><option value="Да, нужен">Да, нужен</option></select></div>
+                <button type="submit">🐾 Отправить ответ</button>
+            </form>
+            <p style="font-size:0.7rem; margin-top:1rem; text-align:center;">Нажимая кнопку, вы отправляете данные на почту организаторам. Спасибо!</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer>
-        <p>🐾 С нетерпением ждём вас в этот важный день! По всем вопросам пишите <strong>Александр или Ангелина</strong><br> Обменяемся лапой и обнимемся ❤️</p>
-    </footer>
+<!-- 7) Контакты -->
+<section>
+    <div class="container contacts">
+        <h2 class="section-title">Контакты</h2>
+        <p>По любым вопросам: напишите или позвоните нам.</p>
+        <p><strong>Александр:</strong> <a href="tel:+79123456789">+7 912 345-67-89</a> · Telegram/WhatsApp</p>
+        <p><strong>Ангелина:</strong> <a href="tel:+79123456780">+7 912 345-67-80</a> · Telegram/WhatsApp</p>
+        <p>📧 Для официальных ответов: <strong>nasonov.al17@gmail.com</strong></p>
+    </div>
+</section>
 
-    <script>
-        // Имитация отправки данных на вашу почту (Formspree или простой email)
-        // Поскольку у нас нет бэкенда, предлагаем простой вариант: открывать почтовый клиент.
-        // Но для удобства гостей и сохранения данных настроим отправку на ваш email через mailto.
-        const form = document.getElementById('weddingForm');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const attending = document.getElementById('attending').value;
-            const drinks = document.getElementById('drinks').value;
-            const diet = document.getElementById('diet').value;
-            const transfer = document.getElementById('transfer').value;
-            
-            const subject = `Ответ на приглашение от ${name}`;
-            const body = `Имя: ${name}%0AПрисутствие: ${attending}%0AНапитки: ${drinks}%0AДиета: ${diet}%0AТрансфер: ${transfer}%0A---%0AСпасибо за ответ! Ждём вас на свадьбе с котом Федей.`;
-            window.location.href = `mailto:ВАША_ПОЧТА@yandex.ru?subject=${subject}&body=${body}`;
-            alert('Спасибо! Откроется почтовое приложение. Отправьте письмо, и мы получим ваш ответ.');
-        });
-    </script>
+<!-- 8) Будем вас ждать -->
+<section style="padding-bottom: 80px;">
+    <div class="container">
+        <div class="waiting-block">
+            <h2 class="section-title" style="margin-bottom: 0.5rem;">Будем вас ждать!</h2>
+            <p style="font-size: 1.2rem;">❤️ Самое главное — это вы. Давайте создадим вместе тёплые воспоминания ❤️</p>
+            <div style="font-size: 2rem; margin-top: 20px;">🐾 🐈 🐾</div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>Спасибо, что будете с нами. До встречи 17 июля 2026!<br> Александр, Ангелина и кот Федя.</p>
+</footer>
+
+<script>
+    // ОТПРАВКА ФОРМЫ НА nasonov.al17@gmail.com
+    const form = document.getElementById('weddingForm');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const attending = document.getElementById('attending').value;
+        const drinks = document.getElementById('drinks').value;
+        const diet = document.getElementById('diet').value;
+        const transfer = document.getElementById('transfer').value;
+
+        const subject = `Ответ на приглашение от ${name}`;
+        const body = `Имя: ${name}%0AПрисутствие: ${attending}%0AНапитки: ${drinks}%0AОграничения в еде: ${diet}%0AТрансфер: ${transfer}%0A---%0AСпасибо за ответ! Ждём вас на нашей кото-свадьбе.`;
+        window.location.href = `mailto:nasonov.al17@gmail.com?subject=${subject}&body=${body}`;
+        alert('Спасибо! Откроется ваша почта. Отправьте письмо — и мы получим ваш ответ.');
+    });
+</script>
 </body>
 </html>
