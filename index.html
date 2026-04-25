@@ -3,148 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Приглашение на свадьбу</title>
+    <title>Кошачье приглашение | Насоновы & Кот Федя</title>
     <style>
-        /* Основные настройки */
+        /* ---------------------- ОСНОВНЫЕ СТИЛИ ---------------------- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            user-select: none; /* Чтобы случайно не выделить лапки */
         }
 
         body {
-            font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
-            background: linear-gradient(145deg, #fdfaf6 0%, #f7f1e6 100%);
+            font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, 'Georgia', serif;
+            background: linear-gradient(145deg, #f9f2e7 0%, #f5e6d3 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 1rem;
-        }
-
-        /* Конверт-контейнер */
-        .invitation-card {
-            max-width: 500px;
-            width: 100%;
-            background: #ffffff;
-            border-radius: 32px;
-            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
-            overflow: hidden;
             position: relative;
-            z-index: 2;
-            transition: transform 0.3s ease;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="%23b87c6a" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,8A2,2 0 0,1 14,10A2,2 0 0,1 12,12A2,2 0 0,1 10,10A2,2 0 0,1 12,8M12,19C9.89,19 8.07,17.84 7,16.13C7.04,14.4 9.05,13 12,13C14.95,13 16.96,14.4 17,16.13C15.93,17.84 14.11,19 12,19Z"/></svg>') 10 10, auto;
+        }
+
+        /* Главная карточка-коврик */
+        .cat-card {
+            max-width: 550px;
+            width: 100%;
+            background: #fffef7;
+            border-radius: 64px 48px 80px 48px;
+            box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.25), 0 0 0 12px #f2e0ce, 0 0 0 16px #e5cfb9;
+            position: relative;
+            z-index: 10;
+            transition: transform 0.25s ease;
             backdrop-filter: blur(2px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            overflow: hidden;
         }
 
-        .invitation-card:hover {
-            transform: scale(1.01);
-        }
-
-        /* Верхняя декоративная секция */
-        .hero-section {
-            background: linear-gradient(135deg, #d4a5a5 0%, #b77b7b 100%);
-            text-align: center;
-            padding: 2rem 1rem;
-            color: white;
-        }
-
-        .hero-section h1 {
+        /* Кошачьи ушки на карточке */
+        .cat-card::before,
+        .cat-card::after {
+            content: "🐾";
+            position: absolute;
+            top: -18px;
             font-size: 2rem;
-            letter-spacing: 4px;
-            font-weight: 300;
+            opacity: 0.8;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
+        }
+        .cat-card::before { left: 20px; transform: rotate(-25deg); }
+        .cat-card::after { right: 20px; transform: rotate(25deg) scaleX(-1); }
+
+        /* Шапка с усами */
+        .cat-hero {
+            background: #e8d4c0;
+            text-align: center;
+            padding: 2rem 1rem 1.5rem;
+            color: #5e3a2e;
+            position: relative;
+            border-bottom: 4px dashed #f4c7ab;
+        }
+
+        .whiskers {
+            font-size: 2rem;
+            letter-spacing: 8px;
+            opacity: 0.7;
             margin-bottom: 0.5rem;
         }
 
-        .hero-section h2 {
-            font-size: 1rem;
-            font-weight: 400;
-            opacity: 0.9;
-            border-top: 1px solid rgba(255,255,255,0.3);
+        .cat-hero h1 {
+            font-family: 'Segoe UI', cursive;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            background: #fff2e4;
             display: inline-block;
-            padding-top: 0.5rem;
+            padding: 0.2rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
 
-        /* Основной контент */
+        .cat-hero h2 {
+            font-size: 1rem;
+            margin-top: 0.7rem;
+            font-weight: 400;
+            background: #fff0e0;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+        }
+
+        /* Содержимое */
         .content {
             padding: 2rem 1.8rem;
             text-align: center;
         }
 
+        /* Имена + кот */
         .names {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: bold;
-            color: #b16262;
+            color: #b15e3a;
+            margin-bottom: 0.25rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .cat-witness {
+            background: #fbead5;
+            padding: 0.4rem 1rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: normal;
+            color: #977557;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0.5rem;
             margin-bottom: 1rem;
-            letter-spacing: 2px;
         }
 
         .invite-text {
-            color: #5a4a42;
+            color: #7a5a48;
             font-size: 1rem;
             line-height: 1.5;
-            margin-bottom: 2rem;
-            font-style: italic;
+            margin: 1rem 0 1.5rem;
+            background: #fff7ef;
+            padding: 0.7rem;
+            border-radius: 80px;
         }
 
-        /* Дата и место */
+        /* Детали торжества */
         .details {
-            background: #fbf8f3;
-            border-radius: 24px;
+            background: #fef8f0;
+            border-radius: 80px 30px 80px 30px;
             padding: 1.5rem;
             margin-bottom: 2rem;
-            border: 1px dashed #e2cfb3;
+            border: 2px solid #f7dfc9;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.05);
         }
 
         .date {
             font-size: 1.8rem;
             font-weight: bold;
-            color: #8b5a2b;
+            color: #b45f3b;
             margin: 0.5rem 0;
+            letter-spacing: 2px;
         }
 
         .time, .location {
             font-size: 1rem;
-            color: #7e6b5e;
+            color: #7e5d48;
             margin: 0.3rem 0;
         }
 
         .location {
             font-weight: 600;
-            color: #b16262;
+            background: #fff0e0;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
         }
 
-        /* Кнопка подтверждения */
+        /* Кнопка WhatsApp с лапкой */
         .rsvp-btn {
-            background: #d4a5a5;
+            background: #c28a6e;
             color: white;
             border: none;
             padding: 0.9rem 2rem;
             font-size: 1rem;
-            border-radius: 40px;
+            border-radius: 60px;
             width: 100%;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.2s;
             font-weight: bold;
-            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             margin-bottom: 1rem;
+            font-family: inherit;
         }
-
         .rsvp-btn:hover {
-            background: #b77b7b;
+            background: #a86e4f;
+            transform: scale(0.98);
         }
 
-        /* Красивые цитаты */
+        /* Тумблер рыбок */
+        .fish-toggle {
+            background: #e9ddcf;
+            border-radius: 50px;
+            padding: 0.5rem;
+            margin: 1rem 0 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: #6e4f39;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 26px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #dbb48f;
+            transition: 0.3s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "🌸";
+            font-size: 16px;
+            line-height: 22px;
+            text-align: center;
+            height: 22px;
+            width: 22px;
+            left: 3px;
+            bottom: 2px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+            content: "🐟";
+        }
+
         .footer-quote {
-            font-size: 0.75rem;
-            color: #b2a287;
+            font-size: 0.7rem;
+            color: #bfa588;
             margin-top: 1rem;
-            border-top: 1px solid #efebe5;
-            padding-top: 1.5rem;
+            border-top: 1px solid #efdfce;
+            padding-top: 1rem;
         }
 
-        /* Анимация падающих лепестков (Чистый CSS) */
-        .petals {
+        /* Падающие объекты (лепестки или рыбки) */
+        .floating-items {
             position: fixed;
             top: 0;
             left: 0;
@@ -154,109 +262,135 @@
             z-index: 1;
             overflow: hidden;
         }
-
-        .petal {
+        .fall-item {
             position: absolute;
             top: -10%;
-            color: #ffb7b7;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             user-select: none;
             animation: fall linear infinite;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
-
         @keyframes fall {
-            0% {
-                transform: translateY(-10vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(110vh) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0.5; }
         }
     </style>
 </head>
 <body>
 
-<!-- Слой с анимацией (Лепестки роз) -->
-<div class="petals" id="petals"></div>
+<div class="floating-items" id="floatingItems"></div>
 
-<!-- Основная карточка -->
-<div class="invitation-card">
-    <div class="hero-section">
-        <h1>WEDDING</h1>
-        <h2>Приглашение</h2>
+<div class="cat-card">
+    <div class="cat-hero">
+        <div class="whiskers">ミ😺ミ</div>
+        <h1>МЯУ-ПРИГЛАШЕНИЕ</h1>
+        <h2>самое важное событие года</h2>
     </div>
     <div class="content">
-        <!-- Впишите ВАШИ имена здесь -->
         <div class="names">
-            Александр & Ангелина
+            Александр <span style="font-size:1.8rem;">🐾</span> Ангелина
+        </div>
+        <div class="cat-witness">
+            <span>🐈</span> И главный кот-свидетель — ФЕДЯ! <span>🐾</span>
         </div>
         <div class="invite-text">
-            Искренне рады пригласить вас<br>
-            разделить с нами радость этого особенного дня!
-        </div>
-        
-        <div class="details">
-            <div>🎀 Торжество состоится 🎀</div>
-            <!-- Впишите ВАШУ дату и время здесь -->
-            <div class="date">17 Июля 2026</div>
-            <div class="time">Сбор гостей в 16:00</div>
-            <div class="location">🌿 Деревня Пешково 🌿</div>
+            Мяу! Приглашаем вас разделить с нами<br>
+            этот хвостатый день любви и счастья!
         </div>
 
-        <!-- Кнопка с ссылкой на WhatsApp (Вставьте свой номер телефона) -->
-        <a href="https://wa.me/+79258389280?text=Я%20буду%20на%20вашей%20свадьбе!" target="_blank" style="text-decoration: none;">
+        <div class="details">
+            <div>🎀 🐟 🎀 КОТО-ТОРЖЕСТВО 🎀 🐟 🎀</div>
+            <div class="date">17 Июля 2026</div>
+            <div class="time">Сбор котиков и гостей в 16:00</div>
+            <div class="location">🐾 Деревня Пешково, резиденция Феди 🐾</div>
+        </div>
+
+        <a href="https://wa.me/79123456789?text=Мяу!%20Я%20буду%20на%20вашей%20свадьбе%20с%20котиком%20Федей!" target="_blank" style="text-decoration: none;">
             <button class="rsvp-btn">
-                📱 ПОДТВЕРДИТЬ ПРИСУТСТВИЕ (WhatsApp)
+                🐱 ПОДТВЕРДИТЬ ПРИСУТСТВИЕ (лапка в WhatsApp)
             </button>
         </a>
+
+        <!-- Тумблер -->
+        <div class="fish-toggle">
+            <span>🌸 Лепестки</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="fishModeToggle">
+                <span class="slider"></span>
+            </label>
+            <span>🐟 Рыбки</span>
+        </div>
         <div class="footer-quote">
-            "Любовь не ищет своего, но всё покрывает, всему верит, всего надеется, всё переносит."
+            "Усатый-полосатый свидетель обещает: будет весело и много вкуснятины!"
         </div>
     </div>
 </div>
 
 <script>
-    // Генерация лепестков JavaScript
-    function createPetal() {
-        const petalContainer = document.getElementById('petals');
-        const petal = document.createElement('div');
-        petal.classList.add('petal');
+    // ---- Управление падающими объектами ----
+    const container = document.getElementById('floatingItems');
+    let intervalId = null;
+    let currentMode = 'petal'; // petal или fish
+
+    // Набор эмодзи для лепестков и рыбок
+    const petalsList = ['🌸', '🌼', '🌺', '🐾', '🌸', '🌷', '🍂'];
+    const fishList = ['🐟', '🐠', '🐡', '🦐', '🐟', '🐠', '🐾'];
+
+    function createItem(mode) {
+        const item = document.createElement('div');
+        item.classList.add('fall-item');
         
-        // Варианты символов лепестков
-        const petalsArray = ['🌸', '🌹', '🌺', '🌸', '🌸'];
-        petal.innerHTML = petalsArray[Math.floor(Math.random() * petalsArray.length)];
+        // Выбираем случайный элемент из массива
+        const array = mode === 'petal' ? petalsList : fishList;
+        const randomEmoji = array[Math.floor(Math.random() * array.length)];
+        item.textContent = randomEmoji;
         
-        // Случайные размеры
-        const size = Math.random() * 20 + 15; // от 15 до 35px
-        petal.style.fontSize = size + 'px';
+        // Случайный размер
+        const size = Math.random() * 24 + 18;
+        item.style.fontSize = size + 'px';
+        item.style.left = Math.random() * 100 + '%';
+        const duration = Math.random() * 6 + 4; // 4-10 секунд
+        item.style.animationDuration = duration + 's';
+        item.style.animationDelay = Math.random() * 5 + 's';
         
-        // Случайная позиция по горизонтали
-        petal.style.left = Math.random() * 100 + '%';
+        container.appendChild(item);
         
-        // Случайная длительность анимации (от 5 до 12 секунд)
-        const duration = Math.random() * 7 + 5;
-        petal.style.animationDuration = duration + 's';
-        
-        // Случайная задержка старта
-        petal.style.animationDelay = Math.random() * 5 + 's';
-        
-        petalContainer.appendChild(petal);
-        
-        // Удаляем лепесток после окончания анимации, чтобы не засорять DOM
+        // Удаляем после завершения анимации
         setTimeout(() => {
-            petal.remove();
+            if(item && item.remove) item.remove();
         }, duration * 1000);
     }
 
-    // Создаем лепестки с интервалом
-    setInterval(createPetal, 400);
-    
-    // Сразу создаем 10 лепестков при загрузке страницы для пышности
-    for(let i = 0; i < 15; i++) {
-        setTimeout(createPetal, i * 100);
+    function startSpawning(mode) {
+        if (intervalId) clearInterval(intervalId);
+        // Чистим контейнер от старых элементов
+        while (container.firstChild) container.removeChild(container.firstChild);
+        
+        // Создаем 10 стартовых объектов
+        for(let i = 0; i < 12; i++) {
+            setTimeout(() => createItem(mode), i * 80);
+        }
+        
+        intervalId = setInterval(() => {
+            createItem(mode);
+        }, 450);
     }
+
+    // Переключение по чекбоксу
+    const toggle = document.getElementById('fishModeToggle');
+    toggle.addEventListener('change', (e) => {
+        if(e.target.checked) {
+            currentMode = 'fish';
+            startSpawning('fish');
+        } else {
+            currentMode = 'petal';
+            startSpawning('petal');
+        }
+    });
+
+    // Старт в режиме лепестков
+    startSpawning('petal');
 </script>
+
 </body>
 </html>
