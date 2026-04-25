@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Александр & Ангелина · Кото-свадьба с Федей</title>
+    <title>Александр & Ангелина · Энергия кото-свадьбы</title>
     <style>
         * {
             margin: 0;
@@ -12,547 +12,334 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
-            background: #fffbf7;
-            color: #2c2c2c;
-            scroll-behavior: smooth;
+            background: #000000;
+            font-family: 'Courier New', 'Impact', 'Arial Black', 'Segoe UI', monospace;
+            color: #00ffcc;
+            padding: 20px;
         }
 
+        /* Основной контейнер в стиле "крашеный бетон" */
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 0 24px;
+            background: #0a0f0f;
+            border: 4px solid #00ffcc;
+            padding: 25px;
+            box-shadow: 12px 12px 0px rgba(0, 255, 204, 0.3);
+            margin-bottom: 40px;
         }
 
-        section {
-            padding: 70px 0;
-            border-bottom: 1px solid #f3e5da;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
-            color: #b15e3a;
-            letter-spacing: 1px;
-            font-weight: 400;
-            position: relative;
-        }
-
-        .section-title:after {
-            content: "🐾";
-            display: block;
-            font-size: 1.8rem;
-            margin-top: 8px;
-        }
-
-        .intro {
-            font-size: 1.2rem;
-            line-height: 1.5;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .grid-2 {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .grid-2 > div {
-            flex: 1;
-            min-width: 260px;
-        }
-
-        /* Программа дня (как на референсе) */
-        .program-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .program-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 30px;
-            border-bottom: 1px dashed #e8d9ce;
-            padding-bottom: 25px;
-        }
-
-        .program-time {
-            min-width: 100px;
-            font-size: 1.6rem;
-            font-weight: bold;
-            color: #b15e3a;
-            line-height: 1.2;
-        }
-
-        .program-time small {
-            font-size: 0.8rem;
-            font-weight: normal;
-            color: #b9a089;
-        }
-
-        .program-desc {
-            flex: 1;
-        }
-
-        .program-desc h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #5e3a2c;
-            margin-bottom: 8px;
-        }
-
-        .program-desc p {
-            color: #7e6150;
-            line-height: 1.4;
-        }
-
-        /* Дресс-код с картинками */
-        .dresscode-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .dresscode-card {
-            width: 180px;
-            text-align: center;
-        }
-
-        .dresscode-card img {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            border-radius: 30px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            border: 3px solid white;
-        }
-
-        .dresscode-card p {
-            margin-top: 12px;
-            font-size: 0.85rem;
-            color: #b15e3a;
-            font-weight: 500;
-        }
-
-        .color-palette {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin: 30px 0 20px;
-        }
-
-        .color-circle {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: #e8cfb3;
-            border: 2px solid white;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .color-circle:nth-child(2) { background: #c7a57b; }
-        .color-circle:nth-child(3) { background: #f1dbc4; }
-
-        .map-button {
-            background: #e8cfb3;
-            padding: 14px 24px;
-            border-radius: 60px;
+        /* Заголовки как на скриншоте: ЖИРНО, РАЗОРВАНО */
+        h1, .big-title {
+            font-size: 4rem;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-shadow: 4px 4px 0px #00ffcc;
+            border-bottom: 3px dashed #00ffcc;
             display: inline-block;
-            text-decoration: none;
-            color: #5e3a2c;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-family: 'Impact', sans-serif;
+            text-transform: uppercase;
+            background: #00ffcc;
+            color: black;
+            display: inline-block;
+            padding: 5px 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            font-family: 'Courier New', monospace;
             font-weight: bold;
-            transition: 0.2s;
+            border-left: 8px solid #00ffcc;
+            padding-left: 15px;
+            margin: 20px 0;
+            color: #ffffff;
         }
 
-        .map-button:hover {
-            background: #dbbc98;
-            transform: scale(0.97);
+        /* Текст в стиле "рваных заметок" */
+        p, li, .text-block {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            color: #cccccc;
         }
 
-        /* Анкета гостя (как на скриншоте) */
-        .rsvp-form {
-            background: #ffffffdd;
-            backdrop-filter: blur(4px);
-            padding: 2rem;
-            border-radius: 48px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border: 1px solid #f5e2d2;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: #5e3a2c;
-            font-size: 1rem;
-        }
-
-        input[type="text"], 
-        input[type="email"], 
-        select, 
-        textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #edd9cb;
-            border-radius: 40px;
-            font-family: inherit;
-            background: #fffbf7;
-        }
-
-        .radio-group, .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 8px;
-        }
-
-        .radio-group label, .checkbox-group label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: normal;
-            cursor: pointer;
-        }
-
-        input[type="radio"], input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: #b56a4c;
-        }
-
-        button {
-            background: #b56a4c;
-            color: white;
-            border: none;
-            padding: 14px 24px;
-            border-radius: 40px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.2s;
-            width: 100%;
+        .highlight {
+            color: #00ffcc;
             font-weight: bold;
+            background: #000000;
+            padding: 0 5px;
         }
 
-        button:hover {
-            background: #8f523a;
+        /* Рамки как на фото */
+        .border-box {
+            border: 2px solid #00ffcc;
+            padding: 20px;
+            margin: 25px 0;
+            background: #030707;
+            box-shadow: inset 0 0 10px rgba(0,255,204,0.2);
         }
 
-        .contacts {
-            text-align: center;
-        }
-
-        .waiting-block {
-            background: #fdf2e9;
-            border-radius: 60px;
-            padding: 30px;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            font-size: 0.8rem;
-            color: #c9ac91;
-        }
-
-        .floating-cat {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 2.2rem;
-            opacity: 0.2;
-            pointer-events: none;
-            animation: floatCat 7s infinite;
-            z-index: 99;
-        }
-
-        @keyframes floatCat {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
-            50% { transform: translateY(-15px) rotate(3deg); opacity: 0.4; }
-            100% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
-        }
-
-        .photo-gallery {
+        /* Фотографии в стиле "наклейки" */
+        .photo-sticker {
             display: flex;
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
             margin: 30px 0;
         }
-
-        .photo-gallery img {
-            width: 220px;
-            height: 220px;
+        .photo-sticker img {
+            width: 200px;
+            height: 200px;
             object-fit: cover;
-            border-radius: 60px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-            border: 3px solid white;
-            transition: transform 0.3s ease;
+            border: 3px solid #00ffcc;
+            transform: rotate(-1deg);
+            filter: grayscale(20%);
+            transition: 0.2s;
+        }
+        .photo-sticker img:hover {
+            transform: rotate(0deg) scale(1.02);
+            border-color: white;
         }
 
-        .photo-gallery img:hover {
-            transform: scale(1.03);
-        }
-
-        .date-badge {
-            background: #edddcf;
-            display: inline-block;
-            padding: 8px 28px;
-            border-radius: 60px;
+        /* Программа как рваные строки */
+        .program-line {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-family: monospace;
             font-size: 1.2rem;
+            border-bottom: 1px dotted #00ffcc;
+            padding: 8px 0;
+        }
+        .time {
+            min-width: 80px;
+            color: #00ffcc;
+            font-weight: bold;
         }
 
-        @media (max-width: 768px) {
-            .section-title { font-size: 1.8rem; }
-            .program-item { flex-direction: column; gap: 10px; }
-            .program-time { min-width: auto; }
-            .photo-gallery img { width: 150px; height: 150px; }
-            .dresscode-card { width: 140px; }
+        /* Дресс-код с чекбоксами-баллоном */
+        .dress-colors {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .color-badge {
+            width: 50px;
+            height: 50px;
+            background: #e8cfb3;
+            border: 2px solid white;
+        }
+        .color-badge:nth-child(2) { background: #c7a57b; }
+        .color-badge:nth-child(3) { background: #f1dbc4; }
+
+        /* Кнопка в стиле "панк" */
+        .btn-crash {
+            background: black;
+            border: 3px solid #00ffcc;
+            padding: 12px 24px;
+            color: #00ffcc;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            width: 100%;
+            margin-top: 20px;
+            transition: 0.1s linear;
+        }
+        .btn-crash:hover {
+            background: #00ffcc;
+            color: black;
+            box-shadow: 3px 3px 0px white;
+        }
+
+        /* Форма в стиле "кибер-панк" */
+        input, select, textarea {
+            background: black;
+            border: 2px solid #00ffcc;
+            padding: 10px;
+            color: #00ffcc;
+            width: 100%;
+            margin: 8px 0;
+            font-family: monospace;
+        }
+        .radio-group label, .checkbox-group label {
+            display: block;
+            margin: 8px 0;
+            color: #ccc;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #00ffcc88;
+            border-top: 1px dashed #00ffcc;
+            padding-top: 20px;
+        }
+
+        a {
+            color: #00ffcc;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 700px) {
+            .container { padding: 15px; }
+            h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="floating-cat">🐟 🐈 🐾</div>
+<div class="container">
+    <!-- ШАПКА КАК НА ЭСКИЗЕ -->
+    <div style="text-align: center; margin-bottom: 30px;">
+        <div style="font-size: 1rem; color: #00ffcc;">САЙТ</div>
+        <div style="font-size: 0.8rem;">на github pages</div>
+        <div style="font-size: 2rem; font-weight: bold; margin: 10px 0;">ПРИГЛАШЕНИЕ</div>
+        <div style="border-top: 2px solid #00ffcc; width: 80px; margin: 10px auto;"></div>
+    </div>
 
-<!-- 1) Дорогие и любимые -->
-<section style="padding-top: 100px;">
-    <div class="container">
-        <div style="text-align: center;">
-            <span style="font-size: 3rem;">~~😺~~</span>
-            <h1 style="font-size: 3rem; font-weight: 300; color:#b56a4c;">Дорогие и любимые</h1>
-            <p class="intro" style="margin: 2rem auto;">
-                Мы, Александр и Ангелина, вместе с нашим котом Федей приглашаем вас стать частью нашей семьи. 
-                Этот день будет полон любви, тепла и, конечно, кошачьих сюрпризов. 
-                Будем рады разделить его с вами!
-            </p>
-            
-            <div class="photo-gallery">
-                <img src="IMG_2739.JPG" alt="Александр и Ангелина" onerror="this.src='https://placekitten.com/220/220'">
-                <img src="IMG_2560.JPG" alt="Кот Федя" onerror="this.src='https://placekitten.com/220/220'">
-            </div>
-            
-            <div class="date-badge">
-                📅 17 июля 2026 · 16:00
-            </div>
+    <!-- ПРЕДСТАВЛЯЕМ ВАМ! -->
+    <div class="text-block">
+        <span class="highlight">ПРЕДСТАВЛЯЕМ ВАМ!</span><br>
+        МЫ АЛЕКСАНДР И АНГЕЛИНА.<br>
+        У НАС ЕСТЬ КОЕ-ЧТО ИНТЕРЕСНОЕ!
+    </div>
+
+    <!-- Мы женимся! -->
+    <h1>МЫ ЖЕНИМСЯ!</h1>
+    <div class="photo-sticker">
+        <img src="IMG_2739.JPG" alt="Александр и Ангелина" onerror="this.src='https://placekitten.com/200/200'">
+        <img src="IMG_2560.JPG" alt="Кот Федя" onerror="this.src='https://placekitten.com/200/200'">
+    </div>
+
+    <!-- АКТАЛИ (как в референсе, но с нормальным смыслом) -->
+    <h2>АКТАЛИ</h2>
+    <p>
+        Мы знаем, что создание приглашения — добрая идея, но мы не успели насладиться их «скучной» красотой. 
+        Вместо стандартных шаблонов — энергия нашего кота Феди и полностью безумная свадьба! 
+        В конце праздника вы сможете поделиться своими эмоциями в специальной книге «МЯУ-отзывов».
+    </p>
+    <p>
+        Так же, если у вас возникнут какие-то вопросы — пишите на наши почты ниже. 
+        Организатор праздника — кот Федя (следит за порядком).
+    </p>
+
+    <!-- Блок с именами и котиком -->
+    <div class="border-box">
+        <div style="font-size: 2rem;">== АЛЕКСАНДР + АНГЕЛИНА ==</div>
+        <div style="font-size: 1.1rem;">🐈 кот Федя — главный свидетель 🐈</div>
+    </div>
+
+    <!-- НАШИ ЛЮБИМЫЕ И БЛИЗКИЕ -->
+    <h2>ДОРОГИЕ И БЛИЗКИЕ</h2>
+    <p>
+        Совсем скоро в нашей жизни произойдёт очень важное событие — мы создаём семью!<br>
+        Мы верим и надеемся, что этот день станет началом нашей новой истории. <br>
+        Позвольте разделить с нами радость этого дня. <br>
+        <span class="highlight">Будет громко, весело и с кошачьими сюрпризами!</span>
+    </p>
+
+    <!-- ПРОГРАММА ДНЯ (как на скриншоте, но с котом 🐈‍⬛) -->
+    <h2>ПРОГРАММА ДНЯ</h2>
+    <div class="program-line"><span class="time">15:30</span> <span>🐈‍⬛ Welcome — игристое и новые знакомства</span></div>
+    <div class="program-line"><span class="time">16:00</span> <span>🐈‍⬛ Церемония — клятвы и лапа Феди</span></div>
+    <div class="program-line"><span class="time">17:00</span> <span>🐈‍⬛ Банкет — любовь, танцы, кот-дискотека</span></div>
+
+    <!-- МЕСТО ПРОВЕДЕНИЯ (карта, еда) -->
+    <h2>МЕСТО ПРОВЕДЕНИЯ</h2>
+    <p>📍 Деревня Пешково, зал «Уютное гнездо»<br>
+    🗺️ Карта, парковка, лаунж-зона с Федей.</p>
+    <a href="https://yandex.ru/maps/geo/derevnya_peshkovo/53063152/?ll=38.401923%2C55.855782&z=15" target="_blank" style="color:#00ffcc;">[ открыть карту Яндекс ]</a>
+
+    <!-- ДРЕСС-КОД (как в стиле "АРЕСС-КОА" + цвета) -->
+    <h2>ДРЕСС-КОД</h2>
+    <p>Дорогие гости, мы очень старались сделать праздник ярким. Просим вас поддержать цветовую гамму нашей свадьбы:</p>
+    <div class="dress-colors">
+        <div class="color-badge"></div>
+        <div class="color-badge"></div>
+        <div class="color-badge"></div>
+    </div>
+    <p>Мужчины — беж, карамель, молочный. Девушки — никакого чёрного, только тёплые оттенки. <br>
+    🐱 Бонус за кошачий аксессуар — приз от Феди!</p>
+
+    <div class="border-box">
+        ⚡ ВДОХНОВЛЯЙТЕСЬ ЭНЕРГИЕЙ КОТО-ПАНКА ⚡
+    </div>
+
+    <!-- АНКЕТА ГОСТЯ (ровно по скриншоту + удалён трансфер) -->
+    <h2>АНКЕТА ГОСТЯ</h2>
+    <p>Просим вас ответить на несколько вопросов, это поможет нам в организации торжества.</p>
+    <form id="weddingForm">
+        <label>ВАШЕ ИМЯ И ФАМИЛИЯ</label>
+        <input type="text" id="name" required>
+
+        <label>СМОЖЕТЕ ЛИ ВЫ ПРИСУТСТВОВАТЬ?</label>
+        <div class="radio-group">
+            <label><input type="radio" name="attending" value="Смогу прийти"> Смогу прийти</label>
+            <label><input type="radio" name="attending" value="Не смогу прийти"> Не смогу прийти</label>
+            <label><input type="radio" name="attending" value="Сообщу позже"> Сообщу позже</label>
         </div>
-    </div>
-</section>
 
-<!-- 2) Программа дня (как на референсе с чёрным котом 🐈‍⬛) -->
-<section>
-    <div class="container">
-        <h2 class="section-title">Программа дня</h2>
-        <div class="program-grid">
-            <div class="program-item">
-                <div class="program-time">15:30<br><small></small></div>
-                <div class="program-desc">
-                    <h3>🐈‍⬛ Welcome</h3>
-                    <p>Время пролетит незаметно за игристым и новыми знакомствами</p>
-                </div>
-            </div>
-            <div class="program-item">
-                <div class="program-time">16:00<br><small></small></div>
-                <div class="program-desc">
-                    <h3>🐈‍⬛ Церемония</h3>
-                    <p>Будем очень рады разделить этот важный момент с вами</p>
-                </div>
-            </div>
-            <div class="program-item">
-                <div class="program-time">17:00<br><small></small></div>
-                <div class="program-desc">
-                    <h3>🐈‍⬛ Банкет</h3>
-                    <p>Насладитесь этим вечером, будет много любви, танцев и веселья</p>
-                </div>
-            </div>
+        <label>ПРЕДПОЧТЕНИЯ ПО НАПИТКАМ</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="drinks" value="Шампанское"> Шампанское</label>
+            <label><input type="checkbox" name="drinks" value="Белое вино"> Белое вино</label>
+            <label><input type="checkbox" name="drinks" value="Красное вино"> Красное вино</label>
+            <label><input type="checkbox" name="drinks" value="Коньяк"> Коньяк</label>
+            <label><input type="checkbox" name="drinks" value="Безалкогольное"> Безалкогольное</label>
         </div>
-    </div>
-</section>
 
-<!-- 3) Место проведения + Яндекс карта -->
-<section>
-    <div class="container">
-        <h2 class="section-title">Место проведения</h2>
-        <div class="grid-2">
-            <div>
-                <p><strong>🌿 Деревня Пешково, банкетный зал «Уютное гнездо»</strong></p>
-                <p>Атмосферная усадьба в окружении леса, с террасой и видом на пруд. Рядом есть парковка.</p>
-                <p style="margin-top: 20px;">📍 Точный адрес: Московская область, деревня Пешково.</p>
-                <a href="https://yandex.ru/maps/geo/derevnya_peshkovo/53063152/?ll=38.401923%2C55.855782&z=15" target="_blank" class="map-button">🗺️ Открыть карту (Яндекс.Карты)</a>
-            </div>
-            <div style="background:#e7dacf; border-radius: 48px; padding: 20px; text-align: center;">
-                <span style="font-size: 4rem;">🐈 🏡</span>
-                <p>Уютный зал с камином и кошачьими лежанками. Федя уже всё проверил — одобрено!</p>
-            </div>
-        </div>
-    </div>
-</section>
+        <label>ЕСТЬ ЛИ АЛЛЕРГИИ / ОГРАНИЧЕНИЯ В ЕДЕ?</label>
+        <textarea rows="2" id="diet"></textarea>
 
-<!-- 4) Дресс-код (с картинками) -->
-<section style="background: #fefaf5;">
-    <div class="container">
-        <h2 class="section-title">Дресс-код</h2>
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <p>Мы очень старались сделать праздник красивым и будем рады, если в своих нарядах вы поддержите цветовую гамму нашей свадьбы:</p>
-            
-            <div class="color-palette">
-                <div class="color-circle"></div>
-                <div class="color-circle"></div>
-                <div class="color-circle"></div>
-            </div>
-            
-            <p style="margin-bottom: 20px;">🍂 Оттенки бежевого, карамельного, молочного. И никакой строгости — главное, чтобы вам было комфортно.</p>
-            
-            <p><strong>вдохновляйтесь образами</strong></p>
-            
-            <div class="dresscode-gallery">
-                <div class="dresscode-card">
-                    <img src="https://placekitten.com/200/200?image=1" alt="Образ 1" onerror="this.src='https://placekitten.com/200/200'">
-                    <p>Нежный образ</p>
-                </div>
-                <div class="dresscode-card">
-                    <img src="https://placekitten.com/200/200?image=2" alt="Образ 2" onerror="this.src='https://placekitten.com/200/200'">
-                    <p>Элегантный стиль</p>
-                </div>
-                <div class="dresscode-card">
-                    <img src="https://placekitten.com/200/200?image=3" alt="Образ 3" onerror="this.src='https://placekitten.com/200/200'">
-                    <p>Кэжуал</p>
-                </div>
-            </div>
-            
-            <p style="margin-top: 25px;">🐱 Бонус: если в вашем образе будет кошачий аксессуар (брошь, галстук с лапками, усы) — вас ждёт маленький сюрприз от Феди!</p>
-        </div>
-    </div>
-</section>
+        <button type="submit" class="btn-crash">➜ ОТПРАВИТЬ</button>
+    </form>
 
-<!-- 5) Пожелания -->
-<section>
-    <div class="container">
-        <h2 class="section-title">Пожелания</h2>
-        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-            <p>Нам важно не столько количество подарков, сколько ваше присутствие и любовь. Но если вы захотите порадовать нас, мы будем благодарны:</p>
-            <ul style="text-align: left; margin-top: 20px; list-style: none;">
-                <li>🏷️ · Конверт с тёплыми словами (для нашего семейного бюджета)</li>
-                <li>📚 · Подарки для нашего кота Феди (игрушки, вкусняшки)</li>
-                <li>🖼️ · Что-то сделанное своими руками — это бесценно</li>
-            </ul>
-            <p style="margin-top: 30px;"><em>Главное — будьте с нами в этот день, а остальное неважно.</em></p>
-        </div>
-    </div>
-</section>
+    <!-- КОНТАКТЫ (только две почты) -->
+    <h2>КОНТАКТЫ</h2>
+    <p>📧 nasonov.al17@gmail.com<br>
+    📧 angelinaaa99sm@yandex.ru</p>
+    <p>По любым вопросам — пишите, мы на связи 24/7 (кроме времени сна Феди).</p>
 
-<!-- 6) Анкета гостя (как на скриншоте, без трансфера) -->
-<section style="background: #fefaf5;">
-    <div class="container">
-        <h2 class="section-title">Анкета гостя</h2>
-        <div class="rsvp-form">
-            <form id="weddingForm">
-                <div class="form-group">
-                    <label>Ваше имя и фамилия</label>
-                    <input type="text" id="name" required placeholder="Как к вам обращаться?">
-                </div>
-                
-                <div class="form-group">
-                    <label>Сможете ли вы присутствовать?</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="attending" value="Смогу прийти" required> Смогу прийти</label>
-                        <label><input type="radio" name="attending" value="Не смогу прийти"> Не смогу прийти</label>
-                        <label><input type="radio" name="attending" value="Сообщу позже"> Сообщу позже</label>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Предпочтения по напиткам</label>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" name="drinks" value="Шампанское"> Шампанское</label>
-                        <label><input type="checkbox" name="drinks" value="Белое вино"> Белое вино</label>
-                        <label><input type="checkbox" name="drinks" value="Красное вино"> Красное вино</label>
-                        <label><input type="checkbox" name="drinks" value="Коньяк"> Коньяк</label>
-                        <label><input type="checkbox" name="drinks" value="Безалкогольные напитки"> Безалкогольные напитки</label>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Есть ли у вас аллергии или ограничения в еде?</label>
-                    <textarea rows="2" id="diet" placeholder="Напишите, если важно"></textarea>
-                </div>
-                
-                <button type="submit">📩 Отправить</button>
-            </form>
-            <p style="font-size:0.7rem; margin-top:1rem; text-align:center;">Просим вас ответить на несколько вопросов, это поможет нам в организации торжества</p>
-        </div>
+    <!-- ДО СКОРОЙ ВСТРЕЧИ -->
+    <div class="border-box" style="text-align: center; margin-top: 30px;">
+        <div style="font-size: 2rem;">ДО СКОРОЙ ВСТРЕЧИ!</div>
+        <div>Александр, Ангелина и кот Федя</div>
+        <div>🐾 🐈 🐟</div>
     </div>
-</section>
 
-<!-- 7) Контакты (только почты) -->
-<section>
-    <div class="container contacts">
-        <h2 class="section-title">Контакты</h2>
-        <p>По всем вопросам вы можете написать нам на почту:</p>
-        <p style="margin-top: 15px;">
-            <strong>📧 nasonov.al17@gmail.com</strong><br>
-            <strong>📧 angelinaaa99sm@yandex.ru</strong>
-        </p>
-        <p style="margin-top: 20px;">Мы обязательно ответим!</p>
-    </div>
-</section>
-
-<!-- 8) Будем вас ждать -->
-<section style="padding-bottom: 80px;">
-    <div class="container">
-        <div class="waiting-block">
-            <h2 class="section-title" style="margin-bottom: 0.5rem;">Будем вас ждать!</h2>
-            <p style="font-size: 1.2rem;">❤️ Самое главное — это вы. Давайте создадим вместе тёплые воспоминания ❤️</p>
-            <div style="font-size: 2rem; margin-top: 20px;">🐾 🐈 🐾</div>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <p>Спасибо, что будете с нами. До встречи 17 июля 2026!<br> Александр, Ангелина и кот Федя.</p>
-</footer>
+    <footer>
+        monsterenergy • кото-панк • 2026
+    </footer>
+</div>
 
 <script>
     const form = document.getElementById('weddingForm');
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        
         const name = document.getElementById('name').value;
         const attending = document.querySelector('input[name="attending"]:checked');
         const drinks = Array.from(document.querySelectorAll('input[name="drinks"]:checked')).map(cb => cb.value).join(', ');
         const diet = document.getElementById('diet').value;
-        
-        if (!name) {
-            alert('Пожалуйста, напишите ваше имя');
-            return;
-        }
-        
-        if (!attending) {
-            alert('Пожалуйста, выберите, сможете ли вы присутствовать');
-            return;
-        }
-        
-        const subject = `Ответ на приглашение от ${name}`;
-        const body = `Имя: ${name}%0AПрисутствие: ${attending.value}%0AПредпочтения по напиткам: ${drinks || 'не указано'}%0AОграничения в еде: ${diet || 'нет'}%0A---%0AСпасибо за ответ! Ждём вас на нашей кото-свадьбе.`;
-        
+
+        if (!name) { alert('Напишите своё имя, мяу'); return; }
+        if (!attending) { alert('Выберите вариант присутствия'); return; }
+
+        const subject = `Ответ с приглашения от ${name}`;
+        const body = `Имя: ${name}%0AПрисутствие: ${attending.value}%0AНапитки: ${drinks || 'не указаны'}%0AОграничения: ${diet || 'нет'}%0A---%0AСпасибо! Ждём вас на кото-свадьбе.`;
         window.location.href = `mailto:nasonov.al17@gmail.com?subject=${subject}&body=${body}`;
-        alert('Спасибо! Откроется почтовое приложение. Отправьте письмо — и мы получим ваш ответ.');
+        alert('Откроется почта. Отправьте письмо — и мы получим ваш ответ!');
     });
 </script>
 </body>
