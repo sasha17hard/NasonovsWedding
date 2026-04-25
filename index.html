@@ -24,11 +24,11 @@
             padding: 0 24px;
         }
 
-        /* Секции */
         section {
             padding: 70px 0;
             border-bottom: 1px solid #f3e5da;
         }
+
         .section-title {
             text-align: center;
             font-size: 2.2rem;
@@ -38,6 +38,7 @@
             font-weight: 400;
             position: relative;
         }
+
         .section-title:after {
             content: "🐾";
             display: block;
@@ -53,23 +54,23 @@
             text-align: center;
         }
 
-        /* Сетка */
         .grid-2 {
             display: flex;
             flex-wrap: wrap;
             gap: 40px;
             align-items: center;
         }
+
         .grid-2 > div {
             flex: 1;
             min-width: 260px;
         }
 
-        /* Программа дня */
         .timeline {
             max-width: 600px;
             margin: 0 auto;
         }
+
         .timeline-item {
             display: flex;
             gap: 20px;
@@ -79,6 +80,7 @@
             padding: 8px 16px;
             border-radius: 48px;
         }
+
         .timeline-time {
             font-weight: bold;
             font-size: 1.2rem;
@@ -86,13 +88,13 @@
             min-width: 90px;
         }
 
-        /* Дресс-код */
         .color-palette {
             display: flex;
             gap: 20px;
             justify-content: center;
             margin: 20px 0;
         }
+
         .color-circle {
             width: 60px;
             height: 60px;
@@ -101,10 +103,10 @@
             border: 2px solid white;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
+
         .color-circle:nth-child(2) { background: #c7a57b; }
         .color-circle:nth-child(3) { background: #f1dbc4; }
 
-        /* Карта */
         .map-button {
             background: #e8cfb3;
             padding: 14px 24px;
@@ -115,12 +117,12 @@
             font-weight: bold;
             transition: 0.2s;
         }
+
         .map-button:hover {
             background: #dbbc98;
             transform: scale(0.97);
         }
 
-        /* Форма RSVP */
         .rsvp-form {
             background: #ffffffdd;
             backdrop-filter: blur(4px);
@@ -131,15 +133,18 @@
             max-width: 700px;
             margin: 0 auto;
         }
+
         .form-group {
             margin-bottom: 20px;
         }
+
         label {
             display: block;
             margin-bottom: 6px;
             font-weight: 600;
             color: #5e3a2c;
         }
+
         input, select, textarea {
             width: 100%;
             padding: 12px 16px;
@@ -148,6 +153,7 @@
             font-family: inherit;
             background: #fffbf7;
         }
+
         button {
             background: #b56a4c;
             color: white;
@@ -160,14 +166,15 @@
             width: 100%;
             font-weight: bold;
         }
+
         button:hover {
             background: #8f523a;
         }
 
-        /* Контакты и низ */
         .contacts {
             text-align: center;
         }
+
         .waiting-block {
             background: #fdf2e9;
             border-radius: 60px;
@@ -176,7 +183,6 @@
             margin-top: 20px;
         }
 
-        /* Футер */
         footer {
             text-align: center;
             padding: 30px;
@@ -184,7 +190,6 @@
             color: #c9ac91;
         }
 
-        /* Котики-анимация */
         .floating-cat {
             position: fixed;
             bottom: 20px;
@@ -195,15 +200,47 @@
             animation: floatCat 7s infinite;
             z-index: 99;
         }
+
         @keyframes floatCat {
             0% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
             50% { transform: translateY(-15px) rotate(3deg); opacity: 0.4; }
             100% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
         }
 
+        .photo-gallery {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .photo-gallery img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 60px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            border: 3px solid white;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        .date-badge {
+            background: #edddcf;
+            display: inline-block;
+            padding: 8px 28px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+        }
+
         @media (max-width: 768px) {
             .section-title { font-size: 1.8rem; }
             .timeline-item { flex-direction: column; gap: 8px; background: transparent; }
+            .photo-gallery img { width: 150px; height: 150px; }
         }
     </style>
 </head>
@@ -222,12 +259,14 @@
                 Этот день будет полон любви, тепла и, конечно, кошачьих сюрпризов. 
                 Будем рады разделить его с вами!
             </p>
-            <div style="display: flex; gap: 20px; justify-content: center; margin: 30px 0;">
-                <!-- Ваши фотографии, которые лежат рядом с index.html -->
-                <img src="IMG_2739.jpg" alt="Наше фото" style="width: 180px; height: 180px; object-fit: cover; border-radius: 60px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-                <img src="IMG_2560.jpg" alt="Кот Федя" style="width: 180px; height: 180px; object-fit: cover; border-radius: 60px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+            
+            <!-- ФОТОГРАФИИ - ИСПРАВЛЕННЫЕ ПУТИ -->
+            <div class="photo-gallery">
+                <img src="IMG_2739.JPG" alt="Александр и Ангелина" onerror="this.src='https://placekitten.com/220/220'">
+                <img src="IMG_2560.JPG" alt="Кот Федя" onerror="this.src='https://placekitten.com/220/220'">
             </div>
-            <div class="date-badge" style="background: #edddcf; display: inline-block; padding: 8px 28px; border-radius: 60px; font-size: 1.2rem;">
+            
+            <div class="date-badge">
                 📅 17 июля 2026 · 16:00
             </div>
         </div>
@@ -302,7 +341,7 @@
     </div>
 </section>
 
-<!-- 6) Анкета гостя + отправка на nasonov.al17@gmail.com -->
+<!-- 6) Анкета гостя -->
 <section style="background: #fefaf5;">
     <div class="container">
         <h2 class="section-title">Анкета гостя</h2>
@@ -315,7 +354,7 @@
                 <div class="form-group"><label>Нужен ли вам трансфер от метро Аннино (15:00)?</label><select id="transfer"><option value="Нет">Нет, приеду сам</option><option value="Да, нужен">Да, нужен</option></select></div>
                 <button type="submit">🐾 Отправить ответ</button>
             </form>
-            <p style="font-size:0.7rem; margin-top:1rem; text-align:center;">Нажимая кнопку, вы отправляете данные на почту организаторам. Спасибо!</p>
+            <p style="font-size:0.7rem; margin-top:1rem; text-align:center;">Данные отправятся на почту nasonov.al17@gmail.com</p>
         </div>
     </div>
 </section>
@@ -347,7 +386,6 @@
 </footer>
 
 <script>
-    // ОТПРАВКА ФОРМЫ НА nasonov.al17@gmail.com
     const form = document.getElementById('weddingForm');
     form.addEventListener('submit', function(e) {
         e.preventDefault();
