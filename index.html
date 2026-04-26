@@ -65,7 +65,84 @@
             font-weight: 500;
         }
 
-        /* Hero Section */
+        /* ===== НОВЫЙ ПРИВЕТСТВЕННЫЙ БЛОК С КОТОМ ФЕДЕЙ ===== */
+        .welcome-cat {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(145deg, #FDF7EF 0%, #F9EFE2 100%);
+            border-bottom: 2px solid rgba(197,163,111,0.2);
+        }
+        .welcome-content {
+            max-width: 850px;
+            padding: 0 24px;
+            z-index: 2;
+        }
+        .cat-greeting {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--dark-text);
+            background: rgba(255,255,240,0.7);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 80px;
+            backdrop-filter: blur(4px);
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+            border: 1px solid var(--gold);
+        }
+        .paw-decoration {
+            font-size: 2rem;
+            letter-spacing: 12px;
+            color: var(--gold);
+            margin: 20px 0;
+        }
+        .wedding-announce {
+            font-size: clamp(3rem, 10vw, 5.8rem);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            color: #2F2E2A;
+            margin: 25px 0 15px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.02);
+            letter-spacing: 2px;
+        }
+        .scroll-arrow {
+            position: absolute;
+            bottom: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-weight: 400;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(255,255,245,0.6);
+            padding: 8px 20px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+            z-index: 10;
+            text-decoration: none;
+        }
+        .scroll-arrow span {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+        /* Hero Section — оставили без изменений по структуре, но убрали лишний фон с фиксом чтоб не мешал */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -76,13 +153,11 @@
             background: linear-gradient(135deg, rgba(253,248,240,0.95) 0%, rgba(243,233,222,0.9) 100%), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format') center/cover no-repeat;
             background-attachment: fixed;
         }
-
         .hero-content {
             z-index: 2;
             max-width: 800px;
             padding: 0 20px;
         }
-
         .hero-content .subhead {
             font-size: 1rem;
             letter-spacing: 6px;
@@ -91,7 +166,6 @@
             margin-bottom: 1.5rem;
             font-weight: 500;
         }
-
         .hero-content h1 {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(3rem, 8vw, 5.5rem);
@@ -100,7 +174,6 @@
             margin-bottom: 1.5rem;
             letter-spacing: 2px;
         }
-
         .hero-date {
             font-size: 1.25rem;
             border-top: 1px solid var(--gold);
@@ -110,7 +183,6 @@
             font-weight: 300;
             margin-bottom: 2rem;
         }
-
         .btn {
             display: inline-block;
             background: transparent;
@@ -125,7 +197,6 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(2px);
         }
-
         .btn:hover {
             background: var(--gold);
             color: white;
@@ -410,13 +481,38 @@
             .timeline-time { min-width: auto; }
             .countdown-item { padding: 12px 20px; min-width: 70px; }
             .countdown-number { font-size: 1.8rem; }
+            .welcome-cat {
+                min-height: 90vh;
+            }
+            .cat-greeting {
+                font-size: 1.5rem;
+                padding: 0.3rem 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
 <div class="floating-flower">🌸</div>
 
-<!-- Hero section -->
+<!-- ========== НОВЫЙ ПРИВЕТСТВЕННЫЙ БЛОК С ФЕДЕЙ, ЛАПКАМИ И СТРЕЛКОЙ ========= -->
+<section class="welcome-cat" id="welcomeFedya">
+    <div class="welcome-content" data-aos="fade-up" data-aos-duration="1000">
+        <div class="paw-decoration">🐾 🐾 🐾</div>
+        <div class="cat-greeting">
+            🐾 Приветствую всех! Меня зовут Федя, и у моих хозяев для вас есть кое-что интересное! 🐾
+        </div>
+        <div class="paw-decoration">🐾 ～ 🐾 ～ 🐾</div>
+        <div class="wedding-announce">Мы женимся!</div>
+        <div style="font-size: 1.2rem; margin-top: 20px; color: #7F7D78; letter-spacing: 2px; font-weight: 300;">17 июля 2026 · The Sun Event</div>
+    </div>
+    <!-- Стрелка вниз + подпись "свадебные хлопоты" -->
+    <a href="#hero" class="scroll-arrow" id="scrollDownArrow">
+        <span>👇</span>
+        Свадебный день ↓
+    </a>
+</section>
+
+<!-- Hero Section (основной блок с парой, оставлен полностью нетронутым) -->
 <section class="hero" id="hero">
     <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
         <div class="subhead">we are getting married</div>
@@ -507,7 +603,6 @@
         <div class="section-subtitle" data-aos="fade-up">memories</div>
         <h2 class="section-title" data-aos="fade-up">Драгоценные мгновения</h2>
         <div class="gallery-grid" id="galleryGrid">
-            <!-- фото placeholder'ы из unsplash romantic -->
             <div class="gallery-item" data-aos="flip-left"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format" alt="wedding couple 1"></div>
             <div class="gallery-item" data-aos="flip-left" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2070&auto=format" alt="wedding couple 2"></div>
             <div class="gallery-item" data-aos="flip-left" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1974&auto=format" alt="wedding rings"></div>
@@ -576,7 +671,7 @@
     <p>Свадебное приглашение | Александр & Ангелина · 17 июля 2026</p>
 </footer>
 
-<!-- AOS, счетчик, форма -->
+<!-- AOS, счетчик, форма + плавная стрелка -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     // Инициализация AOS
@@ -588,7 +683,7 @@
 
     // ---------- Обратный отсчёт до 17 июля 2026 ----------
     function updateCountdown() {
-        const weddingDate = new Date(2026, 6, 17, 16, 0, 0); // июль = 6
+        const weddingDate = new Date(2026, 6, 17, 16, 0, 0);
         const now = new Date();
         const diff = weddingDate - now;
         if (diff <= 0) {
@@ -610,7 +705,7 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // RSVP форма — сохраняем элегантность: открывается почтовый клиент (как пример) + лёгкое уведомление
+    // RSVP форма — открытие почтового клиента
     const form = document.getElementById('rsvpForm');
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -631,12 +726,9 @@
         const body = `Имя: ${name}%0AПрисутствие: ${attending.value}%0AКоличество гостей: ${guests}%0AКомментарий: ${comment || '—'}%0A%0A✨ Ждём вас на свадьбе!`;
         window.location.href = `mailto:nasonov.al17@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
         alert('Спасибо! Откроется почтовое приложение — просто отправьте письмо, и мы получим ваш ответ.');
-        // Опционально очистка полей (по желанию)
-        // form.reset();
     });
-</script>
-<!-- плавная прокрутка без библиотек -->
-<script>
+
+    // плавная прокрутка для всех якорей + стрелка тоже работает
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
@@ -648,6 +740,16 @@
             }
         });
     });
+
+    // Дополнительно явно для стрелки, чтобы гарантированно перекинуть к hero
+    const arrowBtn = document.getElementById('scrollDownArrow');
+    if(arrowBtn) {
+        arrowBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const heroBlock = document.getElementById('hero');
+            if(heroBlock) heroBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
 </script>
 </body>
 </html>
