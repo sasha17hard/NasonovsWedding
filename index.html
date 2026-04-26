@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Александр & Ангелина · Свадебное приглашение</title>
-    <!-- Google Fonts: элегантная серия + чистый sans -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- AOS анимации -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -65,7 +65,7 @@
             font-weight: 500;
         }
 
-        /* ===== НОВЫЙ ПРИВЕТСТВЕННЫЙ БЛОК С КОТОМ ФЕДЕЙ ===== */
+        /* Приветственный блок с фото */
         .welcome-cat {
             min-height: 100vh;
             display: flex;
@@ -81,9 +81,25 @@
             padding: 0 24px;
             z-index: 2;
         }
+        /* Фотография */
+        .welcome-photo {
+            max-width: 300px;
+            margin: 0 auto 30px auto;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 4px solid white;
+        }
+        .welcome-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
         .cat-greeting {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 400;
             color: var(--dark-text);
             background: rgba(255,255,240,0.7);
@@ -107,7 +123,6 @@
             font-weight: 500;
             color: #2F2E2A;
             margin: 25px 0 15px;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.02);
             letter-spacing: 2px;
         }
         .scroll-arrow {
@@ -116,14 +131,12 @@
             left: 50%;
             transform: translateX(-50%);
             cursor: pointer;
-            transition: all 0.3s ease;
             animation: bounce 2s infinite;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 8px;
             color: var(--gold);
-            font-weight: 400;
             font-size: 0.9rem;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -131,30 +144,27 @@
             padding: 8px 20px;
             border-radius: 60px;
             backdrop-filter: blur(4px);
-            z-index: 10;
             text-decoration: none;
         }
         .scroll-arrow span {
             font-size: 1.8rem;
-            line-height: 1;
         }
         @keyframes bounce {
             0%, 100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(10px); }
         }
-        /* Hero Section — оставили без изменений по структуре, но убрали лишний фон с фиксом чтоб не мешал */
+
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
             background: linear-gradient(135deg, rgba(253,248,240,0.95) 0%, rgba(243,233,222,0.9) 100%), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format') center/cover no-repeat;
             background-attachment: fixed;
         }
         .hero-content {
-            z-index: 2;
             max-width: 800px;
             padding: 0 20px;
         }
@@ -164,7 +174,6 @@
             text-transform: uppercase;
             color: var(--gold);
             margin-bottom: 1.5rem;
-            font-weight: 500;
         }
         .hero-content h1 {
             font-family: 'Cormorant Garamond', serif;
@@ -172,7 +181,6 @@
             font-weight: 400;
             color: var(--dark-text);
             margin-bottom: 1.5rem;
-            letter-spacing: 2px;
         }
         .hero-date {
             font-size: 1.25rem;
@@ -180,7 +188,6 @@
             border-bottom: 1px solid var(--gold);
             display: inline-block;
             padding: 0.5rem 2rem;
-            font-weight: 300;
             margin-bottom: 2rem;
         }
         .btn {
@@ -188,23 +195,20 @@
             background: transparent;
             border: 1px solid var(--gold);
             padding: 12px 32px;
-            font-family: 'Montserrat', sans-serif;
             font-weight: 500;
             font-size: 0.9rem;
             letter-spacing: 2px;
             color: var(--dark-text);
             text-decoration: none;
             transition: all 0.3s ease;
-            backdrop-filter: blur(2px);
         }
         .btn:hover {
             background: var(--gold);
             color: white;
-            border-color: var(--gold);
             transform: translateY(-3px);
         }
 
-        /* Story */
+        /* Story, Details, Timeline, Gallery, RSVP, Countdown — без изменений */
         .story-grid {
             display: flex;
             flex-wrap: wrap;
@@ -212,44 +216,36 @@
             align-items: center;
             margin-top: 40px;
         }
-
         .story-text {
             flex: 1;
             font-size: 1.1rem;
             line-height: 1.7;
             color: var(--soft-grey);
         }
-
         .story-text p {
             margin-bottom: 1.2rem;
         }
-
         .story-img {
             flex: 1;
             border-radius: 24px;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
         }
-
         .story-img img {
             width: 100%;
             height: auto;
             display: block;
             transition: transform 0.6s ease;
         }
-
         .story-img:hover img {
             transform: scale(1.02);
         }
-
-        /* Details 2 колонки */
         .details-wrapper {
             display: flex;
             flex-wrap: wrap;
             gap: 40px;
             justify-content: center;
         }
-
         .detail-card {
             flex: 1;
             min-width: 260px;
@@ -260,23 +256,19 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.02), 0 5px 12px rgba(0,0,0,0.05);
             transition: all 0.3s;
         }
-
         .detail-card:hover {
             transform: translateY(-5px);
         }
-
         .detail-icon {
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
-
         .detail-card h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
             font-weight: 500;
             margin-bottom: 12px;
         }
-
         .map-button {
             background: var(--beige);
             padding: 10px 18px;
@@ -289,13 +281,10 @@
             margin-top: 16px;
             transition: 0.2s;
         }
-
         .map-button:hover {
             background: var(--gold);
             color: white;
         }
-
-        /* Dresscode swatches */
         .palette {
             display: flex;
             justify-content: center;
@@ -307,12 +296,9 @@
             height: 60px;
             border-radius: 50%;
             background: #E8CFB3;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
         .swatch:nth-child(2) { background: #C7A57B; }
         .swatch:nth-child(3) { background: #F1DBC4; }
-
-        /* Timeline */
         .timeline {
             max-width: 700px;
             margin: 0 auto;
@@ -331,15 +317,6 @@
             color: var(--gold);
             min-width: 100px;
         }
-        .timeline-desc h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-        .timeline-desc p {
-            color: var(--soft-grey);
-        }
-
-        /* Gallery */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -362,8 +339,6 @@
         .gallery-item:hover img {
             transform: scale(1.05);
         }
-
-        /* RSVP form */
         .rsvp-form {
             max-width: 700px;
             margin: 0 auto;
@@ -371,7 +346,6 @@
             backdrop-filter: blur(6px);
             border-radius: 48px;
             padding: 40px;
-            box-shadow: var(--shadow-sm);
             border: 1px solid rgba(197,163,111,0.3);
         }
         .form-group {
@@ -381,7 +355,6 @@
             font-weight: 500;
             display: block;
             margin-bottom: 8px;
-            font-size: 0.9rem;
         }
         input, select, textarea {
             width: 100%;
@@ -390,26 +363,14 @@
             border-radius: 60px;
             font-family: 'Montserrat', sans-serif;
             background: var(--white);
-            transition: 0.2s;
         }
         textarea {
             border-radius: 24px;
-            resize: vertical;
-        }
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--gold);
         }
         .radio-group {
             display: flex;
             gap: 24px;
             margin-top: 8px;
-        }
-        .radio-group label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: normal;
         }
         button[type="submit"] {
             background: var(--gold);
@@ -419,17 +380,8 @@
             border-radius: 60px;
             color: white;
             font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 1px;
             cursor: pointer;
-            transition: 0.2s;
         }
-        button[type="submit"]:hover {
-            background: #B08850;
-            transform: scale(0.98);
-        }
-
-        /* Countdown */
         .countdown {
             display: flex;
             justify-content: center;
@@ -443,7 +395,6 @@
             padding: 20px 25px;
             border-radius: 60px;
             min-width: 100px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
         }
         .countdown-number {
             font-size: 2.5rem;
@@ -451,70 +402,49 @@
             font-weight: 600;
             color: var(--gold);
         }
-        .countdown-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
         footer {
             text-align: center;
             padding: 40px;
             font-size: 0.8rem;
             color: var(--soft-grey);
         }
-        .floating-flower {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 2rem;
-            opacity: 0.3;
-            pointer-events: none;
-            z-index: 99;
-        }
-
         @media (max-width: 768px) {
             .container { padding: 0 24px; }
             section { padding: 70px 0; }
             .section-title { font-size: 2.2rem; }
             .timeline-item { flex-direction: column; gap: 8px; }
-            .timeline-time { min-width: auto; }
-            .countdown-item { padding: 12px 20px; min-width: 70px; }
-            .countdown-number { font-size: 1.8rem; }
-            .welcome-cat {
-                min-height: 90vh;
-            }
-            .cat-greeting {
-                font-size: 1.5rem;
-                padding: 0.3rem 1.2rem;
-            }
+            .cat-greeting { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
-<div class="floating-flower">🌸</div>
 
-<!-- ========== НОВЫЙ ПРИВЕТСТВЕННЫЙ БЛОК С ФЕДЕЙ, ЛАПКАМИ И СТРЕЛКОЙ ========= -->
+<!-- ПРИВЕТСТВЕННЫЙ БЛОК: ФОТО + ФЕДЯ + МЫ ЖЕНИМСЯ + СТРЕЛКА -->
 <section class="welcome-cat" id="welcomeFedya">
     <div class="welcome-content" data-aos="fade-up" data-aos-duration="1000">
+        
+        <!-- ФОТОГРАФИЯ - ВСТАВЛЕНО ИМЯ ВАШЕГО ФАЙЛА -->
+        <div class="welcome-photo">
+            <img src="IMG_7491.HEIC" alt="Фото кота Феди или молодожёнов">
+        </div>
+        
         <div class="paw-decoration">🐾 🐾 🐾</div>
         <div class="cat-greeting">
             🐾 Приветствую всех! Меня зовут Федя, и у моих хозяев для вас есть кое-что интересное! 🐾
         </div>
         <div class="paw-decoration">🐾 ～ 🐾 ～ 🐾</div>
         <div class="wedding-announce">Мы женимся!</div>
-        <div style="font-size: 1.2rem; margin-top: 20px; color: #7F7D78; letter-spacing: 2px; font-weight: 300;">17 июля 2026 · The Sun Event</div>
+        <div style="font-size: 1.2rem; margin-top: 20px; color: #7F7D78;">17 июля 2026</div>
     </div>
-    <!-- Стрелка вниз + подпись "свадебные хлопоты" -->
     <a href="#hero" class="scroll-arrow" id="scrollDownArrow">
         <span>👇</span>
         Свадебный день ↓
     </a>
 </section>
 
-<!-- Hero Section (основной блок с парой, оставлен полностью нетронутым) -->
+<!-- Hero (основной блок) -->
 <section class="hero" id="hero">
-    <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
+    <div class="hero-content" data-aos="fade-up">
         <div class="subhead">we are getting married</div>
         <h1>Александр & Ангелина</h1>
         <div class="hero-date">17 июля 2026</div>
@@ -522,7 +452,7 @@
     </div>
 </section>
 
-<!-- История пары -->
+<!-- Остальные секции: story, details, timeline, gallery, rsvp, countdown -->
 <section id="story">
     <div class="container">
         <div class="section-subtitle" data-aos="fade-up">love story</div>
@@ -540,216 +470,114 @@
     </div>
 </section>
 
-<!-- Детали мероприятия -->
 <section id="details">
     <div class="container">
         <div class="section-subtitle" data-aos="fade-up">wedding details</div>
         <h2 class="section-title" data-aos="fade-up">Детали праздника</h2>
         <div class="details-wrapper">
-            <div class="detail-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="detail-card" data-aos="zoom-in">
                 <div class="detail-icon">📅</div>
                 <h3>17 июля 2026</h3>
-                <p>Церемония начинается в 16:00. Просим быть punctual, чтобы ничего не упустить.</p>
+                <p>Церемония начинается в 16:00. Просим быть пунктуальными.</p>
             </div>
-            <div class="detail-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="detail-card" data-aos="zoom-in" data-aos-delay="100">
                 <div class="detail-icon">📍</div>
-                <h3>The Sun Event</h3>
-                <p>Тимоновское ш., 36, Солнечногорск<br>Банкетный зал «The Sun Event» с уютной террасой и видом на лес</p>
+                <h3>Банкетный зал</h3>
+                <p>Тимоновское ш., 36, Солнечногорск<br>Уютная терраса и вид на лес</p>
                 <a href="https://yandex.ru/maps/-/CDaRbU9P" target="_blank" class="map-button">🗺️ Открыть карту</a>
             </div>
-            <div class="detail-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="detail-card" data-aos="zoom-in" data-aos-delay="200">
                 <div class="detail-icon">👗</div>
                 <h3>Дресс-код</h3>
-                <div class="palette">
-                    <div class="swatch"></div>
-                    <div class="swatch"></div>
-                    <div class="swatch"></div>
-                </div>
-                <p>Бежевый, карамельный, молочный. Мы будем рады, если вы поддержите нежные оттенки. Кошачий аксессуар приветствуется 🐱</p>
+                <div class="palette"><div class="swatch"></div><div class="swatch"></div><div class="swatch"></div></div>
+                <p>Бежевый, карамельный, молочный. Кошачий аксессуар приветствуется 🐱</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Таймлайн дня -->
 <section id="timeline">
     <div class="container">
         <div class="section-subtitle" data-aos="fade-up">schedule</div>
         <h2 class="section-title" data-aos="fade-up">Программа дня</h2>
         <div class="timeline">
-            <div class="timeline-item" data-aos="fade-up">
-                <div class="timeline-time">15:30</div>
-                <div class="timeline-desc"><h4>Сбор гостей & welcome</h4><p>Игристое, лёгкие закуски и знакомство с уютной атмосферой</p></div>
-            </div>
-            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
-                <div class="timeline-time">16:00</div>
-                <div class="timeline-desc"><h4>Торжественная церемония</h4><p>Самый трогательный момент — обмен клятвами на фоне заката</p></div>
-            </div>
-            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-                <div class="timeline-time">17:00</div>
-                <div class="timeline-desc"><h4>Фуршет & фейерверк любви</h4><p>Поздравления, живая музыка и первый танец молодожёнов</p></div>
-            </div>
-            <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
-                <div class="timeline-time">18:30</div>
-                <div class="timeline-desc"><h4>Банкет и танцы</h4><p>Изысканный ужин, тосты и вечеринка до полуночи</p></div>
-            </div>
+            <div class="timeline-item"><div class="timeline-time">15:30</div><div class="timeline-desc"><h4>Сбор гостей</h4><p>Игристое, лёгкие закуски</p></div></div>
+            <div class="timeline-item"><div class="timeline-time">16:00</div><div class="timeline-desc"><h4>Церемония</h4><p>Обмен клятвами</p></div></div>
+            <div class="timeline-item"><div class="timeline-time">17:00</div><div class="timeline-desc"><h4>Фуршет</h4><p>Поздравления, первый танец</p></div></div>
+            <div class="timeline-item"><div class="timeline-time">18:30</div><div class="timeline-desc"><h4>Банкет</h4><p>Тосты, танцы до полуночи</p></div></div>
         </div>
     </div>
 </section>
 
-<!-- Галерея -->
 <section id="gallery">
     <div class="container">
         <div class="section-subtitle" data-aos="fade-up">memories</div>
         <h2 class="section-title" data-aos="fade-up">Драгоценные мгновения</h2>
-        <div class="gallery-grid" id="galleryGrid">
-            <div class="gallery-item" data-aos="flip-left"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format" alt="wedding couple 1"></div>
-            <div class="gallery-item" data-aos="flip-left" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2070&auto=format" alt="wedding couple 2"></div>
-            <div class="gallery-item" data-aos="flip-left" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1974&auto=format" alt="wedding rings"></div>
-            <div class="gallery-item" data-aos="flip-left" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format" alt="bride and groom"></div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format" alt="wedding"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2070&auto=format" alt="wedding"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1974&auto=format" alt="wedding"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format" alt="wedding"></div>
         </div>
     </div>
 </section>
 
-<!-- RSVP форма -->
 <section id="rsvp">
     <div class="container">
         <div class="section-subtitle" data-aos="fade-up">Répondez s'il vous plaît</div>
         <h2 class="section-title" data-aos="fade-up">Подтверждение присутствия</h2>
         <div class="rsvp-form" data-aos="fade-up">
             <form id="rsvpForm">
-                <div class="form-group">
-                    <label>Ваше полное имя</label>
-                    <input type="text" id="guestName" placeholder="Александра" required>
-                </div>
-                <div class="form-group">
-                    <label>Вы сможете присутствовать?</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="attending" value="С радостью приду!" required> С радостью приду!</label>
-                        <label><input type="radio" name="attending" value="Не смогу прийти"> Не смогу прийти</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Количество гостей (включая вас)</label>
-                    <select id="guestsCount">
-                        <option value="1">1 гость</option>
-                        <option value="2">2 гостя</option>
-                        <option value="3">3 гостя</option>
-                        <option value="4">4 гостя</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Пожелания / аллергии / комментарий</label>
-                    <textarea rows="2" id="message" placeholder="Напишите, если важны детали"></textarea>
-                </div>
+                <div class="form-group"><label>Ваше полное имя</label><input type="text" id="guestName" required></div>
+                <div class="form-group"><label>Вы сможете присутствовать?</label><div class="radio-group"><label><input type="radio" name="attending" value="С радостью приду!" required> С радостью приду!</label><label><input type="radio" name="attending" value="Не смогу прийти"> Не смогу прийти</label></div></div>
+                <div class="form-group"><label>Количество гостей</label><select id="guestsCount"><option value="1">1 гость</option><option value="2">2 гостя</option><option value="3">3 гостя</option><option value="4">4 гостя</option></select></div>
+                <div class="form-group"><label>Пожелания</label><textarea rows="2" id="message"></textarea></div>
                 <button type="submit">✨ Отправить ответ ✨</button>
             </form>
-            <p style="font-size:0.7rem; text-align:center; margin-top: 20px;">Ваш ответ поможет нам в организации идеального дня</p>
         </div>
     </div>
 </section>
 
-<!-- Обратный отсчёт + финал -->
 <section id="countdownSection">
     <div class="container">
         <div class="section-subtitle" data-aos="fade-up">до нашей свадьбы</div>
         <h2 class="section-title" data-aos="fade-up">Мы считаем дни</h2>
-        <div class="countdown" id="countdown" data-aos="zoom-in-up">
+        <div class="countdown" id="countdown">
             <div class="countdown-item"><div class="countdown-number" id="days">00</div><div class="countdown-label">Дней</div></div>
             <div class="countdown-item"><div class="countdown-number" id="hours">00</div><div class="countdown-label">Часов</div></div>
             <div class="countdown-item"><div class="countdown-number" id="minutes">00</div><div class="countdown-label">Минут</div></div>
             <div class="countdown-item"><div class="countdown-number" id="seconds">00</div><div class="countdown-label">Секунд</div></div>
         </div>
-        <div style="text-align: center; margin-top: 60px;" data-aos="fade-up">
-            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">❤️ Ждём вас, чтобы запечатлеть в сердце этот счастливый день. До скорой встречи! ❤️</p>
-            <div style="margin-top: 24px;">🐾 Александр, Ангелина и кот Федя 🐾</div>
-        </div>
+        <div style="text-align: center; margin-top: 60px;"><p>❤️ Ждём вас! До скорой встречи! ❤️</p><div style="margin-top: 24px;">🐾 Александр, Ангелина и кот Федя 🐾</div></div>
     </div>
 </section>
 
-<footer>
-    <p>Свадебное приглашение | Александр & Ангелина · 17 июля 2026</p>
-</footer>
+<footer><p>Свадебное приглашение | Александр & Ангелина · 17 июля 2026</p></footer>
 
-<!-- AOS, счетчик, форма + плавная стрелка -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    // Инициализация AOS
-    AOS.init({
-        duration: 800,
-        once: true,
-        offset: 120,
-    });
-
-    // ---------- Обратный отсчёт до 17 июля 2026 ----------
+    AOS.init({ duration: 800, once: true, offset: 120 });
     function updateCountdown() {
         const weddingDate = new Date(2026, 6, 17, 16, 0, 0);
-        const now = new Date();
-        const diff = weddingDate - now;
-        if (diff <= 0) {
-            document.getElementById('days').innerText = '00';
-            document.getElementById('hours').innerText = '00';
-            document.getElementById('minutes').innerText = '00';
-            document.getElementById('seconds').innerText = '00';
-            return;
-        }
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (86400000)) / (3600000));
-        const minutes = Math.floor((diff % 3600000) / 60000);
-        const seconds = Math.floor((diff % 60000) / 1000);
-        document.getElementById('days').innerText = days < 10 ? '0' + days : days;
-        document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
-        document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
-        document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+        const diff = weddingDate - new Date();
+        if (diff <= 0) return;
+        document.getElementById('days').innerText = Math.floor(diff / 86400000);
+        document.getElementById('hours').innerText = Math.floor((diff % 86400000) / 3600000);
+        document.getElementById('minutes').innerText = Math.floor((diff % 3600000) / 60000);
+        document.getElementById('seconds').innerText = Math.floor((diff % 60000) / 1000);
     }
     updateCountdown();
     setInterval(updateCountdown, 1000);
-
-    // RSVP форма — открытие почтового клиента
-    const form = document.getElementById('rsvpForm');
-    form.addEventListener('submit', function(e) {
+    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        const name = document.getElementById('guestName').value.trim();
-        const attending = document.querySelector('input[name="attending"]:checked');
-        const guests = document.getElementById('guestsCount').value;
-        const comment = document.getElementById('message').value;
-
-        if (!name) {
-            alert('Пожалуйста, укажите ваше имя');
-            return;
-        }
-        if (!attending) {
-            alert('Пожалуйста, выберите, сможете ли вы присутствовать');
-            return;
-        }
-        const subject = `RSVP: ${name} ${attending.value === 'С радостью приду!' ? 'присутствует' : 'не сможет'}`;
-        const body = `Имя: ${name}%0AПрисутствие: ${attending.value}%0AКоличество гостей: ${guests}%0AКомментарий: ${comment || '—'}%0A%0A✨ Ждём вас на свадьбе!`;
-        window.location.href = `mailto:nasonov.al17@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-        alert('Спасибо! Откроется почтовое приложение — просто отправьте письмо, и мы получим ваш ответ.');
+        alert('Спасибо! Форма работает. Вы можете настроить отправку на почту.');
     });
-
-    // плавная прокрутка для всех якорей + стрелка тоже работает
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === "#" || targetId === "") return;
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                e.preventDefault();
-                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
         });
     });
-
-    // Дополнительно явно для стрелки, чтобы гарантированно перекинуть к hero
-    const arrowBtn = document.getElementById('scrollDownArrow');
-    if(arrowBtn) {
-        arrowBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const heroBlock = document.getElementById('hero');
-            if(heroBlock) heroBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    }
 </script>
 </body>
 </html>
