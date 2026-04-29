@@ -18,8 +18,9 @@
   --line:#e8d5a0;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;overflow-x:hidden;}
-body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;overflow-x:hidden;background-image:radial-gradient(circle,#e8d5a0 1px,transparent 1px);background-size:28px 28px;}
+html{scroll-behavior:auto;overflow-x:hidden;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;overflow-x:hidden;}
+.page{background:var(--bg);}
 img{max-width:100%;display:block;}
 .page{max-width:520px;margin:0 auto;padding:0 0 4rem;}
 
@@ -57,9 +58,9 @@ body.env-active{overflow:hidden;}
 .hero-lemon-row{display:flex;justify-content:center;gap:10px;margin-top:1.5rem;}
 
 /* SECTIONS */
-.sec{padding:2.8rem 1.5rem;position:relative;z-index:1;}
-.sec-alt{background:#fff9e6;}
-.sec-pink{background:var(--pink-pale);}
+.sec{padding:2.8rem 1.5rem;position:relative;z-index:1;background:var(--bg);}
+.sec-alt{background:var(--bg);}
+.sec-pink{background:var(--bg);}
 .sec-orange{background:var(--orange);background-image:radial-gradient(circle at 80% 20%,var(--pink) 0%,transparent 50%);}
 .sec-title{font-family:'Comfortaa',sans-serif;font-size:clamp(1.8rem,6vw,2.4rem);font-weight:700;color:var(--orange);text-align:center;margin-bottom:.4rem;line-height:1.15;}
 .sec-title.green{color:var(--green);}
@@ -86,7 +87,7 @@ body.env-active{overflow:hidden;}
 .tl-item:last-child{margin-bottom:0;}
 .tl-dot{position:absolute;left:-30px;top:6px;width:22px;height:22px;background:var(--lemon);border:3px solid var(--lemon2);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;box-shadow:2px 2px 0 var(--orange);}
 .tl-dot::after{content:'';position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:4px;height:5px;background:var(--green);border-radius:50% 50% 0 0;}
-.tl-time{font-family:'Comfortaa',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--orange);text-transform:uppercase;margin-bottom:.15rem;}
+.tl-time{font-family:'Comfortaa',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.08em;color:var(--orange);margin-bottom:.2rem;}
 .tl-title{font-family:'Comfortaa',sans-serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.15rem;}
 .tl-desc{font-size:.9rem;color:var(--ink-soft);font-style:italic;line-height:1.5;}
 
@@ -262,9 +263,9 @@ body.env-active{overflow:hidden;}
   <div class="divider-lemon"><span class="dl"></span><svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><path d="M8 3Q9 1 10 3" stroke="#4a9a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/><ellipse cx="11" cy="3.5" rx="3.5" ry="1.5" fill="#4a9a5a" transform="rotate(20 11 3.5)"/></svg><span class="dl"></span></div>
   <div class="venue-box">
     <div class="venue-img-wrap"><img src="peshkovo.jpeg" alt="Ферма Пешково" loading="lazy"></div>
-    <div class="venue-name">🏡 Ферма Пешково</div>
+    <div class="venue-name">Ферма Пешково</div>
     <p class="venue-text">Наша свадьба пройдёт по адресу: <strong>Московская область, Богородский городской округ, деревня Пешково.</strong></p>
-    <p class="venue-text">Для гостей предусмотрена бесплатная охраняемая парковка на территории. Просим приехать заранее, чтобы не пропустить начало церемонии.</p>
+    <p class="venue-text">Для гостей предусмотрена бесплатная охраняемая парковка</p>
     <a href="https://yandex.ru/profile/208940694038?lang=ru" target="_blank" rel="noopener" class="venue-btn">🗺 Построить маршрут</a>
   </div>
 </section>
@@ -276,7 +277,7 @@ body.env-active{overflow:hidden;}
   <p style="text-align:center;font-size:.9rem;color:var(--ink-soft);font-style:italic;margin-bottom:1.2rem;line-height:1.6;">Нам важно, чтобы каждый кадр был особенным. Будем благодарны, если Ваш наряд будет в этих оттенках.</p>
   <div class="dc-cols">
     <div class="dc-col">
-      <div class="dc-col-title ladies">👗 Для девушек</div>
+      <div class="dc-col-title ladies">Для девушек</div>
       <div class="dc-photo"><img src="images/dresscode-1.png" alt="Образ для дам" loading="lazy"></div>
       <div class="palette-row">
         <div class="sw" style="background:#fff9b8"></div>
@@ -288,7 +289,7 @@ body.env-active{overflow:hidden;}
       <div class="dc-note">Нежные пастельные и тёплые оттенки</div>
     </div>
     <div class="dc-col">
-      <div class="dc-col-title gents">🤵 Для мужчин</div>
+      <div class="dc-col-title gents">Для мужчин</div>
       <div class="dc-photo"><img src="images/dresscode-2.png" alt="Образ для мужчин" loading="lazy"></div>
       <div class="palette-row">
         <div class="sw" style="background:#aed581"></div>
@@ -308,7 +309,7 @@ body.env-active{overflow:hidden;}
   <div class="sec-title pink">Пожелания 🌸</div>
   <div class="divider-lemon"><span class="dl"></span><svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><path d="M8 3Q9 1 10 3" stroke="#4a9a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg><span class="dl"></span></div>
   <div class="wishes-box">
-    <div class="wishes-title">ПОЖЕЛАНИЯ</div>
+    
     <p class="wishes-text">Если хотите подарить нам ценный и нужный подарок — мы будем очень благодарны за вклад в бюджет нашей молодой семьи.</p>
     <p class="wishes-text">Просим не обременять себя выбором цветов — Ваше присутствие скрасит этот день ярче любых букетов!</p>
     <div class="wishes-cats">🐱 Мы без ума от нашего Федьки и всех котеек планеты! Поэтому вместо цветов Вы также можете принести корм для кошек — мы с радостью отвезём его в приют, где пушистые комочки счастья ждут своих хозяев.</div>
@@ -341,7 +342,6 @@ body.env-active{overflow:hidden;}
         <div class="co"><input type="checkbox" id="d1" name="drinks[]" value="Безалкогольные"><label for="d1">Безалкогольные</label></div>
         <div class="co"><input type="checkbox" id="d2" name="drinks[]" value="Вино белое"><label for="d2">Вино белое</label></div>
         <div class="co"><input type="checkbox" id="d3" name="drinks[]" value="Вино красное"><label for="d3">Вино красное</label></div>
-        <div class="co"><input type="checkbox" id="d4" name="drinks[]" value="Коктейли"><label for="d4">Коктейли</label></div>
         <div class="co"><input type="checkbox" id="d5" name="drinks[]" value="Виски"><label for="d5">Виски</label></div>
         <div class="co"><input type="checkbox" id="d6" name="drinks[]" value="Коньяк"><label for="d6">Коньяк</label></div>
         <div class="co"><input type="checkbox" id="d7" name="drinks[]" value="Водка"><label for="d7">Водка</label></div>
@@ -353,8 +353,8 @@ body.env-active{overflow:hidden;}
       <label class="fl">Ограничения в еде?</label>
       <div class="chk-grid">
         <div class="co"><input type="checkbox" id="f1" name="food[]" value="Нет"><label for="f1">Нет</label></div>
-        <div class="co"><input type="checkbox" id="f2" name="food[]" value="Не употребляю мясо"><label for="f2">Не употребляю мясо</label></div>
-        <div class="co"><input type="checkbox" id="f3" name="food[]" value="Не употребляю рыбу"><label for="f3">Не употребляю рыбу</label></div>
+        <div class="co"><input type="checkbox" id="f2" name="food[]" value="Не ем мясо"><label for="f2">Не ем мясо</label></div>
+        <div class="co"><input type="checkbox" id="f3" name="food[]" value="Не ем рыбу"><label for="f3">Не ем рыбу</label></div>
         <div class="co"><input type="checkbox" id="f4" name="food[]" value="Непереносимость лактозы"><label for="f4">Непереносимость лактозы</label></div>
         <div class="co"><input type="checkbox" id="f5" name="food[]" value="Непереносимость глютена"><label for="f5">Непереносимость глютена</label></div>
         <div class="co"><input type="checkbox" id="f6" name="food[]" value="Другое"><label for="f6">Другое:</label></div>
@@ -385,7 +385,7 @@ body.env-active{overflow:hidden;}
   <div class="divider-lemon"><span class="dl"></span><svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><path d="M8 3Q9 1 10 3" stroke="#4a9a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg><span class="dl"></span></div>
   <div class="contacts-box">
     <div class="contacts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-    <div class="contacts-role">Свадебный организатор — Ирина</div>
+    
     <p class="contacts-desc">Если у вас возникнут вопросы, пожалуйста, обращайтесь к нашему свадебному организатору&nbsp;— Ирине, она с радостью поможет вам.</p>
     <a href="tel:+79175869463" class="contacts-phone">+7 (917) 586-94-63</a>
   </div>
@@ -412,7 +412,7 @@ body.env-active{overflow:hidden;}
 
 <script>
 const envScreen=document.getElementById('envScreen'),envSeal=document.getElementById('envSeal');
-function openEnv(){envScreen.classList.add('opened');document.body.classList.remove('env-active');setTimeout(()=>envScreen.style.display='none',1100);}
+function openEnv(){window.scrollTo({top:0,behavior:'instant'});envScreen.classList.add('opened');document.body.classList.remove('env-active');setTimeout(()=>{envScreen.style.display='none';window.scrollTo(0,0);},1100);}
 envSeal.addEventListener('click',openEnv);
 envSeal.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openEnv();}});
 
