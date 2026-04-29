@@ -6,7 +6,7 @@
 <title>Александр & Ангелина · 17.07.2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Marcellus&family=Cormorant+Infant:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Marcellus&family=Cormorant+Infant:ital,wght@0,300;0,400;1,300&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --cream: #fffaeb;
@@ -27,7 +27,12 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+img, svg { max-width: 100%; }
 
 body {
   font-family: 'Cormorant Garamond', serif;
@@ -36,6 +41,174 @@ body {
   font-size: 18px;
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+/* Envelope cover screen */
+.envelope-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background:
+    radial-gradient(ellipse at top, rgba(255, 216, 77, 0.4) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(255, 241, 118, 0.4) 0%, transparent 50%),
+    var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  transition: opacity 1.2s ease, visibility 1.2s ease;
+}
+
+.envelope-screen.opened {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+body.envelope-active {
+  overflow: hidden;
+}
+
+.envelope {
+  position: relative;
+  width: min(560px, 90vw);
+  aspect-ratio: 5/4;
+  cursor: pointer;
+  user-select: none;
+}
+
+.envelope-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.envelope-lines path {
+  fill: none;
+  stroke: var(--rose-deep);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  opacity: 0.85;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawStroke 1.6s ease-out 0.3s forwards;
+}
+
+@keyframes drawStroke {
+  to { stroke-dashoffset: 0; }
+}
+
+.envelope-greeting {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.8rem, 4.2vw, 2.6rem);
+  color: var(--rose-deep);
+  line-height: 1.1;
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeInGreeting 1s ease-out 0.9s forwards;
+  font-weight: 500;
+}
+
+@keyframes fadeInGreeting {
+  from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.envelope-seal {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: clamp(120px, 22vw, 160px);
+  height: clamp(120px, 22vw, 160px);
+  cursor: pointer;
+  animation: sealPop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 1.3s forwards;
+  transition: transform 0.4s ease;
+  z-index: 3;
+}
+
+@keyframes sealPop {
+  to { transform: translate(-50%, -50%) scale(1); }
+}
+
+.envelope-seal:hover {
+  animation-play-state: paused;
+  transform: translate(-50%, -50%) scale(1.08) !important;
+}
+
+.envelope-seal:active {
+  transform: translate(-50%, -50%) scale(0.95) !important;
+}
+
+.envelope-seal svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 8px 18px rgba(217, 149, 0, 0.4));
+}
+
+.envelope-seal-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  text-align: center;
+  font-family: 'Marcellus', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream);
+  pointer-events: none;
+  line-height: 1.4;
+}
+
+.envelope-signature {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  opacity: 0;
+  animation: fadeInGreeting 1s ease-out 1.6s forwards;
+}
+
+.envelope-signature-prefix {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.envelope-signature-names {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--olive);
+  margin-top: 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+/* Hint pulse around the seal */
+.envelope-seal::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--rose-deep);
+  opacity: 0;
+  animation: sealPulse 2.4s ease-out 2.2s infinite;
+  pointer-events: none;
+}
+
+@keyframes sealPulse {
+  0% { transform: scale(0.95); opacity: 0.6; }
+  100% { transform: scale(1.4); opacity: 0; }
 }
 
 /* Floating lemons background */
@@ -118,12 +291,13 @@ body {
 @keyframes fadeIn { to { opacity: 1; } }
 
 .hero-names {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
   font-size: clamp(3rem, 9vw, 7rem);
-  line-height: 1;
+  line-height: 1.05;
   color: var(--olive);
-  font-style: italic;
+  font-style: normal;
+  letter-spacing: 0.005em;
 }
 
 .hero-names .amp {
@@ -224,14 +398,15 @@ section {
 }
 
 .section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 300;
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-family: 'Playfair Display', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.2vw, 3.8rem);
   text-align: center;
   color: var(--olive);
   margin-bottom: 1.5rem;
-  line-height: 1.1;
+  line-height: 1.15;
+  letter-spacing: 0.005em;
 }
 
 .section-divider {
@@ -453,9 +628,9 @@ section {
 }
 
 .venue-info h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 2.2rem;
+  font-family: 'Playfair Display', serif;
+  font-style: normal;
+  font-size: 2.4rem;
   color: var(--olive);
   margin-bottom: 1rem;
   font-weight: 400;
@@ -535,6 +710,44 @@ section {
   font-style: italic;
   margin-bottom: 3rem;
   line-height: 1.8;
+}
+
+.dresscode-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 1rem;
+  margin: 0 auto 3.5rem;
+  max-width: 820px;
+}
+
+.dresscode-photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 10px 28px rgba(245, 184, 0, 0.18);
+  background: var(--cream-deep);
+  aspect-ratio: 3/4;
+}
+
+.dresscode-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.dresscode-photo:hover img {
+  transform: scale(1.05);
+}
+
+.dresscode-photo.tall {
+  aspect-ratio: 3/4.4;
+  margin-top: -1.5rem;
+}
+
+.dresscode-photo.short {
+  margin-top: 1.5rem;
 }
 
 .palette {
@@ -704,6 +917,77 @@ section {
   font-style: italic;
 }
 
+/* Contacts */
+.contacts {
+  background: var(--cream);
+  text-align: center;
+}
+
+.contacts-text {
+  max-width: 540px;
+  margin: 0 auto 2.5rem;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.contacts-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 2.5rem 3rem;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 249, 184, 0.5) 50%, rgba(255, 216, 77, 0.3) 100%);
+  border: 2px solid var(--blush);
+  border-radius: 4px;
+  box-shadow:
+    0 8px 24px rgba(245, 184, 0, 0.2),
+    inset 0 -4px 12px rgba(217, 149, 0, 0.08),
+    inset 0 2px 8px rgba(255, 255, 255, 0.5);
+}
+
+.contacts-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--rose-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(217, 149, 0, 0.35);
+}
+
+.contacts-icon svg {
+  width: 28px;
+  height: 28px;
+  color: var(--cream);
+}
+
+.contacts-role {
+  font-family: 'Marcellus', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose-deep);
+}
+
+.contacts-phone {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  color: var(--olive);
+  text-decoration: none;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.contacts-phone:hover {
+  color: var(--rose-deep);
+}
+
 /* Footer */
 footer {
   background: var(--cream);
@@ -713,12 +997,12 @@ footer {
 }
 
 .footer-names {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  font-style: normal;
   font-size: 2.5rem;
   color: var(--olive);
   margin-bottom: 1rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .footer-date {
@@ -749,16 +1033,77 @@ footer {
   transform: translateY(0);
 }
 
+/* Checkbox group */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.checkbox-option input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-option label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-style: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.checkbox-option label::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 1.5px solid var(--blush);
+  background: var(--cream);
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+
+.checkbox-option input[type="checkbox"]:checked + label::before {
+  background: var(--rose-deep);
+  border-color: var(--rose-deep);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23fffaeb' stroke-width='3' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+  background-size: 13px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   body { font-size: 17px; }
-  section { padding: 5rem 1.5rem; }
+  section { padding: 5rem 1.25rem; }
 
   .corner { width: 80px; height: 80px; }
   .corner.tl, .corner.tr { top: 15px; }
   .corner.tl, .corner.bl { left: 15px; }
   .corner.tr, .corner.br { right: 15px; }
   .corner.bl, .corner.br { bottom: 15px; }
+
+  .hero { padding: 4rem 1.25rem; }
+  .hero-names { font-size: clamp(2.6rem, 12vw, 5rem); }
+  .hero-date { font-size: 0.95rem; letter-spacing: 0.3em; }
+  .hero-date .day { font-size: 1.8rem; }
+  .hero-invitation { font-size: 1.05rem; padding: 0 0.5rem; }
 
   .countdown-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -779,30 +1124,107 @@ footer {
 
   .timeline { max-width: 100%; }
   .event {
-    grid-template-columns: 60px 44px 1fr;
-    gap: 1rem;
+    grid-template-columns: 55px 40px 1fr;
+    gap: 0.75rem;
   }
   .event-time {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     padding-top: 0.4rem;
   }
-  .event-icon { min-height: 110px; }
-  .event-icon svg { width: 26px; height: 26px; }
-  .event-title { font-size: 1.25rem; }
-  .event-desc { font-size: 0.98rem; }
+  .event-icon { min-height: 100px; }
+  .event-icon svg { width: 24px; height: 24px; }
+  .event-title { font-size: 1.2rem; }
+  .event-desc { font-size: 0.95rem; }
 
-  .swatch-color { width: 70px; height: 70px; }
-  .palette { gap: 1rem; }
+  .swatch-color { width: 65px; height: 65px; }
+  .palette { gap: 0.75rem; }
 
-  .rsvp-form { padding: 2rem 1.5rem; }
+  .dresscode-gallery {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+  .dresscode-photo.tall { margin-top: 0; aspect-ratio: 3/4; }
+  .dresscode-photo.short { margin-top: 0; }
+  .dresscode-photo:nth-child(3) {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/10;
+  }
+
+  .rsvp-form { padding: 1.75rem 1.25rem; }
   .radio-group { flex-direction: column; }
 
-  .hero-date { font-size: 0.95rem; letter-spacing: 0.3em; }
-  .hero-date .day { font-size: 1.8rem; }
+  .contacts-card { padding: 1.75rem 1.25rem; width: 100%; }
+  .contacts-phone { font-size: 1.5rem; }
+
+  .section-title { font-size: clamp(2rem, 7vw, 3rem); }
+
+  .envelope-seal {
+    width: clamp(100px, 28vw, 140px);
+    height: clamp(100px, 28vw, 140px);
+  }
 }
 </style>
 </head>
-<body>
+<body class="envelope-active">
+
+<!-- ENVELOPE COVER -->
+<div class="envelope-screen" id="envelopeScreen">
+  <div class="envelope">
+    <svg class="envelope-lines" viewBox="0 0 500 400" preserveAspectRatio="none">
+      <!-- Top V (envelope flap) -->
+      <path d="M 30 30 L 250 220 L 470 30"/>
+      <!-- Bottom V (envelope sides) -->
+      <path d="M 30 370 L 250 220 L 470 370"/>
+    </svg>
+
+    <div class="envelope-greeting">
+      Приглашаем на<br>нашу свадьбу
+    </div>
+
+    <div class="envelope-seal" id="envelopeSeal" role="button" tabindex="0" aria-label="Открыть приглашение">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="sealGrad" cx="35%" cy="30%" r="75%">
+            <stop offset="0%" stop-color="#fff9b8"/>
+            <stop offset="45%" stop-color="#ffd84d"/>
+            <stop offset="100%" stop-color="#c8890a"/>
+          </radialGradient>
+          <radialGradient id="sealHighlight" cx="28%" cy="25%" r="38%">
+            <stop offset="0%" stop-color="#fffde0" stop-opacity="0.95"/>
+            <stop offset="100%" stop-color="#fff9b8" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- Lemon body -->
+        <ellipse cx="100" cy="108" rx="62" ry="72" fill="url(#sealGrad)" stroke="#8a5f00" stroke-width="1.5"/>
+        <!-- Lemon tip left -->
+        <ellipse cx="43" cy="108" rx="10" ry="7" fill="#ffd84d" stroke="#8a5f00" stroke-width="1"/>
+        <!-- Lemon tip right -->
+        <ellipse cx="157" cy="108" rx="10" ry="7" fill="#ffd84d" stroke="#8a5f00" stroke-width="1"/>
+        <!-- Highlight -->
+        <ellipse cx="78" cy="80" rx="26" ry="18" fill="url(#sealHighlight)" transform="rotate(-20 78 80)"/>
+        <!-- Small texture dots -->
+        <circle cx="85" cy="120" r="2" fill="#c8890a" opacity="0.25"/>
+        <circle cx="110" cy="105" r="1.5" fill="#c8890a" opacity="0.2"/>
+        <circle cx="95" cy="135" r="1.5" fill="#c8890a" opacity="0.2"/>
+        <circle cx="120" cy="125" r="2" fill="#c8890a" opacity="0.18"/>
+        <!-- Stem -->
+        <path d="M100 36 Q 103 28 106 22" stroke="#558b2f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Leaf -->
+        <ellipse cx="112" cy="26" rx="14" ry="6" fill="#7cb342" transform="rotate(30 112 26)" stroke="#558b2f" stroke-width="0.8"/>
+        <path d="M102 31 Q 110 27 118 23" stroke="#558b2f" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+        <!-- Inner border ring -->
+        <ellipse cx="100" cy="108" rx="54" ry="62" fill="none" stroke="#8a5f00" stroke-width="0.8" opacity="0.4"/>
+      </svg>
+      <div class="envelope-seal-text">открыть<br>здесь</div>
+    </div>
+
+    <div class="envelope-signature">
+      <div class="envelope-signature-prefix">with love,</div>
+      <div class="envelope-signature-names">Александр и Ангелина</div>
+    </div>
+  </div>
+</div>
 
 <!-- Floating petals -->
 <div class="petals" id="petals"></div>
@@ -974,7 +1396,7 @@ footer {
 <section class="schedule reveal">
   <div class="container">
     <div class="section-label">Программа дня</div>
-    <h2 class="section-title">Расписание торжества</h2>
+    <h2 class="section-title">Тайминг торжества</h2>
     <div class="section-divider">
       <span class="line"></span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
@@ -986,12 +1408,14 @@ footer {
         <div class="event-time">15:00</div>
         <div class="event-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-            <circle cx="12" cy="9" r="2.5"/>
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
           </svg>
         </div>
         <div class="event-info">
-          <div class="event-title">Сбор гостей</div>
+          <div class="event-title">Сбор гостей и welcome-фуршет</div>
           <div class="event-desc">Подарите нам свою улыбку и возьмите с собой хорошее настроение</div>
         </div>
       </div>
@@ -1013,30 +1437,32 @@ footer {
         <div class="event-time">17:00</div>
         <div class="event-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 17h18"/>
-            <path d="M5 17a7 7 0 0 1 14 0"/>
-            <circle cx="12" cy="6.5" r="1" fill="currentColor"/>
-            <path d="M12 7.5 V 10"/>
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+            <line x1="6" y1="1" x2="6" y2="4"/>
+            <line x1="10" y1="1" x2="10" y2="4"/>
+            <line x1="14" y1="1" x2="14" y2="4"/>
           </svg>
         </div>
         <div class="event-info">
-          <div class="event-title">Фуршет и фотосессия</div>
-          <div class="event-desc">Поздравления, бокалы шампанского и совместные кадры</div>
+          <div class="event-title">Свадебный ужин и программа</div>
+          <div class="event-desc">Самое время для вкусной еды, танцев и развлечений от ведущего</div>
         </div>
       </div>
       <div class="event">
-        <div class="event-time">18:30</div>
+        <div class="event-time">21:00</div>
         <div class="event-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 17h16"/>
-            <path d="M5 17a7 7 0 0 1 14 0"/>
-            <path d="M12 7.5 V 10"/>
-            <circle cx="12" cy="6.5" r="1" fill="currentColor"/>
+            <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/>
+            <path d="M4 21h16"/>
+            <path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/>
+            <path d="M12 3 L 12 6"/>
+            <path d="M9 4 L 9 7 Q 12 9 15 7 L 15 4 Q 12 2 9 4 Z"/>
           </svg>
         </div>
         <div class="event-info">
-          <div class="event-title">Банкет</div>
-          <div class="event-desc">Самое время для вкусной еды, танцев и развлечений</div>
+          <div class="event-title">Торт</div>
+          <div class="event-desc">Сладкий момент, который запомнится навсегда</div>
         </div>
       </div>
       <div class="event">
@@ -1050,8 +1476,8 @@ footer {
           </svg>
         </div>
         <div class="event-info">
-          <div class="event-title">Окончание праздника</div>
-          <div class="event-desc">Надеемся, этот вечер вам понравится</div>
+          <div class="event-title">Завершение праздника</div>
+          <div class="event-desc">С теплом в сердце и незабываемыми воспоминаниями</div>
         </div>
       </div>
     </div>
@@ -1079,7 +1505,7 @@ footer {
         <a href="https://yandex.ru/profile/208940694038?lang=ru" target="_blank" rel="noopener" class="venue-button">Построить маршрут</a>
       </div>
       <div class="venue-map">
-        <img src="images/venue.png" alt="Ферма Пешково — шале в сосновом лесу" loading="lazy">
+        <img src="peshkovo.jpeg" alt="Ферма Пешково — шале в сосновом лесу" loading="lazy">
       </div>
     </div>
   </div>
@@ -1099,6 +1525,17 @@ footer {
       <p class="dresscode-text">
         Для нас важно, чтобы каждый кадр праздника был особенным. Мы будем благодарны, если Ваш наряд будет в одной из этих нежных оттенков. Это создаст ощущение единой атмосферы и тёплой гармонии.
       </p>
+      <div class="dresscode-gallery">
+        <div class="dresscode-photo short">
+          <img src="images/dresscode-1.png" alt="Вдохновение для дресс-кода — пастельные платья" loading="lazy">
+        </div>
+        <div class="dresscode-photo tall">
+          <img src="images/dresscode-2.png" alt="Вдохновение для дресс-кода — шалфейный оттенок" loading="lazy">
+        </div>
+        <div class="dresscode-photo short">
+          <img src="images/dresscode-3.png" alt="Вдохновение для дресс-кода — нежная пастель" loading="lazy">
+        </div>
+      </div>
       <div class="palette">
         <div class="swatch">
           <div class="swatch-color" style="background: #fff9b8;"></div>
@@ -1136,60 +1573,163 @@ footer {
 <section class="rsvp reveal">
   <div class="container">
     <div class="section-label">Подтверждение</div>
-    <h2 class="section-title">Будете ли с нами?</h2>
+    <h2 class="section-title">Анкета гостя</h2>
     <div class="section-divider">
       <span class="line"></span>
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
       <span class="line"></span>
     </div>
     <p style="text-align: center; font-style: italic; color: var(--ink-soft); margin-bottom: 3rem; max-width: 520px; margin-left: auto; margin-right: auto;">
-      Пожалуйста, ответьте до 1 июня 2026, чтобы мы могли всё подготовить для Вас наилучшим образом.
+      Пожалуйста, заполните анкету до 1 июня 2026, чтобы мы могли всё подготовить для Вас наилучшим образом.
     </p>
     <form class="rsvp-form" id="rsvpForm">
+
+      <!-- Имя -->
       <div class="form-group">
-        <label class="form-label">Ваше имя</label>
-        <input type="text" class="form-input" name="name" required placeholder="Имя и фамилия">
+        <label class="form-label">Ваше Имя и Фамилия</label>
+        <input type="text" class="form-input" name="name" required placeholder="Мария Иванова">
       </div>
+
+      <!-- Контакт -->
       <div class="form-group">
-        <label class="form-label">Будете ли Вы на нашей свадьбе?</label>
+        <label class="form-label">Ваш номер телефона</label>
+        <input type="tel" class="form-input" name="phone" placeholder="+7 (___) ___-__-__">
+      </div>
+
+      <!-- Планируете прийти -->
+      <div class="form-group">
+        <label class="form-label">Планируете ли вы прийти?</label>
         <div class="radio-group">
           <div class="radio-option">
             <input type="radio" id="yes" name="attendance" value="yes" required>
-            <label for="yes">Конечно, да</label>
+            <label for="yes">Да, с удовольствием!</label>
           </div>
           <div class="radio-option">
             <input type="radio" id="no" name="attendance" value="no">
-            <label for="no">К сожалению, нет</label>
+            <label for="no">К сожалению, не смогу</label>
           </div>
         </div>
       </div>
+
+      <!-- Состав -->
       <div class="form-group">
-        <label class="form-label">Кто будет с Вами?</label>
-        <select class="form-select" name="companion">
-          <option>Я буду один / одна</option>
-          <option>Со второй половинкой</option>
-          <option>С детьми</option>
-          <option>С семьёй</option>
-        </select>
+        <label class="form-label">В каком составе вы планируете присутствовать?</label>
+        <input type="text" class="form-input" name="companion" placeholder="Приду с парой">
       </div>
+
+      <!-- Напитки -->
       <div class="form-group">
-        <label class="form-label">Предпочтения по меню</label>
-        <select class="form-select" name="menu">
-          <option>Без особых предпочтений</option>
-          <option>Вегетарианское</option>
-          <option>Без алкоголя</option>
-          <option>Безглютеновое</option>
-        </select>
+        <label class="form-label">Какие напитки предпочитаете?</label>
+        <p style="font-size: 0.8rem; color: var(--ink-soft); font-style: italic; margin-bottom: 0.75rem; letter-spacing: 0.05em;">(можно выбрать несколько вариантов)</p>
+        <div class="checkbox-group">
+          <div class="checkbox-option">
+            <input type="checkbox" id="drink-soft" name="drinks" value="Безалкогольные">
+            <label for="drink-soft">Безалкогольные</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="drink-wine-white" name="drinks" value="Вино белое">
+            <label for="drink-wine-white">Вино белое</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="drink-wine-red" name="drinks" value="Вино красное">
+            <label for="drink-wine-red">Вино красное</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="drink-cocktails" name="drinks" value="Коктейли">
+            <label for="drink-cocktails">Коктейли</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="drink-whisky" name="drinks" value="Виски">
+            <label for="drink-whisky">Виски</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="drink-cognac" name="drinks" value="Коньяк">
+            <label for="drink-cognac">Коньяк</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="drink-vodka" name="drinks" value="Водка">
+            <label for="drink-vodka">Водка</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="drink-other" name="drinks" value="Другое">
+            <label for="drink-other">Другое:</label>
+          </div>
+        </div>
+        <input type="text" class="form-input" name="drinks_other" placeholder="Укажите, если выбрали «Другое»" style="margin-top: 0.75rem;">
       </div>
+
+      <!-- Ограничения в еде -->
+      <div class="form-group">
+        <label class="form-label">Есть ли у вас ограничения в еде?</label>
+        <div class="checkbox-group">
+          <div class="checkbox-option">
+            <input type="checkbox" id="food-none" name="food" value="Нет">
+            <label for="food-none">Нет</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="food-nomeat" name="food" value="Не употребляю мясо">
+            <label for="food-nomeat">Не употребляю мясо</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="food-lactose" name="food" value="Непереносимость лактозы">
+            <label for="food-lactose">Непереносимость лактозы</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="food-gluten" name="food" value="Непереносимость глютена">
+            <label for="food-gluten">Непереносимость глютена</label>
+          </div>
+          <div class="checkbox-option">
+            <input type="checkbox" id="food-other" name="food" value="Другое">
+            <label for="food-other">Другое:</label>
+          </div>
+        </div>
+        <input type="text" class="form-input" name="food_other" placeholder="Укажите, если выбрали «Другое»" style="margin-top: 0.75rem;">
+      </div>
+
+      <!-- Аллергия -->
+      <div class="form-group">
+        <label class="form-label">Есть ли у вас аллергия?</label>
+        <input type="text" class="form-input" name="allergy" placeholder="Нет">
+      </div>
+
+      <!-- Пожелания -->
       <div class="form-group">
         <label class="form-label">Пожелания или комментарий</label>
         <textarea class="form-textarea" name="wishes" placeholder="Если хотите что-то добавить..."></textarea>
       </div>
-      <button type="submit" class="form-button">Отправить ответ</button>
+
+      <button type="submit" class="form-button">Отправить!</button>
     </form>
     <div class="form-success" id="formSuccess">
       <h3>Спасибо от всего сердца!</h3>
       <p>Ваш ответ получен. Мы с нетерпением ждём встречи!</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section class="contacts reveal">
+  <div class="container">
+    <div class="section-label">Контакты</div>
+    <h2 class="section-title">Остались вопросы?</h2>
+    <div class="section-divider">
+      <span class="line"></span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/>
+      </svg>
+      <span class="line"></span>
+    </div>
+    <p class="contacts-text">
+      По всем интересующим вас вопросам вы можете связаться с нашим свадебным организатором.
+    </p>
+    <div class="contacts-card">
+      <div class="contacts-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+      </div>
+      <div class="contacts-role">Свадебный организатор</div>
+      <a href="tel:+79258389280" class="contacts-phone">+7 (925) 838-92-80</a>
     </div>
   </div>
 </section>
@@ -1202,6 +1742,26 @@ footer {
 </footer>
 
 <script>
+// Envelope opening
+const envelopeScreen = document.getElementById('envelopeScreen');
+const envelopeSeal = document.getElementById('envelopeSeal');
+
+function openEnvelope() {
+  envelopeScreen.classList.add('opened');
+  document.body.classList.remove('envelope-active');
+  setTimeout(() => {
+    envelopeScreen.style.display = 'none';
+  }, 1300);
+}
+
+envelopeSeal.addEventListener('click', openEnvelope);
+envelopeSeal.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    openEnvelope();
+  }
+});
+
 // Countdown
 const weddingDate = new Date('2026-07-17T15:00:00').getTime();
 
