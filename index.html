@@ -102,18 +102,33 @@ body.env-active{overflow:hidden;}
 .venue-btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--orange2);}
 
 /* DRESSCODE */
-.dc-cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:420px;margin:1.5rem auto 0;}
-.dc-col{background:var(--cream);border:3px solid var(--lemon2);border-radius:18px;padding:1.2rem;box-shadow:4px 4px 0 var(--lemon2);}
-.dc-col-title{font-family:'Comfortaa',sans-serif;font-size:.9rem;font-weight:700;text-align:center;margin-bottom:.8rem;}
-.dc-col-title.ladies{color:var(--pink2);}
-.dc-col-title.gents{color:var(--green);}
-.dc-photo{border-radius:12px;overflow:hidden;border:2px solid var(--line);aspect-ratio:3/4;background:#f5ecd0;margin-bottom:.8rem;}
-.dc-photo img{width:100%;height:100%;object-fit:cover;}
-.palette-row{display:flex;justify-content:center;gap:5px;flex-wrap:wrap;margin:.5rem 0;}
-.sw{width:24px;height:24px;border-radius:50%;border:2px solid rgba(0,0,0,.1);box-shadow:1px 1px 0 rgba(0,0,0,.08);transition:transform .3s;}
+.dc-intro{max-width:460px;margin:0 auto 1.5rem;text-align:center;font-size:.95rem;color:var(--ink-mid);line-height:1.65;font-style:italic;}
+.dc-block{max-width:460px;margin:0 auto 2rem;}
+.dc-block-title{font-family:'Comfortaa',sans-serif;font-size:1.05rem;font-weight:700;text-align:center;margin-bottom:.8rem;}
+.dc-block-title.ladies{color:var(--pink2);}
+.dc-block-title.gents{color:var(--green);}
+.dc-block-text{font-size:.92rem;color:var(--ink-mid);line-height:1.6;text-align:center;margin-bottom:1rem;padding:0 .25rem;}
+
+/* Carousel */
+.carousel{position:relative;border-radius:16px;overflow:hidden;border:3px solid var(--lemon2);box-shadow:4px 4px 0 var(--lemon2);background:#f5ecd0;}
+.carousel-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.carousel-track::-webkit-scrollbar{display:none;}
+.carousel-slide{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:3/4;background:#f5ecd0;}
+.carousel-slide img{width:100%;height:100%;object-fit:cover;display:block;}
+.carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.95);border:2px solid var(--lemon2);box-shadow:0 2px 6px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--orange);transition:all .2s;z-index:2;font-family:inherit;padding:0;}
+.carousel-arrow:hover{background:var(--lemon);color:var(--orange2);transform:translateY(-50%) scale(1.08);}
+.carousel-arrow:disabled{opacity:.35;cursor:default;}
+.carousel-arrow.prev{left:10px;}
+.carousel-arrow.next{right:10px;}
+.carousel-arrow svg{width:18px;height:18px;}
+.carousel-dots{display:flex;justify-content:center;gap:6px;margin-top:.8rem;flex-wrap:wrap;}
+.carousel-dot{width:8px;height:8px;border-radius:50%;background:var(--line);border:none;cursor:pointer;transition:all .25s;padding:0;}
+.carousel-dot.active{background:var(--orange);width:22px;border-radius:4px;}
+
+.dc-palette-row{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:1rem 0 .4rem;}
+.sw{width:28px;height:28px;border-radius:50%;border:2px solid rgba(0,0,0,.1);box-shadow:1px 1px 0 rgba(0,0,0,.08);transition:transform .3s;}
 .sw:hover{transform:scale(1.2) rotate(5deg);}
-.dc-note{font-size:.75rem;color:var(--ink-soft);text-align:center;font-style:italic;margin-top:.3rem;line-height:1.4;}
-.dc-avoid{text-align:center;font-family:'Caveat',cursive;font-size:1rem;color:var(--pink2);margin-top:1.2rem;}
+.dc-avoid{text-align:center;font-family:'Caveat',cursive;font-size:1rem;color:var(--pink2);margin-top:1.2rem;max-width:460px;margin-left:auto;margin-right:auto;}
 
 /* WISHES */
 .wishes-box{background:var(--cream);border:3px solid var(--pink);border-radius:20px;padding:1.8rem 1.5rem;box-shadow:5px 5px 0 var(--pink);max-width:420px;margin:0 auto;text-align:center;}
@@ -261,10 +276,10 @@ body.env-active{overflow:hidden;}
   <div class="sec-title">Место</div>
   <div class="divider-lemon"><span class="dl"></span><svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><path d="M8 3Q9 1 10 3" stroke="#4a9a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/><ellipse cx="11" cy="3.5" rx="3.5" ry="1.5" fill="#4a9a5a" transform="rotate(20 11 3.5)"/></svg><span class="dl"></span></div>
   <div class="venue-box">
-    <div class="venue-img-wrap"><img src="peshkovo.jpeg" alt="Ферма Пешково" loading="lazy"></div>
+    <div class="venue-img-wrap"><img src="place/peshkovo.jpeg" alt="Ферма Пешково" loading="lazy"></div>
     <div class="venue-name">Ферма Пешково</div>
     <p class="venue-text">Наша свадьба пройдёт по адресу: <strong>Московская область, Богородский городской округ, деревня Пешково.</strong></p>
-    <p class="venue-text">Для гостей предусмотрена бесплатная охраняемая парковка</p>
+    <p class="venue-text">Для гостей предусмотрена бесплатная охраняемая парковка.</p>
     <a href="https://yandex.ru/profile/208940694038?lang=ru" target="_blank" rel="noopener" class="venue-btn">🗺 Построить маршрут</a>
   </div>
 </section>
@@ -273,33 +288,63 @@ body.env-active{overflow:hidden;}
 <section class="sec reveal">
   <div class="sec-title pink">Дресс-код</div>
   <div class="divider-lemon"><span class="dl"></span><svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><path d="M8 3Q9 1 10 3" stroke="#4a9a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/><ellipse cx="11" cy="3.5" rx="3.5" ry="1.5" fill="#4a9a5a" transform="rotate(20 11 3.5)"/></svg><span class="dl"></span></div>
-  <p style="text-align:center;font-size:.9rem;color:var(--ink-soft);font-style:italic;margin-bottom:1.2rem;line-height:1.6;">Нам важно, чтобы каждый кадр был особенным. Будем благодарны, если Ваш наряд будет в этих оттенках.</p>
-  <div class="dc-cols">
-    <div class="dc-col">
-      <div class="dc-col-title ladies">Для девушек</div>
-      <div class="dc-photo"><img src="images/dresscode-1.png" alt="Образ для дам" loading="lazy"></div>
-      <div class="palette-row">
-        <div class="sw" style="background:#fff9b8"></div>
-        <div class="sw" style="background:#ffe135"></div>
-        <div class="sw" style="background:#ffb800"></div>
-        <div class="sw" style="background:#ffd6e0"></div>
-        <div class="sw" style="background:#fff2cc"></div>
-      </div>
-      <div class="dc-note">Нежные пастельные и тёплые оттенки</div>
-    </div>
-    <div class="dc-col">
-      <div class="dc-col-title gents">Для мужчин</div>
-      <div class="dc-photo"><img src="images/dresscode-2.png" alt="Образ для мужчин" loading="lazy"></div>
-      <div class="palette-row">
-        <div class="sw" style="background:#aed581"></div>
-        <div class="sw" style="background:#689f38"></div>
-        <div class="sw" style="background:#fff2cc"></div>
-        <div class="sw" style="background:#ffb800"></div>
-        <div class="sw" style="background:#8d6e63"></div>
-      </div>
-      <div class="dc-note">Классика в тёплой и зелёной гамме</div>
-    </div>
+
+  <p class="dc-intro">Будет здорово, если вы поддержите гамму нашего праздника в своих нарядах.</p>
+
+  <div class="dc-palette-row" style="max-width:460px;margin:0 auto 2rem;">
+    <div class="sw" style="background:#fff9b8"></div>
+    <div class="sw" style="background:#ffe135"></div>
+    <div class="sw" style="background:#ffb800"></div>
+    <div class="sw" style="background:#ff7b29"></div>
+    <div class="sw" style="background:#ffd6e0"></div>
+    <div class="sw" style="background:#ff6b8a"></div>
+    <div class="sw" style="background:#fff2cc"></div>
+    <div class="sw" style="background:#e8d5a0"></div>
   </div>
+
+  <!-- Девушки -->
+  <div class="dc-block">
+    <div class="dc-block-title ladies">Для девушек</div>
+    <p class="dc-block-text">Мы будем рады, если девушки выберут однотонные платья или брючные костюмы розовых, жёлтых, оранжевых или тёплых нейтральных оттенков. Приветствуются натуральные ткани — лён, шёлк, хлопок.</p>
+    <div class="carousel" data-carousel>
+      <div class="carousel-track" data-track>
+        <div class="carousel-slide"><img src="girls/1.jpeg" alt="Образ для девушек 1" loading="lazy"></div>
+        <div class="carousel-slide"><img src="girls/2.jpeg" alt="Образ для девушек 2" loading="lazy"></div>
+        <div class="carousel-slide"><img src="girls/3.jpeg" alt="Образ для девушек 3" loading="lazy"></div>
+        <div class="carousel-slide"><img src="girls/4.jpeg" alt="Образ для девушек 4" loading="lazy"></div>
+        <div class="carousel-slide"><img src="girls/5.jpeg" alt="Образ для девушек 5" loading="lazy"></div>
+        <div class="carousel-slide"><img src="girls/6.jpeg" alt="Образ для девушек 6" loading="lazy"></div>
+        <div class="carousel-slide"><img src="girls/7.jpeg" alt="Образ для девушек 7" loading="lazy"></div>
+      </div>
+      <button class="carousel-arrow prev" data-prev aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="carousel-arrow next" data-next aria-label="Следующее фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </div>
+    <div class="carousel-dots" data-dots></div>
+  </div>
+
+  <!-- Мужчины -->
+  <div class="dc-block">
+    <div class="dc-block-title gents">Для мужчин</div>
+    <p class="dc-block-text">Идеальным выбором станут костюмы и рубашки из натуральных тканей светлых нейтральных оттенков и цветов в гамме праздника.</p>
+    <div class="carousel" data-carousel>
+      <div class="carousel-track" data-track>
+        <div class="carousel-slide"><img src="boys/1.jpeg" alt="Образ для мужчин 1" loading="lazy"></div>
+        <div class="carousel-slide"><img src="boys/2.jpeg" alt="Образ для мужчин 2" loading="lazy"></div>
+        <div class="carousel-slide"><img src="boys/3.jpeg" alt="Образ для мужчин 3" loading="lazy"></div>
+        <div class="carousel-slide"><img src="boys/4.jpeg" alt="Образ для мужчин 4" loading="lazy"></div>
+        <div class="carousel-slide"><img src="boys/5.jpeg" alt="Образ для мужчин 5" loading="lazy"></div>
+        <div class="carousel-slide"><img src="boys/6.jpeg" alt="Образ для мужчин 6" loading="lazy"></div>
+        <div class="carousel-slide"><img src="boys/7.jpeg" alt="Образ для мужчин 7" loading="lazy"></div>
+      </div>
+      <button class="carousel-arrow prev" data-prev aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="carousel-arrow next" data-next aria-label="Следующее фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </div>
+    <div class="carousel-dots" data-dots></div>
+  </div>
+
+  <p class="dc-intro" style="margin-top:1.5rem;">При хорошей погоде весь праздник пройдёт под открытым небом — не лишними будут головные уборы и солнцезащитные очки.</p>
+  <p class="dc-intro" style="margin-top:.8rem;">Просим также учитывать при выборе обуви, что праздник пройдёт в окружении природы, поэтому не стоит выбирать обувь на высоком каблуке.</p>
+
   <div class="dc-avoid">✗ Просим воздержаться от чёрного и ярко-белого</div>
 </section>
 
@@ -427,6 +472,51 @@ const pc=document.getElementById('petals');
 function mkLemon(){const el=document.createElement('div');el.className='petal';const s=Math.random()*12+9;const colors=['#ffe135','#ffb800','#fff8a0'];const c=colors[Math.floor(Math.random()*colors.length)];el.style.cssText=`left:${Math.random()*100}vw;width:${s}px;height:${s*1.25}px;animation-duration:${Math.random()*9+8}s;animation-delay:${Math.random()*3}s;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(ellipse at 30% 30%,#fff9b8 0%,${c} 60%,${c==='#ffe135'?'#ffb800':'#ff8c00'} 100%);box-shadow:inset -2px -3px 5px rgba(180,120,0,.25),inset 2px 2px 4px rgba(255,255,255,.5);`;const stem=document.createElement('div');stem.style.cssText='position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:3px;height:4px;background:#4a9a5a;border-radius:50% 50% 0 0;';el.appendChild(stem);pc.appendChild(el);setTimeout(()=>el.remove(),18000);}
 for(let i=0;i<10;i++)setTimeout(mkLemon,i*700);
 setInterval(mkLemon,1200);
+
+// CAROUSELS
+document.querySelectorAll('[data-carousel]').forEach(carousel=>{
+  const track=carousel.querySelector('[data-track]');
+  const slides=Array.from(track.children);
+  const prev=carousel.querySelector('[data-prev]');
+  const next=carousel.querySelector('[data-next]');
+  const dotsWrap=carousel.parentElement.querySelector('[data-dots]');
+  let current=0;
+
+  // Build dots
+  slides.forEach((_,i)=>{
+    const d=document.createElement('button');
+    d.className='carousel-dot'+(i===0?' active':'');
+    d.setAttribute('aria-label','Слайд '+(i+1));
+    d.addEventListener('click',()=>goTo(i));
+    dotsWrap.appendChild(d);
+  });
+  const dots=Array.from(dotsWrap.children);
+
+  function update(){
+    dots.forEach((d,i)=>d.classList.toggle('active',i===current));
+    prev.disabled=(current===0);
+    next.disabled=(current===slides.length-1);
+  }
+  function goTo(i){
+    current=Math.max(0,Math.min(slides.length-1,i));
+    track.scrollTo({left:current*track.clientWidth,behavior:'smooth'});
+    update();
+  }
+  prev.addEventListener('click',()=>goTo(current-1));
+  next.addEventListener('click',()=>goTo(current+1));
+
+  // Sync on manual swipe
+  let scrollTimer;
+  track.addEventListener('scroll',()=>{
+    clearTimeout(scrollTimer);
+    scrollTimer=setTimeout(()=>{
+      current=Math.round(track.scrollLeft/track.clientWidth);
+      update();
+    },80);
+  });
+
+  update();
+});
 </script>
 </body>
 </html>
