@@ -75,19 +75,20 @@ body.env-active{overflow:hidden;}
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
   font-weight:500;
-  font-size:1.15rem;
-  color:var(--ink-soft);
-  margin-bottom:1.5rem;
-  line-height:1.5;
+  font-size:1.65rem;
+  color:var(--ink);
+  margin-bottom:2rem;
+  line-height:1.4;
 }
 .env-names{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2.6rem,9vw,3.4rem);
+  font-size:clamp(1.6rem,6.2vw,2.4rem);
   font-weight:500;
   color:var(--ink);
-  line-height:1.05;
+  line-height:1.1;
   margin-bottom:.4rem;
   letter-spacing:-.01em;
+  white-space:nowrap;
 }
 .env-names .amp{
   font-style:italic;
@@ -227,6 +228,20 @@ body.env-active{overflow:hidden;}
   font-weight:400;
 }
 
+/* ════ WE PHOTO ════ */
+.we-photo{
+  position:relative;
+  background:var(--cream);
+  padding:0;
+}
+.we-photo img{
+  width:100%;
+  height:auto;
+  display:block;
+  aspect-ratio:4/5;
+  object-fit:cover;
+}
+
 /* ════ COLOR BLOCKS — BASE ════ */
 .block{
   padding:4.5rem 1.75rem;
@@ -345,12 +360,12 @@ body.env-active{overflow:hidden;}
   max-width:480px;
   margin:0 auto;
   position:relative;
-  padding-left:80px;
+  padding-left:95px;
 }
 .timeline::before{
   content:'';
   position:absolute;
-  left:60px;top:6px;bottom:6px;
+  left:75px;top:6px;bottom:6px;
   width:2px;
   background:var(--pink-soft);
 }
@@ -358,45 +373,46 @@ body.env-active{overflow:hidden;}
 .tl-item:last-child{padding-bottom:0;}
 .tl-time{
   position:absolute;
-  left:-80px;top:0;
-  width:60px;
+  left:-95px;top:0;
+  width:75px;
   text-align:right;
   padding-right:24px;
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
-  font-size:1.5rem;
-  font-weight:600;
-  color:var(--pink-d);
+  font-size:1.85rem;
+  font-weight:500;
+  color:var(--ink);
   letter-spacing:-.01em;
+  line-height:1.1;
 }
 .tl-heart{
   position:absolute;
-  left:-29px;top:8px;
-  width:22px;height:20px;
+  left:-29px;top:10px;
+  width:22px;height:22px;
   display:flex;align-items:center;justify-content:center;
 }
-.tl-heart svg{width:100%;height:100%;}
+.tl-heart svg{display:block;}
 .tl-title{
   font-family:'Cormorant Garamond',serif;
   font-size:1.4rem;
-  font-weight:600;
+  font-weight:500;
   color:var(--ink);
   margin-bottom:.3rem;
   line-height:1.3;
 }
 .tl-desc{
-  font-size:.95rem;
-  color:var(--ink-soft);
+  font-size:1rem;
+  color:var(--ink);
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
   font-weight:400;
   line-height:1.55;
 }
 @media(max-width:480px){
-  .timeline{padding-left:60px;}
-  .timeline::before{left:42px;}
-  .tl-time{left:-62px;width:48px;padding-right:14px;font-size:1.2rem;}
-  .tl-heart{left:-22px;width:18px;height:16px;}
+  .timeline{padding-left:74px;}
+  .timeline::before{left:56px;}
+  .tl-time{left:-76px;width:60px;padding-right:14px;font-size:1.45rem;}
+  .tl-heart{left:-22px;width:18px;height:18px;}
 }
 
 /* ════ VENUE (orange) ════ */
@@ -414,14 +430,14 @@ body.env-active{overflow:hidden;}
 .venue-name{
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
-  font-weight:600;
+  font-weight:500;
   font-size:2.2rem;
   color:var(--ink);
   margin-bottom:1rem;
 }
 .venue-text{
   font-size:1.02rem;
-  color:var(--ink-soft);
+  color:var(--ink);
   line-height:1.7;
   margin-bottom:.7rem;
   max-width:380px;
@@ -480,32 +496,36 @@ body.env-active{overflow:hidden;}
 }
 .dc-block:first-of-type{border-top:none;padding-top:0;}
 .dc-block-eyebrow{
-  font-family:'Inter',sans-serif;
-  font-size:.62rem;
-  letter-spacing:.4em;
-  text-transform:uppercase;
-  font-weight:700;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:1.5rem;
+  letter-spacing:.01em;
+  text-transform:none;
+  font-weight:500;
   text-align:center;
-  margin-bottom:.5rem;
-  color:var(--pink-d);
+  margin-bottom:1rem;
+  color:var(--ink);
 }
-.dc-block-eyebrow.gents{color:var(--orange-d);}
+.dc-block-eyebrow.gents{color:var(--ink);}
 .dc-block-title{
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
-  font-weight:600;
+  font-weight:500;
   font-size:1.8rem;
   text-align:center;
   margin-bottom:1rem;
   color:var(--ink);
 }
 .dc-block-text{
-  font-size:1rem;
-  color:var(--ink-soft);
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:1.1rem;
+  color:var(--ink);
   line-height:1.7;
   text-align:center;
   margin-bottom:1.5rem;
   padding:0 .5rem;
+  font-weight:400;
 }
 
 .carousel{
@@ -609,6 +629,27 @@ body.env-active{overflow:hidden;}
   margin-bottom:1.5rem;
   font-weight:500;
 }
+.wishes-cat{
+  margin:2rem auto 0;
+  max-width:280px;
+  text-align:center;
+  position:relative;
+}
+.wishes-cat img{
+  width:100%;
+  height:auto;
+  display:block;
+  mix-blend-mode:multiply;
+  filter:contrast(1.05) saturate(1.05);
+}
+.wishes-cat-caption{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:1.1rem;
+  color:var(--pink-d);
+  margin-top:.4rem;
+  letter-spacing:.04em;
+}
 
 /* ════ RSVP (cream) ════ */
 .form-intro{
@@ -654,18 +695,18 @@ body.env-active{overflow:hidden;}
 .fi::placeholder,.fta::placeholder{color:rgba(31,18,8,.4);}
 .fta{resize:vertical;min-height:90px;}
 
-.radio-row{display:flex;gap:.8rem;flex-wrap:wrap;}
-.ro{flex:1;min-width:140px;position:relative;}
+.radio-row{display:flex;gap:.8rem;flex-wrap:nowrap;}
+.ro{flex:1 1 0;min-width:0;position:relative;}
 .ro input{position:absolute;opacity:0;}
 .ro label{
   display:block;
-  padding:1rem .8rem;
+  padding:1rem .5rem;
   background:var(--white);
   text-align:center;
   font-family:'Inter',sans-serif;
-  font-size:.7rem;
+  font-size:.65rem;
   font-weight:700;
-  letter-spacing:.18em;
+  letter-spacing:.15em;
   text-transform:uppercase;
   color:var(--ink-soft);
   cursor:pointer;
@@ -673,6 +714,9 @@ body.env-active{overflow:hidden;}
   border-radius:50px;
   border:2px solid transparent;
   box-shadow:0 4px 12px rgba(255,61,138,.08);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 .ro input:checked+label{background:var(--pink);color:#fff;border-color:var(--pink-d);}
 
@@ -959,7 +1003,7 @@ body.env-active{overflow:hidden;}
       <svg width="22" height="20" viewBox="0 0 22 20" fill="none"><path d="M11 18 C 4 12, 1 7, 4 3 C 7 0, 9 1, 11 4 C 13 1, 15 0, 18 3 C 21 7, 18 12, 11 18 Z" fill="#ff3d8a"/></svg>
     </div>
     <p class="env-greeting">Вы приглашены на нашу свадьбу!</p>
-    <div class="env-names">Александр<br><span class="amp">&</span><br>Ангелина</div>
+    <div class="env-names">Александр <span class="amp">&</span> Ангелина</div>
     <div class="env-seal-wrap">
       <div class="env-seal">
         <span class="env-pulse"></span>
@@ -1034,6 +1078,11 @@ body.env-active{overflow:hidden;}
   <p class="hero-invite">Мы приглашаем Вас разделить с нами один из самых важных и трепетных дней нашей жизни.</p>
 </section>
 
+<!-- ═══ WE PHOTO ═══ -->
+<section class="we-photo reveal">
+  <img src="we/we.jpeg" alt="Александр и Ангелина" loading="lazy">
+</section>
+
 <!-- ═══ CALENDAR — YELLOW ═══ -->
 <section class="block block-yellow reveal">
 <h2 class="block-title">Когда?</h2>
@@ -1060,7 +1109,7 @@ body.env-active{overflow:hidden;}
     <div class="tl-item">
       <div class="tl-time">15:00</div>
       <div class="tl-heart"><svg viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21 C 3 14, 0 8, 3 3 C 7 -1, 10 0, 12 4 C 14 0, 17 -1, 21 3 C 24 8, 21 14, 12 21 Z" fill="#ff3d8a"/></svg></div>
-      <div class="tl-title">Сбор гостей и Welcome-фуршет</div>
+      <div class="tl-title">Сбор гостей и welcome-фуршет</div>
       <div class="tl-desc">Подарите нам улыбку и возьмите хорошее настроение</div>
     </div>
     <div class="tl-item">
@@ -1181,6 +1230,10 @@ body.env-active{overflow:hidden;}
     </div>
     <p class="wishes-text">Если хотите подарить нам ценный и нужный подарок — мы будем очень благодарны за вклад в бюджет нашей молодой семьи.</p>
     <p class="wishes-text">Просим не обременять себя выбором цветов. Вместо них Вы можете принести корм для животных — мы отвезём его в приют, где пушистые комочки счастья ждут своих хозяев.</p>
+    <div class="wishes-cat">
+      <img src="fedenka/fedya.jpeg" alt="Наш кот Федя" loading="lazy">
+      <p class="wishes-cat-caption">— Федя</p>
+    </div>
   </div>
 </section>
 
@@ -1240,15 +1293,9 @@ body.env-active{overflow:hidden;}
 
 <!-- ═══ CHAT — ORANGE ═══ -->
 <section class="block block-orange reveal">
+  <h2 class="block-title">Чат для гостей</h2>
+  <div class="block-rule"><span class="line"></span></div>
   <div class="chat-card">
-    <div class="chat-icon-wrap">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
-        <line x1="22" y1="2" x2="11" y2="13"/>
-        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-      </svg>
-    </div>
-    <div class="chat-eyebrow">Telegram</div>
-    <h2 class="chat-title">Чат для <em>гостей</em></h2>
     <p class="chat-desc">Мы создали группу в Telegram, где будет собрана вся важная информация о нашем торжестве.</p>
     <a href="https://t.me/+YOUR_LINK_HERE" target="_blank" rel="noopener" class="chat-btn">Присоединиться</a>
     <p class="chat-note">Там можно будет делиться фото и видео со свадьбы. Позже появятся ссылки с кадрами от наших фотографа и видеографа.</p>
@@ -1273,7 +1320,7 @@ body.env-active{overflow:hidden;}
 
 <!-- ═══ COUNTDOWN — PINK ═══ -->
 <section class="block block-pink reveal">
-  <div class="block-eyebrow" style="color:rgba(255,255,255,.85)">До свадьбы осталось</div>
+  <h2 class="block-title">До свадьбы осталось</h2>
   <div class="block-rule"><span class="line"></span></div>
   <div class="cd-grid">
     <div class="cd-item"><div class="cd-num" id="days">—</div><div class="cd-lbl">Дней</div></div>
