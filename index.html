@@ -18,7 +18,7 @@
   --pink-soft: #ffb8d4;
   --cream:     #fff7e0;
   --ink:       #1f1208;
-  --ink-soft:  rgba(31,18,8,.72);
+  --ink-soft:  #1f1208;
   --white:     #ffffff;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -196,12 +196,13 @@ body.env-active{overflow:hidden;}
 }
 .hero-names{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(3rem,11vw,4.5rem);
+  font-size:clamp(1.9rem,7vw,3rem);
   font-weight:500;
   color:var(--ink);
-  line-height:1;
+  line-height:1.1;
   margin-bottom:1.2rem;
   letter-spacing:-.015em;
+  white-space:nowrap;
 }
 .hero-names .amp{
   font-style:italic;
@@ -222,7 +223,7 @@ body.env-active{overflow:hidden;}
   font-style:italic;
   font-size:1.2rem;
   line-height:1.7;
-  color:var(--ink-soft);
+  color:var(--ink);
   max-width:380px;
   margin:0 auto;
   font-weight:400;
@@ -301,13 +302,14 @@ body.env-active{overflow:hidden;}
 /* ════ CALENDAR (yellow) ════ */
 .calendar{max-width:380px;margin:0 auto;}
 .cal-month{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-size:1.5rem;
-  color:var(--orange-d);
+  font-family:'Inter',sans-serif;
+  font-size:1rem;
+  color:var(--pink);
   text-align:center;
-  margin-bottom:1.5rem;
-  font-weight:500;
+  margin-bottom:1.8rem;
+  font-weight:700;
+  letter-spacing:.3em;
+  text-transform:uppercase;
 }
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;}
 .cal-dayname{
@@ -315,7 +317,7 @@ body.env-active{overflow:hidden;}
   font-size:.62rem;
   font-weight:700;
   letter-spacing:.18em;
-  color:var(--orange-d);
+  color:var(--pink);
   text-transform:uppercase;
   padding:8px 0;
   border-bottom:1.5px solid rgba(31,18,8,.15);
@@ -360,30 +362,31 @@ body.env-active{overflow:hidden;}
   max-width:480px;
   margin:0 auto;
   position:relative;
-  padding-left:95px;
+  padding-left:115px;
 }
 .timeline::before{
   content:'';
   position:absolute;
-  left:75px;top:6px;bottom:6px;
+  left:95px;top:6px;bottom:6px;
   width:2px;
   background:var(--pink-soft);
 }
-.tl-item{position:relative;padding-bottom:2.4rem;}
+.tl-item{position:relative;padding-bottom:2.4rem;opacity:0;transform:translateY(15px);transition:opacity .7s ease,transform .7s ease;}
+.tl-item.tl-visible{opacity:1;transform:translateY(0);}
 .tl-item:last-child{padding-bottom:0;}
 .tl-time{
   position:absolute;
-  left:-95px;top:0;
-  width:75px;
+  left:-115px;top:4px;
+  width:90px;
   text-align:right;
-  padding-right:24px;
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-size:1.85rem;
-  font-weight:500;
-  color:var(--ink);
-  letter-spacing:-.01em;
-  line-height:1.1;
+  padding-right:22px;
+  font-family:'Inter',sans-serif;
+  font-style:normal;
+  font-size:1rem;
+  font-weight:700;
+  color:var(--pink);
+  letter-spacing:.18em;
+  line-height:1;
 }
 .tl-heart{
   position:absolute;
@@ -394,6 +397,7 @@ body.env-active{overflow:hidden;}
 .tl-heart svg{display:block;}
 .tl-title{
   font-family:'Cormorant Garamond',serif;
+  font-style:italic;
   font-size:1.4rem;
   font-weight:500;
   color:var(--ink);
@@ -408,11 +412,13 @@ body.env-active{overflow:hidden;}
   font-weight:400;
   line-height:1.55;
 }
-@media(max-width:480px){
-  .timeline{padding-left:74px;}
-  .timeline::before{left:56px;}
-  .tl-time{left:-76px;width:60px;padding-right:14px;font-size:1.45rem;}
-  .tl-heart{left:-22px;width:18px;height:18px;}
+@media(max-width:540px){
+  .timeline{padding-left:88px;}
+  .timeline::before{left:70px;}
+  .tl-time{left:-90px;width:74px;padding-right:14px;font-size:.85rem;top:6px;}
+  .tl-heart{left:-23px;top:8px;width:18px;height:18px;}
+  .tl-title{font-size:1.25rem;}
+  .tl-desc{font-size:.95rem;}
 }
 
 /* ════ VENUE (orange) ════ */
@@ -428,22 +434,26 @@ body.env-active{overflow:hidden;}
 }
 .venue-photo img{width:100%;height:100%;object-fit:cover;display:block;}
 .venue-name{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-weight:500;
-  font-size:2.2rem;
-  color:var(--ink);
-  margin-bottom:1rem;
+  font-family:'Inter',sans-serif;
+  font-size:1rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:var(--pink);
+  margin-bottom:1.5rem;
 }
 .venue-text{
-  font-size:1.02rem;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:1.2rem;
   color:var(--ink);
   line-height:1.7;
   margin-bottom:.7rem;
   max-width:380px;
   margin-left:auto;margin-right:auto;
+  font-weight:500;
 }
-.venue-text strong{font-weight:600;color:var(--ink);}
+.venue-text strong{font-weight:500;color:var(--ink);font-style:italic;}
 .venue-btn{
   display:inline-block;
   margin-top:1.8rem;
@@ -469,7 +479,7 @@ body.env-active{overflow:hidden;}
   max-width:480px;margin:0 auto 2rem;
   text-align:center;
   font-family:'Cormorant Garamond',serif;
-  font-size:1.15rem;
+  font-size:1.2rem;
   font-style:italic;
   color:var(--ink);
   line-height:1.7;
@@ -496,17 +506,16 @@ body.env-active{overflow:hidden;}
 }
 .dc-block:first-of-type{border-top:none;padding-top:0;}
 .dc-block-eyebrow{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-size:1.5rem;
-  letter-spacing:.01em;
-  text-transform:none;
-  font-weight:500;
+  font-family:'Inter',sans-serif;
+  font-size:1rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  font-weight:700;
   text-align:center;
-  margin-bottom:1rem;
-  color:var(--ink);
+  margin-bottom:1.2rem;
+  color:var(--pink);
 }
-.dc-block-eyebrow.gents{color:var(--ink);}
+.dc-block-eyebrow.gents{color:var(--orange);}
 .dc-block-title{
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
@@ -519,13 +528,13 @@ body.env-active{overflow:hidden;}
 .dc-block-text{
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
-  font-size:1.1rem;
+  font-size:1.2rem;
   color:var(--ink);
   line-height:1.7;
   text-align:center;
   margin-bottom:1.5rem;
   padding:0 .5rem;
-  font-weight:400;
+  font-weight:500;
 }
 
 .carousel{
@@ -586,7 +595,7 @@ body.env-active{overflow:hidden;}
   margin:2rem auto 0;
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
-  font-size:1.05rem;
+  font-size:1.2rem;
   color:var(--ink);
   line-height:1.7;
   text-align:center;
@@ -673,7 +682,7 @@ body.env-active{overflow:hidden;}
   letter-spacing:.3em;
   text-transform:uppercase;
   font-weight:700;
-  color:var(--pink-d);
+  color:var(--pink);
   margin-bottom:.7rem;
 }
 .fi,.fta{
@@ -827,10 +836,11 @@ body.env-active{overflow:hidden;}
 .chat-desc{
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
-  font-size:1.08rem;
-  color:var(--ink-soft);
+  font-size:1.2rem;
+  color:var(--ink);
   line-height:1.7;
   margin-bottom:1.5rem;
+  font-weight:500;
 }
 .chat-btn{
   display:inline-block;
@@ -852,9 +862,10 @@ body.env-active{overflow:hidden;}
 .chat-note{
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
-  font-size:.95rem;
-  color:var(--ink-soft);
+  font-size:1.2rem;
+  color:var(--ink);
   line-height:1.65;
+  font-weight:500;
 }
 
 /* ════ CONTACTS (cream) ════ */
@@ -865,7 +876,7 @@ body.env-active{overflow:hidden;}
 .contacts-desc{
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
-  font-size:1.15rem;
+  font-size:1.2rem;
   color:var(--ink);
   line-height:1.75;
   margin-bottom:2rem;
@@ -873,7 +884,7 @@ body.env-active{overflow:hidden;}
   margin-left:auto;margin-right:auto;
   font-weight:500;
 }
-.contacts-name{font-weight:700;color:var(--pink-d);font-style:normal;}
+.contacts-name{font-weight:700;color:var(--pink);font-style:italic;}
 .contacts-phone{
   display:inline-block;
   font-family:'Cormorant Garamond',serif;
@@ -944,19 +955,20 @@ body.env-active{overflow:hidden;}
   font-size:.65rem;
   letter-spacing:.4em;
   text-transform:uppercase;
-  color:var(--orange-d);
+  color:var(--pink);
   font-weight:700;
   margin-bottom:1.2rem;
 }
 .footer-love{
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
-  font-size:1rem;
-  color:var(--ink-soft);
-  max-width:340px;
+  font-size:clamp(.85rem,3.2vw,1.2rem);
+  color:var(--ink);
+  max-width:none;
   margin:0 auto;
-  line-height:1.6;
+  line-height:1.4;
   font-weight:500;
+  white-space:nowrap;
 }
 
 /* REVEAL */
@@ -1102,7 +1114,7 @@ body.env-active{overflow:hidden;}
 
 <!-- ═══ TIMELINE — PINK ═══ -->
 <section class="block block-pink reveal">
-  <h2 class="block-title">Тайминг <em>дня</em></h2>
+  <h2 class="block-title">Тайминг дня</h2>
   <div class="block-rule"><span class="line"></span></div>
 
   <div class="timeline">
@@ -1155,20 +1167,19 @@ body.env-active{overflow:hidden;}
 
 <!-- ═══ DRESSCODE — YELLOW ═══ -->
 <section class="block block-yellow reveal">
-  <h2 class="block-title">Дресс-<em>код</em></h2>
+  <h2 class="block-title">Дресс-код</h2>
   <div class="block-rule"><span class="line"></span></div>
 
   <p class="dc-intro">Будет здорово, если вы поддержите гамму нашего праздника в своих нарядах.</p>
 
   <div class="dc-palette">
-    <div class="dc-sw" style="background:#ffd700"></div>
-    <div class="dc-sw" style="background:#ffb000"></div>
-    <div class="dc-sw" style="background:#ff7800"></div>
-    <div class="dc-sw" style="background:#ff3d00"></div>
-    <div class="dc-sw" style="background:#ff3d8a"></div>
-    <div class="dc-sw" style="background:#ff8aac"></div>
-    <div class="dc-sw" style="background:#fff2a0"></div>
-    <div class="dc-sw" style="background:#ffe8b3"></div>
+    <div class="dc-sw" style="background:#f4a890" title="Персик"></div>
+    <div class="dc-sw" style="background:#e0498e" title="Фуксия"></div>
+    <div class="dc-sw" style="background:#ff5e00" title="Оранжевый"></div>
+    <div class="dc-sw" style="background:#f7c63f" title="Жёлтый"></div>
+    <div class="dc-sw" style="background:#fae89c" title="Нежно-жёлтый"></div>
+    <div class="dc-sw" style="background:#9bab64" title="Оливковый"></div>
+    <div class="dc-sw" style="background:#f5eccf" title="Бежевый"></div>
   </div>
 
   <div class="dc-block">
@@ -1244,7 +1255,7 @@ body.env-active{overflow:hidden;}
 
   <p class="form-intro">Пожалуйста, заполните небольшую анкету. Это очень поможет нам лучше подготовиться к празднику.</p>
 
-  <form class="form" id="rsvpForm" action="https://formsubmit.co/nasonov.al17@gmail.com" method="POST">
+  <form class="form" id="rsvpForm" action="https://formsubmit.co/Manarinegirl25@gmail.com" method="POST">
     <input type="hidden" name="_subject" value="Анкета гостя — свадьба Александра и Ангелины">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
@@ -1258,6 +1269,13 @@ body.env-active{overflow:hidden;}
       </div>
     </div>
     <div class="fg"><label class="fl">В каком составе</label><input type="text" class="fi" name="companion" placeholder="Приду с парой"></div>
+    <div class="fg">
+      <label class="fl">Нужен ли трансфер?</label>
+      <div class="radio-row">
+        <div class="ro"><input type="radio" id="tr-yes" name="transfer" value="Да, нужен"><label for="tr-yes">Да, нужен</label></div>
+        <div class="ro"><input type="radio" id="tr-no" name="transfer" value="Нет, доберусь сам"><label for="tr-no">Доберусь сам</label></div>
+      </div>
+    </div>
     <div class="fg">
       <label class="fl">Какие напитки предпочитаете</label>
       <p class="hint">можно выбрать несколько</p>
@@ -1297,7 +1315,7 @@ body.env-active{overflow:hidden;}
   <div class="block-rule"><span class="line"></span></div>
   <div class="chat-card">
     <p class="chat-desc">Мы создали группу в Telegram, где будет собрана вся важная информация о нашем торжестве.</p>
-    <a href="https://t.me/+YOUR_LINK_HERE" target="_blank" rel="noopener" class="chat-btn">Присоединиться</a>
+    <a href="https://t.me/+f1m_hBZBHo40YzE6" target="_blank" rel="noopener" class="chat-btn">Присоединиться</a>
     <p class="chat-note">Там можно будет делиться фото и видео со свадьбы. Позже появятся ссылки с кадрами от наших фотографа и видеографа.</p>
   </div>
 </section>
@@ -1355,7 +1373,43 @@ updateCD();setInterval(updateCD,1000);
 const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
-document.getElementById('rsvpForm').addEventListener('submit',function(e){if(this.action&&this.action.includes('formsubmit.co/nasonov'))return;e.preventDefault();this.style.display='none';document.getElementById('formSuccess').classList.add('active');});
+// Sequential reveal of timeline items
+const timelineEl=document.querySelector('.timeline');
+if(timelineEl){
+  const items=timelineEl.querySelectorAll('.tl-item');
+  let triggered=false;
+  function revealTimeline(){
+    if(triggered)return;
+    triggered=true;
+    items.forEach((item,i)=>{
+      setTimeout(()=>item.classList.add('tl-visible'),i*400);
+    });
+  }
+  // Primary: IntersectionObserver
+  if('IntersectionObserver' in window){
+    const tlObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          revealTimeline();
+          tlObserver.disconnect();
+        }
+      });
+    },{threshold:0,rootMargin:'0px 0px -50px 0px'});
+    tlObserver.observe(timelineEl);
+  }
+  // Fallback: scroll listener
+  function checkScroll(){
+    const rect=timelineEl.getBoundingClientRect();
+    if(rect.top<window.innerHeight-50&&rect.bottom>0){
+      revealTimeline();
+      window.removeEventListener('scroll',checkScroll);
+    }
+  }
+  window.addEventListener('scroll',checkScroll,{passive:true});
+  setTimeout(checkScroll,300);
+}
+
+document.getElementById('rsvpForm').addEventListener('submit',function(e){if(this.action&&this.action.includes('formsubmit.co/Manarinegirl'))return;e.preventDefault();this.style.display='none';document.getElementById('formSuccess').classList.add('active');});
 
 document.querySelectorAll('[data-carousel]').forEach(carousel=>{
   const track=carousel.querySelector('[data-track]');
