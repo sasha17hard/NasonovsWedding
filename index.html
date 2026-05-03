@@ -6,194 +6,900 @@
 <title>Александр & Ангелина · 17.07.2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Caveat:wght@400;600;700&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#fdf6e3; --cream:#fffbf0; --cream2:#fff9e6;
-  --lemon:#ffe135; --lemon2:#ffd000; --lemon-pale:#fff8a0;
-  --orange:#ff7b29; --orange2:#e05500;
-  --pink:#ff6b8a; --pink2:#e8003d; --pink-pale:#ffd6e0;
-  --green:#4a9a5a; --green2:#2d7a3a;
-  --ink:#1a1208; --ink-mid:#4a3a1a; --ink-soft:#7a6030;
-  --line:#e8d5a0;
+:root{
+  --yellow:    #ffd60a;
+  --yellow-d:  #f5b800;
+  --orange:    #ff7a1a;
+  --orange-d:  #e65800;
+  --pink:      #ff3d8a;
+  --pink-d:    #d61e6e;
+  --pink-soft: #ffb8d4;
+  --cream:     #fff7e0;
+  --ink:       #1f1208;
+  --ink-soft:  rgba(31,18,8,.72);
+  --white:     #ffffff;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:auto;overflow-x:hidden;}
-body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;overflow-x:hidden;}
-.page{background:var(--bg);}
+html{overflow-x:hidden;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  font-size:16px;
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
 img{max-width:100%;display:block;}
-.page{max-width:520px;margin:0 auto;padding:0 0 4rem;}
 
-/* ENVELOPE */
-.env-screen{position:fixed;inset:0;z-index:3000;background:var(--orange);background-image:radial-gradient(circle at 20% 80%,var(--pink) 0%,transparent 45%),radial-gradient(circle at 80% 20%,var(--lemon) 0%,transparent 45%);display:flex;align-items:center;justify-content:center;padding:1.5rem;transition:opacity 1s ease,visibility 1s ease;}
+/* ════ ENVELOPE ════ */
+.env-screen{
+  position:fixed;inset:0;z-index:3000;
+  background:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;
+  transition:opacity .9s ease,visibility .9s ease;
+  overflow:hidden;
+}
 .env-screen.opened{opacity:0;visibility:hidden;pointer-events:none;}
 body.env-active{overflow:hidden;}
-.env-card{background:var(--cream);width:min(420px,92vw);padding:2.5rem 2rem 2rem;text-align:center;border-radius:24px;border:3px solid var(--lemon2);box-shadow:8px 8px 0 var(--lemon2),0 20px 50px rgba(0,0,0,.2);cursor:pointer;user-select:none;animation:envFloat 3.5s ease-in-out infinite;}
-@keyframes envFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.env-lemons{display:flex;justify-content:center;gap:8px;margin-bottom:1.2rem;}
-.env-greeting{font-family:'Caveat',cursive;font-size:1.2rem;color:var(--ink-soft);margin-bottom:.8rem;}
-.env-names{font-family:'Comfortaa',sans-serif;font-size:clamp(1.9rem,8vw,2.8rem);font-weight:700;color:var(--orange);line-height:1.1;margin-bottom:.3rem;}
-.env-amp{color:var(--pink);}
-.env-date-line{font-family:'Comfortaa',sans-serif;font-size:.85rem;letter-spacing:.25em;color:var(--ink-soft);margin-bottom:1.8rem;}
-.env-seal{display:inline-flex;flex-direction:column;align-items:center;gap:.4rem;background:var(--lemon);border:3px solid var(--lemon2);border-radius:50%;width:110px;height:110px;justify-content:center;box-shadow:4px 4px 0 var(--orange),0 0 0 6px var(--cream),0 0 0 9px var(--lemon);animation:sealPop 2.4s ease-in-out infinite;margin-bottom:1.2rem;}
-@keyframes sealPop{0%,100%{box-shadow:4px 4px 0 var(--orange),0 0 0 6px var(--cream),0 0 0 9px var(--lemon)}50%{box-shadow:4px 4px 0 var(--orange),0 0 0 6px var(--cream),0 0 0 14px rgba(255,225,53,.4)}}
-.env-seal-text{font-family:'Caveat',cursive;font-size:.9rem;font-weight:700;color:var(--orange2);text-align:center;line-height:1.2;}
-.env-from{font-family:'Caveat',cursive;font-size:1rem;color:var(--ink-soft);}
 
-/* PETALS */
-.petals{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;}
-.petal{position:absolute;opacity:0;animation:fall linear infinite;}
-@keyframes fall{0%{transform:translateY(-8vh) rotate(0deg);opacity:0}10%{opacity:.55}90%{opacity:.45}100%{transform:translateY(108vh) rotate(500deg);opacity:0}}
+.env-bg-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.env-bg-shapes .shape{position:absolute;}
 
-/* HERO */
-.hero{position:relative;z-index:1;background:var(--orange);background-image:radial-gradient(circle at 10% 90%,var(--pink) 0%,transparent 45%),radial-gradient(circle at 90% 10%,var(--lemon) 0%,transparent 45%);padding:3.5rem 1.5rem 3rem;text-align:center;border-bottom:4px solid var(--lemon2);}
-.hero-label{font-family:'Caveat',cursive;font-size:1.15rem;color:rgba(255,255,255,.8);margin-bottom:.5rem;}
-.hero-names{font-family:'Comfortaa',sans-serif;font-size:clamp(2.4rem,11vw,3.6rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:.3rem;text-shadow:3px 3px 0 rgba(0,0,0,.12);}
-.hero-amp{color:var(--lemon);}
-.hero-divider{display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.2rem auto;}
-.hero-divider .hline{flex:1;height:2px;background:rgba(255,255,255,.35);border-radius:1px;}
-.hero-date{font-family:'Comfortaa',sans-serif;font-size:1rem;color:rgba(255,255,255,.9);letter-spacing:.15em;margin-bottom:1.5rem;}
-.hero-date strong{color:#fff;font-size:1.6rem;display:block;letter-spacing:.05em;}
-.hero-invite{font-size:1.05rem;color:rgba(255,255,255,.88);line-height:1.7;max-width:360px;margin:0 auto;font-style:italic;}
-.hero-lemon-row{display:flex;justify-content:center;gap:10px;margin-top:1.5rem;}
+.env-card{
+  position:relative;z-index:2;
+  width:min(440px,92vw);
+  text-align:center;
+  cursor:pointer;
+  user-select:none;
+  padding:2rem 1.5rem;
+}
+.env-mini-hearts{
+  display:flex;justify-content:center;gap:8px;
+  margin-bottom:1.5rem;
+}
+.env-mini-hearts svg{filter:drop-shadow(0 2px 4px rgba(255,61,138,.3));}
+.env-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:.7rem;
+  letter-spacing:.45em;
+  text-transform:uppercase;
+  color:var(--orange-d);
+  font-weight:700;
+  margin-bottom:1.2rem;
+}
+.env-greeting{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:500;
+  font-size:1.15rem;
+  color:var(--ink-soft);
+  margin-bottom:1.5rem;
+  line-height:1.5;
+}
+.env-names{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2.6rem,9vw,3.4rem);
+  font-weight:600;
+  color:var(--ink);
+  line-height:1.05;
+  margin-bottom:.4rem;
+  letter-spacing:-.01em;
+}
+.env-names .amp{
+  font-style:italic;
+  color:var(--pink);
+  font-weight:500;
+}
+.env-seal-wrap{
+  margin:2.5rem auto 1.5rem;
+  position:relative;
+  display:inline-block;
+}
+.env-seal{
+  width:140px;height:140px;
+  background:var(--pink);
+  border-radius:50%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:.4rem;
+  position:relative;
+  transition:all .35s ease;
+  cursor:pointer;
+  box-shadow:0 12px 40px rgba(255,61,138,.4);
+}
+.env-seal:hover{transform:scale(1.06);box-shadow:0 18px 50px rgba(255,61,138,.5);}
+.env-seal-text{
+  font-family:'Inter',sans-serif;
+  font-size:.62rem;
+  font-weight:700;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--white);
+  text-align:center;
+  line-height:1.3;
+}
+.env-pulse{
+  position:absolute;inset:0;
+  border:2px solid var(--pink);
+  border-radius:50%;
+  pointer-events:none;
+  animation:pulse 2.4s ease-out infinite;
+}
+@keyframes pulse{
+  0%{opacity:.7;transform:scale(1);}
+  100%{opacity:0;transform:scale(1.5);}
+}
+.env-from{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1rem;
+  color:var(--ink-soft);
+  margin-top:1rem;
+}
 
-/* SECTIONS */
-.sec{padding:2.8rem 1.5rem;position:relative;z-index:1;background:var(--bg);}
-.sec-alt{background:var(--bg);}
-.sec-pink{background:var(--bg);}
-.sec-orange{background:var(--orange);background-image:radial-gradient(circle at 80% 20%,var(--pink) 0%,transparent 50%);}
-.sec-title{font-family:'Comfortaa',sans-serif;font-size:clamp(1.8rem,6vw,2.4rem);font-weight:700;color:var(--orange);text-align:center;margin-bottom:.4rem;line-height:1.15;}
-.sec-title.green{color:var(--green);}
-.sec-title.pink{color:var(--pink2);}
-.sec-title.white{color:#fff;}
-.divider-lemon{display:flex;align-items:center;justify-content:center;gap:.7rem;margin:.5rem auto 2rem;}
-.divider-lemon .dl{flex:1;height:2px;background:var(--line);border-radius:1px;}
+/* ════ FLOATING HEARTS ════ */
+.hearts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.heart{position:absolute;opacity:0;animation:floatUp linear infinite;}
+@keyframes floatUp{
+  0%{transform:translateY(110vh) rotate(0deg);opacity:0;}
+  10%{opacity:.5;}
+  90%{opacity:.5;}
+  100%{transform:translateY(-15vh) rotate(360deg);opacity:0;}
+}
 
-/* CALENDAR */
-.calendar-wrap{max-width:360px;margin:0 auto;}
-.cal-header{font-family:'Comfortaa',sans-serif;font-size:1.3rem;font-weight:700;color:var(--orange);text-align:center;margin-bottom:1rem;}
-.cal-month{font-family:'Comfortaa',sans-serif;font-size:1.1rem;font-weight:700;color:var(--orange);text-align:center;margin-bottom:1.2rem;letter-spacing:.05em;}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;}
-.cal-dayname{font-family:'Comfortaa',sans-serif;font-size:.68rem;font-weight:700;color:var(--ink-soft);text-transform:uppercase;padding:4px 0;}
-.cal-cell{font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:600;padding:8px 4px;border-radius:50%;color:var(--ink-mid);}
+.page{
+  max-width:560px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+
+/* ════ HERO ════ */
+.hero{
+  background:var(--cream);
+  position:relative;
+  padding:5rem 1.5rem 4rem;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-decor{position:absolute;pointer-events:none;}
+.hero-decor.tl{top:1rem;left:1rem;}
+.hero-decor.tr{top:1rem;right:1rem;}
+.hero-decor.bl{bottom:1rem;left:1rem;}
+.hero-decor.br{bottom:1rem;right:1rem;}
+.hero-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:.7rem;
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:var(--orange-d);
+  font-weight:700;
+  margin-bottom:1.5rem;
+}
+.hero-names{
+  font-family:'Fraunces',serif;
+  font-size:clamp(3rem,11vw,4.5rem);
+  font-weight:600;
+  color:var(--ink);
+  line-height:1;
+  margin-bottom:1.2rem;
+  letter-spacing:-.015em;
+}
+.hero-names .amp{
+  font-style:italic;
+  color:var(--pink);
+  font-weight:500;
+  display:inline-block;
+  margin:0 .15em;
+}
+.hero-rule{
+  display:flex;align-items:center;justify-content:center;
+  gap:.8rem;margin:1.5rem auto 2rem;
+  max-width:280px;
+}
+.hero-rule .line{flex:1;height:1.5px;background:var(--pink);}
+.hero-rule svg{width:24px;height:22px;}
+.hero-invite{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.2rem;
+  line-height:1.7;
+  color:var(--ink-soft);
+  max-width:380px;
+  margin:0 auto;
+  font-weight:400;
+}
+
+/* ════ COLOR BLOCKS — BASE ════ */
+.block{
+  padding:4.5rem 1.75rem;
+  position:relative;
+  overflow:hidden;
+}
+.block-yellow{background:var(--yellow);}
+.block-pink{background:var(--pink);color:var(--white);}
+.block-orange{background:var(--orange);color:var(--white);}
+.block-cream{background:var(--cream);}
+
+.block-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:.65rem;
+  font-weight:700;
+  letter-spacing:.45em;
+  text-transform:uppercase;
+  text-align:center;
+  margin-bottom:.8rem;
+}
+.block-yellow .block-eyebrow{color:var(--orange-d);}
+.block-pink .block-eyebrow{color:rgba(255,255,255,.85);}
+.block-orange .block-eyebrow{color:rgba(255,255,255,.9);}
+.block-cream .block-eyebrow{color:var(--orange-d);}
+
+.block-title{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(2.2rem,7vw,3.2rem);
+  text-align:center;
+  margin-bottom:1.5rem;
+  line-height:1.1;
+  letter-spacing:-.01em;
+}
+.block-title em{font-style:italic;font-weight:500;}
+.block-yellow .block-title{color:var(--ink);}
+.block-yellow .block-title em{color:var(--orange-d);}
+.block-pink .block-title{color:var(--white);}
+.block-pink .block-title em{color:var(--yellow);}
+.block-orange .block-title{color:var(--white);}
+.block-orange .block-title em{color:var(--yellow);}
+.block-cream .block-title{color:var(--ink);}
+.block-cream .block-title em{color:var(--pink);font-style:italic;}
+
+.block-rule{
+  display:flex;align-items:center;justify-content:center;
+  gap:.7rem;margin:0 auto 3rem;
+  max-width:200px;
+}
+.block-rule .line{flex:1;height:1.5px;}
+.block-yellow .block-rule .line{background:var(--orange-d);}
+.block-pink .block-rule .line{background:rgba(255,255,255,.5);}
+.block-orange .block-rule .line{background:rgba(255,255,255,.55);}
+.block-cream .block-rule .line{background:var(--pink);}
+
+/* Decorative corner hearts/lemons in blocks */
+.block-deco{position:absolute;pointer-events:none;}
+
+/* ════ CALENDAR (yellow) ════ */
+.calendar{max-width:380px;margin:0 auto;}
+.cal-month{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.5rem;
+  color:var(--orange-d);
+  text-align:center;
+  margin-bottom:1.5rem;
+  font-weight:500;
+}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;}
+.cal-dayname{
+  font-family:'Inter',sans-serif;
+  font-size:.62rem;
+  font-weight:700;
+  letter-spacing:.18em;
+  color:var(--orange-d);
+  text-transform:uppercase;
+  padding:8px 0;
+  border-bottom:1.5px solid rgba(31,18,8,.15);
+}
+.cal-cell{
+  font-family:'Fraunces',serif;
+  font-size:1.1rem;
+  font-weight:500;
+  padding:10px 2px;
+  color:var(--ink);
+}
 .cal-cell.empty{color:transparent;}
-.cal-cell.highlight{position:relative;font-weight:900;color:var(--orange2);z-index:1;}
-.cal-cell.highlight::before{content:'';position:absolute;inset:-4px;background:var(--lemon);border:2.5px solid var(--lemon2);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;z-index:-1;box-shadow:2px 3px 0 var(--orange);}
-.cal-cell.highlight::after{content:'';position:absolute;top:-11px;left:50%;transform:translateX(-50%);width:5px;height:6px;background:var(--green);border-radius:50% 50% 0 0;z-index:2;}
+.cal-cell.highlight{
+  position:relative;
+  font-weight:700;
+  color:var(--white);
+  z-index:1;
+}
+.cal-cell.highlight::before{
+  content:'';
+  position:absolute;
+  inset:2px;
+  background:var(--pink);
+  z-index:-1;
+  /* heart shape via clip-path */
+  clip-path:path('M20,10 C18,4 8,4 8,14 C8,22 20,32 20,32 C20,32 32,22 32,14 C32,4 22,4 20,10 Z');
+}
+.cal-caption{
+  margin-top:2rem;
+  text-align:center;
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.05rem;
+  color:var(--orange-d);
+  font-weight:500;
+}
 
-/* TIMELINE */
-.timeline{position:relative;max-width:420px;margin:0 auto;padding-left:40px;}
-.timeline::before{content:'';position:absolute;left:18px;top:8px;bottom:8px;width:2px;background:var(--line);border-radius:1px;}
-.tl-item{position:relative;margin-bottom:2rem;}
-.tl-item:last-child{margin-bottom:0;}
-.tl-dot{position:absolute;left:-30px;top:6px;width:22px;height:22px;background:var(--lemon);border:3px solid var(--lemon2);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;box-shadow:2px 2px 0 var(--orange);}
-.tl-dot::after{content:'';position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:4px;height:5px;background:var(--green);border-radius:50% 50% 0 0;}
-.tl-time{font-family:'Comfortaa',sans-serif;font-size:1.25rem;font-weight:700;letter-spacing:.04em;color:var(--orange);margin-bottom:.3rem;}
-.tl-title{font-family:'Comfortaa',sans-serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.15rem;}
-.tl-desc{font-size:.9rem;color:var(--ink-soft);font-style:italic;line-height:1.5;}
+/* ════ TIMELINE (pink) ════ */
+.timeline{
+  max-width:480px;
+  margin:0 auto;
+  position:relative;
+  padding-left:80px;
+}
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:60px;top:6px;bottom:6px;
+  width:2px;
+  background:rgba(255,255,255,.4);
+}
+.tl-item{position:relative;padding-bottom:2.4rem;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-time{
+  position:absolute;
+  left:-80px;top:0;
+  width:60px;
+  text-align:right;
+  padding-right:24px;
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.5rem;
+  font-weight:600;
+  color:var(--yellow);
+  letter-spacing:-.01em;
+}
+.tl-heart{
+  position:absolute;
+  left:-29px;top:8px;
+  width:22px;height:20px;
+  display:flex;align-items:center;justify-content:center;
+}
+.tl-heart svg{width:100%;height:100%;}
+.tl-title{
+  font-family:'Fraunces',serif;
+  font-size:1.4rem;
+  font-weight:600;
+  color:var(--white);
+  margin-bottom:.3rem;
+  line-height:1.3;
+}
+.tl-desc{
+  font-size:.95rem;
+  color:rgba(255,255,255,.85);
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:400;
+  line-height:1.55;
+}
+@media(max-width:480px){
+  .timeline{padding-left:60px;}
+  .timeline::before{left:42px;}
+  .tl-time{left:-62px;width:48px;padding-right:14px;font-size:1.2rem;}
+  .tl-heart{left:-22px;width:18px;height:16px;}
+}
 
-/* VENUE */
-.venue-box{background:var(--cream);border:3px solid var(--lemon2);border-radius:20px;padding:1.8rem;box-shadow:5px 5px 0 var(--lemon2);max-width:420px;margin:0 auto;}
-.venue-img-wrap{border-radius:14px;overflow:hidden;border:2px solid var(--lemon2);margin-bottom:1.2rem;aspect-ratio:4/3;background:#f0e8c8;}
-.venue-img-wrap img{width:100%;height:100%;object-fit:cover;}
-.venue-name{font-family:'Comfortaa',sans-serif;font-size:1.25rem;font-weight:700;color:var(--orange);margin-bottom:.6rem;}
-.venue-text{font-size:.95rem;color:var(--ink-mid);line-height:1.6;margin-bottom:.5rem;}
-.venue-btn{display:inline-block;margin-top:.8rem;padding:.7rem 1.8rem;background:var(--orange);color:#fff;font-family:'Comfortaa',sans-serif;font-size:.82rem;font-weight:700;text-decoration:none;border-radius:50px;border:2px solid var(--orange2);box-shadow:3px 3px 0 var(--orange2);transition:all .25s;}
-.venue-btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--orange2);}
+/* ════ VENUE (orange) ════ */
+.venue{max-width:480px;margin:0 auto;text-align:center;}
+.venue-photo{
+  position:relative;
+  margin-bottom:2rem;
+  aspect-ratio:4/3;
+  overflow:hidden;
+  background:#f0e8c8;
+  border:4px solid var(--white);
+  box-shadow:0 12px 40px rgba(0,0,0,.15);
+}
+.venue-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.venue-name{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:600;
+  font-size:2.2rem;
+  color:var(--white);
+  margin-bottom:1rem;
+}
+.venue-text{
+  font-size:1.02rem;
+  color:rgba(255,255,255,.95);
+  line-height:1.7;
+  margin-bottom:.7rem;
+  max-width:380px;
+  margin-left:auto;margin-right:auto;
+}
+.venue-text strong{font-weight:600;color:var(--yellow);}
+.venue-btn{
+  display:inline-block;
+  margin-top:1.8rem;
+  padding:1rem 2.4rem;
+  font-family:'Inter',sans-serif;
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--orange-d);
+  background:var(--white);
+  border:none;
+  text-decoration:none;
+  transition:all .3s ease;
+  cursor:pointer;
+  border-radius:50px;
+  box-shadow:0 6px 20px rgba(0,0,0,.15);
+}
+.venue-btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.22);}
 
-/* DRESSCODE */
-.dc-intro{max-width:460px;margin:0 auto 1.5rem;text-align:center;font-size:.95rem;color:var(--ink-mid);line-height:1.65;font-style:italic;}
-.dc-block{max-width:460px;margin:0 auto 2rem;}
-.dc-block-title{font-family:'Comfortaa',sans-serif;font-size:1.05rem;font-weight:700;text-align:center;margin-bottom:.8rem;}
-.dc-block-title.ladies{color:var(--pink2);}
-.dc-block-title.gents{color:var(--green);}
-.dc-block-text{font-size:.92rem;color:var(--ink-mid);line-height:1.6;text-align:center;margin-bottom:1rem;padding:0 .25rem;}
+/* ════ DRESSCODE (yellow) ════ */
+.dc-intro{
+  max-width:480px;margin:0 auto 2rem;
+  text-align:center;
+  font-family:'Fraunces',serif;
+  font-size:1.15rem;
+  font-style:italic;
+  color:var(--ink);
+  line-height:1.7;
+  font-weight:500;
+}
+.dc-palette{
+  display:flex;justify-content:center;gap:14px;flex-wrap:wrap;
+  margin:0 auto 3rem;max-width:460px;
+}
+.dc-sw{
+  width:42px;height:42px;
+  border-radius:50%;
+  border:3px solid var(--white);
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+  transition:transform .3s;
+}
+.dc-sw:hover{transform:scale(1.15) rotate(8deg);}
 
-/* Carousel */
-.carousel{position:relative;border-radius:16px;overflow:hidden;border:3px solid var(--lemon2);box-shadow:4px 4px 0 var(--lemon2);background:#f5ecd0;}
-.carousel-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.dc-block{
+  max-width:480px;
+  margin:0 auto 3rem;
+  padding-top:2rem;
+  border-top:2px solid rgba(31,18,8,.12);
+}
+.dc-block:first-of-type{border-top:none;padding-top:0;}
+.dc-block-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:.62rem;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  font-weight:700;
+  text-align:center;
+  margin-bottom:.5rem;
+  color:var(--pink-d);
+}
+.dc-block-eyebrow.gents{color:var(--orange-d);}
+.dc-block-title{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:600;
+  font-size:1.8rem;
+  text-align:center;
+  margin-bottom:1rem;
+  color:var(--ink);
+}
+.dc-block-text{
+  font-size:1rem;
+  color:var(--ink-soft);
+  line-height:1.7;
+  text-align:center;
+  margin-bottom:1.5rem;
+  padding:0 .5rem;
+}
+
+.carousel{
+  position:relative;
+  overflow:hidden;
+  background:#f5ecd0;
+  margin-bottom:.8rem;
+  border:4px solid var(--white);
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+.carousel-track{
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
 .carousel-track::-webkit-scrollbar{display:none;}
 .carousel-slide{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:3/4;background:#f5ecd0;}
 .carousel-slide img{width:100%;height:100%;object-fit:cover;display:block;}
-.carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.95);border:2px solid var(--lemon2);box-shadow:0 2px 6px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--orange);transition:all .2s;z-index:2;font-family:inherit;padding:0;}
-.carousel-arrow:hover{background:var(--lemon);color:var(--orange2);transform:translateY(-50%) scale(1.08);}
-.carousel-arrow:disabled{opacity:.35;cursor:default;}
-.carousel-arrow.prev{left:10px;}
-.carousel-arrow.next{right:10px;}
-.carousel-arrow svg{width:18px;height:18px;}
-.carousel-dots{display:flex;justify-content:center;gap:6px;margin-top:.8rem;flex-wrap:wrap;}
-.carousel-dot{width:8px;height:8px;border-radius:50%;background:var(--line);border:none;cursor:pointer;transition:all .25s;padding:0;}
-.carousel-dot.active{background:var(--orange);width:22px;border-radius:4px;}
+.carousel-arrow{
+  position:absolute;top:50%;
+  transform:translateY(-50%);
+  width:42px;height:42px;
+  border-radius:50%;
+  background:var(--white);
+  border:none;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  color:var(--pink);
+  transition:all .25s;
+  z-index:4;
+  padding:0;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
+.carousel-arrow:hover{transform:translateY(-50%) scale(1.1);}
+.carousel-arrow:disabled{opacity:.4;cursor:default;}
+.carousel-arrow.prev{left:14px;}
+.carousel-arrow.next{right:14px;}
+.carousel-arrow svg{width:16px;height:16px;}
 
-.dc-palette-row{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:1rem 0 .4rem;}
-.sw{width:28px;height:28px;border-radius:50%;border:2px solid rgba(0,0,0,.1);box-shadow:1px 1px 0 rgba(0,0,0,.08);transition:transform .3s;}
-.sw:hover{transform:scale(1.2) rotate(5deg);}
-.dc-avoid{text-align:center;font-family:'Caveat',cursive;font-size:1.6rem;font-weight:700;color:var(--pink2);margin-top:1.5rem;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.3;}
+.carousel-dots{
+  display:flex;justify-content:center;
+  gap:6px;margin-top:1rem;flex-wrap:wrap;
+}
+.carousel-dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:rgba(31,18,8,.25);
+  border:none;cursor:pointer;
+  transition:all .25s;padding:0;
+}
+.carousel-dot.active{background:var(--pink);width:26px;border-radius:4px;}
 
-/* WISHES */
-.wishes-box{background:var(--cream);border:3px solid var(--pink);border-radius:20px;padding:1.8rem 1.5rem;box-shadow:5px 5px 0 var(--pink);max-width:420px;margin:0 auto;text-align:center;}
-.wishes-title{font-family:'Comfortaa',sans-serif;font-size:clamp(1.6rem,6vw,2rem);font-weight:700;color:var(--pink2);margin-bottom:1rem;}
-.wishes-text{font-size:.95rem;color:var(--ink-mid);line-height:1.7;margin-bottom:.8rem;}
-.wishes-cats{font-size:.95rem;color:var(--green2);line-height:1.7;font-style:italic;background:#f0faf0;border-radius:12px;padding:.8rem 1rem;border:2px dashed var(--green);margin-top:.6rem;}
+.dc-extra{
+  max-width:480px;
+  margin:2rem auto 0;
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.05rem;
+  color:var(--ink);
+  line-height:1.7;
+  text-align:center;
+  font-weight:500;
+}
+.dc-extra p{margin-bottom:.8rem;}
 
-/* RSVP */
-.form-wrap{background:var(--cream);border:3px solid var(--lemon2);border-radius:20px;padding:2rem 1.5rem;box-shadow:5px 5px 0 var(--lemon2);max-width:420px;margin:0 auto;}
-.fg{margin-bottom:1.4rem;}
-.fl{display:block;font-family:'Comfortaa',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.4rem;}
-.fi,.fta{width:100%;padding:.75rem 1rem;background:#fff;border:2.5px solid var(--lemon2);border-radius:12px;font-family:'Nunito',sans-serif;font-size:1rem;color:var(--ink);transition:border-color .25s;font-style:italic;appearance:none;}
-.fi:focus,.fta:focus{outline:none;border-color:var(--orange);}
+.dc-avoid{
+  margin:2.5rem auto 0;
+  text-align:center;
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.6rem;
+  font-weight:600;
+  color:var(--pink-d);
+  max-width:480px;
+  padding:1.4rem 1rem;
+  border-top:2px solid var(--pink);
+  border-bottom:2px solid var(--pink);
+  line-height:1.4;
+}
+
+/* ════ WISHES (pink) ════ */
+.wishes{
+  max-width:520px;
+  margin:0 auto;
+  text-align:center;
+  position:relative;
+  padding:0 1rem;
+}
+.wishes-hearts{
+  display:flex;justify-content:center;gap:.5rem;margin-bottom:1.5rem;
+}
+.wishes-text{
+  font-family:'Fraunces',serif;
+  font-size:1.2rem;
+  font-style:italic;
+  color:var(--white);
+  line-height:1.8;
+  margin-bottom:1.5rem;
+  font-weight:500;
+}
+
+/* ════ RSVP (cream) ════ */
+.form-intro{
+  text-align:center;
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.15rem;
+  color:var(--ink-soft);
+  margin-bottom:2.5rem;
+  max-width:480px;
+  margin-left:auto;margin-right:auto;
+  line-height:1.7;
+  font-weight:500;
+}
+.form{max-width:480px;margin:0 auto;}
+.fg{margin-bottom:2rem;}
+.fl{
+  display:block;
+  font-family:'Inter',sans-serif;
+  font-size:.65rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:var(--pink-d);
+  margin-bottom:.7rem;
+}
+.fi,.fta{
+  width:100%;
+  padding:1rem 1.2rem;
+  background:var(--white);
+  border:2px solid transparent;
+  font-family:'Fraunces',serif;
+  font-size:1.1rem;
+  color:var(--ink);
+  font-style:italic;
+  font-weight:400;
+  transition:border-color .25s;
+  appearance:none;
+  border-radius:14px;
+  box-shadow:0 4px 12px rgba(255,61,138,.08);
+}
+.fi:focus,.fta:focus{outline:none;border-color:var(--pink);}
+.fi::placeholder,.fta::placeholder{color:rgba(31,18,8,.4);}
 .fta{resize:vertical;min-height:90px;}
-.radio-row{display:flex;gap:.6rem;flex-wrap:wrap;}
+
+.radio-row{display:flex;gap:.8rem;flex-wrap:wrap;}
 .ro{flex:1;min-width:140px;position:relative;}
 .ro input{position:absolute;opacity:0;}
-.ro label{display:block;padding:.7rem .5rem;border:2.5px solid var(--lemon2);border-radius:50px;text-align:center;font-family:'Comfortaa',sans-serif;font-size:.75rem;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:all .25s;background:#fff;white-space:nowrap;}
-.ro input:checked+label{background:var(--orange);color:#fff;border-color:var(--orange2);box-shadow:2px 2px 0 var(--orange2);}
-.chk-grid{display:flex;flex-direction:column;gap:.35rem;}
+.ro label{
+  display:block;
+  padding:1rem .8rem;
+  background:var(--white);
+  text-align:center;
+  font-family:'Inter',sans-serif;
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  cursor:pointer;
+  transition:all .25s;
+  border-radius:50px;
+  border:2px solid transparent;
+  box-shadow:0 4px 12px rgba(255,61,138,.08);
+}
+.ro input:checked+label{background:var(--pink);color:var(--white);border-color:var(--pink-d);}
+
+.chk-grid{display:flex;flex-direction:column;gap:.5rem;}
 .co{position:relative;}
 .co input[type=checkbox]{position:absolute;opacity:0;width:0;height:0;}
-.co label{display:flex;align-items:center;gap:.6rem;font-size:.95rem;color:var(--ink-mid);cursor:pointer;padding:.3rem 0;}
-.co label::before{content:'';width:20px;height:20px;min-width:20px;border:2.5px solid var(--lemon2);border-radius:6px;background:#fff;transition:all .2s;}
-.co input:checked+label::before{background:var(--orange);border-color:var(--orange2);background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center;}
-.hint{font-size:.8rem;color:var(--ink-soft);font-style:italic;margin-bottom:.5rem;}
-.fbtn{width:100%;padding:1rem;background:var(--orange);color:#fff;font-family:'Comfortaa',sans-serif;font-size:.9rem;font-weight:700;border:none;border-radius:50px;cursor:pointer;border:2px solid var(--orange2);box-shadow:4px 4px 0 var(--orange2);transition:all .25s;}
-.fbtn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--orange2);}
-.fsuccess{text-align:center;padding:1.5rem;display:none;}
+.co label{
+  display:flex;align-items:center;gap:.8rem;
+  font-family:'Fraunces',serif;
+  font-size:1.1rem;
+  color:var(--ink);
+  cursor:pointer;
+  padding:.5rem .2rem;
+  font-style:normal;
+  font-weight:500;
+}
+.co label::before{
+  content:'';
+  width:22px;height:22px;min-width:22px;
+  border:2px solid rgba(31,18,8,.2);
+  background:var(--white);
+  transition:all .2s;
+  flex-shrink:0;
+  border-radius:6px;
+}
+.co input:checked+label::before{
+  background:var(--pink);
+  border-color:var(--pink);
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+  background-size:13px;background-repeat:no-repeat;background-position:center;
+}
+.hint{
+  font-size:.9rem;
+  color:var(--ink-soft);
+  font-style:italic;
+  margin-bottom:.6rem;
+  font-family:'Fraunces',serif;
+}
+.fbtn{
+  width:100%;
+  padding:1.3rem;
+  background:var(--pink);
+  color:var(--white);
+  font-family:'Inter',sans-serif;
+  font-size:.75rem;
+  font-weight:700;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  border:none;
+  cursor:pointer;
+  transition:all .3s;
+  margin-top:1rem;
+  border-radius:50px;
+  box-shadow:0 8px 24px rgba(255,61,138,.35);
+}
+.fbtn:hover{background:var(--pink-d);transform:translateY(-2px);box-shadow:0 12px 28px rgba(255,61,138,.45);}
+
+.fsuccess{text-align:center;padding:2rem;display:none;}
 .fsuccess.active{display:block;}
-.fsuccess h3{font-family:'Comfortaa',sans-serif;font-size:1.4rem;font-weight:700;color:var(--orange);margin-bottom:.5rem;}
-.fsuccess p{color:var(--ink-soft);font-style:italic;}
+.fsuccess h3{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:600;
+  font-size:1.9rem;
+  color:var(--pink-d);
+  margin-bottom:.5rem;
+}
+.fsuccess p{color:var(--ink-soft);font-style:italic;font-family:'Fraunces',serif;font-size:1.05rem;}
 
-/* CHAT */
-.chat-box{background:var(--orange);border:3px solid var(--orange2);border-radius:20px;padding:2rem 1.5rem;box-shadow:5px 5px 0 var(--orange2);max-width:420px;margin:0 auto;text-align:center;position:relative;overflow:hidden;}
-.chat-box::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 10% 90%,var(--pink) 0%,transparent 40%),radial-gradient(circle at 90% 10%,var(--lemon) 0%,transparent 40%);opacity:.35;pointer-events:none;}
-.chat-icon{position:relative;width:56px;height:56px;border-radius:50%;background:var(--lemon);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;box-shadow:3px 3px 0 var(--lemon2);}
-.chat-title{position:relative;font-family:'Comfortaa',sans-serif;font-size:clamp(1.5rem,5vw,2rem);font-weight:700;color:var(--lemon);line-height:1.15;margin-bottom:.8rem;}
-.chat-desc{position:relative;font-size:.92rem;color:rgba(255,255,255,.9);line-height:1.65;margin-bottom:1rem;}
-.chat-btn{position:relative;display:block;max-width:220px;margin:0 auto 1rem;padding:.75rem 2rem;background:var(--lemon);color:var(--orange2);font-family:'Comfortaa',sans-serif;font-size:.82rem;font-weight:700;text-decoration:none;border-radius:50px;border:2px solid var(--lemon2);box-shadow:3px 3px 0 var(--lemon2);transition:all .25s;}
-.chat-btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--lemon2);}
-.chat-note{position:relative;font-size:.85rem;color:rgba(255,255,255,.75);font-style:italic;line-height:1.6;}
+/* ════ CHAT (orange) ════ */
+.chat-card{
+  max-width:480px;
+  margin:0 auto;
+  text-align:center;
+  padding:3.5rem 2rem;
+  background:var(--white);
+  border-radius:24px;
+  box-shadow:0 20px 60px rgba(0,0,0,.15);
+  position:relative;
+}
+.chat-icon-wrap{
+  width:60px;height:60px;
+  background:var(--pink);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.2rem;
+  color:var(--white);
+  box-shadow:0 8px 20px rgba(255,61,138,.35);
+}
+.chat-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:.62rem;
+  letter-spacing:.45em;
+  text-transform:uppercase;
+  color:var(--orange-d);
+  font-weight:700;
+  margin-bottom:.6rem;
+}
+.chat-title{
+  font-family:'Fraunces',serif;
+  font-size:2rem;
+  font-weight:600;
+  color:var(--ink);
+  margin-bottom:1rem;
+  line-height:1.2;
+}
+.chat-title em{font-style:italic;color:var(--pink);}
+.chat-desc{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.08rem;
+  color:var(--ink-soft);
+  line-height:1.7;
+  margin-bottom:1.5rem;
+}
+.chat-btn{
+  display:inline-block;
+  padding:1rem 2.4rem;
+  font-family:'Inter',sans-serif;
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--white);
+  background:var(--pink);
+  text-decoration:none;
+  margin-bottom:1.5rem;
+  transition:all .3s;
+  border-radius:50px;
+  box-shadow:0 8px 24px rgba(255,61,138,.35);
+}
+.chat-btn:hover{background:var(--pink-d);transform:translateY(-2px);}
+.chat-note{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:.95rem;
+  color:var(--ink-soft);
+  line-height:1.65;
+}
 
-/* CONTACTS */
-.contacts-box{background:var(--cream);border:3px solid var(--pink);border-radius:20px;padding:2rem 1.5rem;box-shadow:5px 5px 0 var(--pink);max-width:420px;margin:0 auto;text-align:center;}
-.contacts-icon{width:56px;height:56px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;margin:0 auto .8rem;box-shadow:3px 3px 0 var(--pink2);}
-.contacts-icon svg{width:26px;height:26px;color:#fff;}
-.contacts-role{font-family:'Comfortaa',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--pink2);margin-bottom:.4rem;}
-.contacts-desc{font-size:.9rem;color:var(--ink-mid);line-height:1.6;margin-bottom:.8rem;font-style:italic;}
-.contacts-phone{font-family:'Comfortaa',sans-serif;font-size:1.5rem;font-weight:700;color:var(--orange2);text-decoration:none;transition:color .2s;}
-.contacts-phone:hover{color:var(--orange);}
+/* ════ CONTACTS (cream) ════ */
+.contacts{max-width:480px;margin:0 auto;text-align:center;}
+.contacts-hearts{
+  display:flex;justify-content:center;gap:.4rem;margin-bottom:1.5rem;
+}
+.contacts-desc{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.15rem;
+  color:var(--ink);
+  line-height:1.75;
+  margin-bottom:2rem;
+  max-width:420px;
+  margin-left:auto;margin-right:auto;
+  font-weight:500;
+}
+.contacts-name{font-weight:700;color:var(--pink-d);font-style:normal;}
+.contacts-phone{
+  display:inline-block;
+  font-family:'Fraunces',serif;
+  font-size:2rem;
+  font-weight:600;
+  color:var(--ink);
+  text-decoration:none;
+  letter-spacing:.02em;
+  padding:.8rem 2rem;
+  background:var(--white);
+  border-radius:50px;
+  box-shadow:0 6px 20px rgba(0,0,0,.1);
+  transition:all .3s;
+}
+.contacts-phone:hover{color:var(--pink-d);transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.15);}
 
-/* COUNTDOWN */
-.countdown-label-top{font-family:'Comfortaa',sans-serif;font-size:.85rem;font-weight:700;color:rgba(255,255,255,.8);text-align:center;margin-bottom:.8rem;letter-spacing:.08em;}
-.countdown-grid{display:flex;justify-content:center;gap:.6rem;flex-wrap:nowrap;}
-.cd-item{flex:1;max-width:110px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.3);border-radius:16px;padding:.8rem .3rem;text-align:center;backdrop-filter:blur(4px);}
-.cd-num{font-family:'Comfortaa',sans-serif;font-size:clamp(1.4rem,6vw,2.2rem);font-weight:700;color:#fff;line-height:1;}
-.cd-lbl{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.7);margin-top:.3rem;}
+/* ════ COUNTDOWN (pink) ════ */
+.cd-grid{
+  display:flex;justify-content:center;gap:.8rem;
+  max-width:480px;margin:0 auto;
+}
+.cd-item{
+  flex:1;
+  background:rgba(255,255,255,.18);
+  backdrop-filter:blur(6px);
+  border-radius:18px;
+  padding:1.2rem .4rem;
+  text-align:center;
+  border:1.5px solid rgba(255,255,255,.3);
+}
+.cd-num{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(2rem,8vw,3rem);
+  color:var(--white);
+  line-height:1;
+  margin-bottom:.5rem;
+}
+.cd-lbl{
+  font-family:'Inter',sans-serif;
+  font-size:.55rem;
+  font-weight:700;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.85);
+}
 
-/* FOOTER */
-.site-footer{background:var(--orange2);padding:2.5rem 1.5rem 2rem;text-align:center;position:relative;overflow:hidden;}
-.site-footer::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,var(--pink) 0%,transparent 50%),radial-gradient(circle at 80% 50%,var(--lemon) 0%,transparent 50%);opacity:.2;pointer-events:none;}
-.footer-names{position:relative;font-family:'Comfortaa',sans-serif;font-size:clamp(1.6rem,6vw,2.2rem);font-weight:700;color:var(--lemon);margin-bottom:.4rem;}
-.footer-date{position:relative;font-family:'Comfortaa',sans-serif;font-size:.8rem;letter-spacing:.3em;color:rgba(255,255,255,.7);margin-bottom:1rem;}
-.footer-love{position:relative;font-style:italic;font-size:.95rem;color:rgba(255,255,255,.7);}
+/* ════ FOOTER ════ */
+.site-footer{
+  text-align:center;
+  padding:4rem 1.75rem 3rem;
+  background:var(--cream);
+  position:relative;
+}
+.footer-hearts{display:flex;justify-content:center;gap:.4rem;margin-bottom:1.5rem;}
+.footer-names{
+  font-family:'Fraunces',serif;
+  font-size:clamp(1.7rem,5vw,2.4rem);
+  font-weight:600;
+  color:var(--ink);
+  margin-bottom:.5rem;
+  line-height:1.2;
+}
+.footer-names .amp{font-style:italic;color:var(--pink);font-weight:500;}
+.footer-date{
+  font-family:'Inter',sans-serif;
+  font-size:.65rem;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  color:var(--orange-d);
+  font-weight:700;
+  margin-bottom:1.2rem;
+}
+.footer-love{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1rem;
+  color:var(--ink-soft);
+  max-width:340px;
+  margin:0 auto;
+  line-height:1.6;
+  font-weight:500;
+}
 
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease;}
@@ -202,50 +908,87 @@ body.env-active{overflow:hidden;}
 </head>
 <body class="env-active">
 
+<!-- ═══ ENVELOPE ═══ -->
 <div class="env-screen" id="envScreen">
+  <!-- Background shapes (hearts + lemons) -->
+  <div class="env-bg-shapes">
+    <!-- Big pink heart top-left -->
+    <svg class="shape" style="top:-30px;left:-40px;width:180px;height:160px;opacity:.18" viewBox="0 0 180 160" fill="none">
+      <path d="M90 140 C 30 100, 10 60, 30 30 C 50 10, 80 20, 90 40 C 100 20, 130 10, 150 30 C 170 60, 150 100, 90 140 Z" fill="#ff3d8a"/>
+    </svg>
+    <!-- Yellow lemon top-right -->
+    <svg class="shape" style="top:30px;right:-20px;width:120px;height:140px;opacity:.25" viewBox="0 0 120 140" fill="none">
+      <ellipse cx="60" cy="75" rx="42" ry="55" fill="#ffd60a"/>
+      <ellipse cx="48" cy="58" rx="20" ry="26" fill="#fff7e0" opacity=".5"/>
+      <path d="M58 25 Q60 14 65 8" stroke="#4a7a30" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="70" cy="10" rx="18" ry="6" fill="#4a7a30" transform="rotate(20 70 10)"/>
+    </svg>
+    <!-- Orange heart bottom-left -->
+    <svg class="shape" style="bottom:30px;left:-10px;width:100px;height:90px;opacity:.22" viewBox="0 0 100 90" fill="none">
+      <path d="M50 80 C 15 55, 5 30, 18 15 C 30 5, 45 12, 50 25 C 55 12, 70 5, 82 15 C 95 30, 85 55, 50 80 Z" fill="#ff7a1a"/>
+    </svg>
+    <!-- Big pink heart bottom-right -->
+    <svg class="shape" style="bottom:-50px;right:-50px;width:220px;height:200px;opacity:.18" viewBox="0 0 220 200" fill="none">
+      <path d="M110 180 C 30 130, 5 75, 35 35 C 60 10, 95 20, 110 50 C 125 20, 160 10, 185 35 C 215 75, 190 130, 110 180 Z" fill="#ff3d8a"/>
+    </svg>
+    <!-- Small lemon middle-left -->
+    <svg class="shape" style="top:50%;left:10px;width:60px;height:75px;opacity:.25" viewBox="0 0 60 75" fill="none">
+      <ellipse cx="30" cy="40" rx="22" ry="30" fill="#ffd60a"/>
+      <path d="M29 12 Q30 4 34 0" stroke="#4a7a30" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+
   <div class="env-card" id="envSeal" role="button" tabindex="0" aria-label="Открыть приглашение">
-    <div class="env-lemons">
-      <svg width="32" height="40" viewBox="0 0 32 40" fill="none"><ellipse cx="16" cy="22" rx="14" ry="18" fill="#ffe135" stroke="#ffd000" stroke-width="1.5"/><ellipse cx="11" cy="16" rx="6" ry="8" fill="#fff8a0" opacity=".6"/><ellipse cx="3" cy="22" rx="4" ry="3" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><ellipse cx="29" cy="22" rx="4" ry="3" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><path d="M15 3Q16 1 17 3" stroke="#4a9a5a" stroke-width="2" fill="none" stroke-linecap="round"/><ellipse cx="19" cy="3.5" rx="6" ry="2.5" fill="#4a9a5a" transform="rotate(22 19 3.5)"/></svg>
-      <svg width="24" height="30" viewBox="0 0 24 30" fill="none" style="margin-bottom:5px"><ellipse cx="12" cy="17" rx="10" ry="13" fill="#ffb800" stroke="#ffa000" stroke-width="1.2"/><ellipse cx="8" cy="12" rx="4" ry="6" fill="#ffe135" opacity=".55"/><ellipse cx="3" cy="17" rx="3" ry="2.5" fill="#ffb800" stroke="#ffa000" stroke-width=".8"/><ellipse cx="21" cy="17" rx="3" ry="2.5" fill="#ffb800" stroke="#ffa000" stroke-width=".8"/><path d="M11 3Q12 1 13 3" stroke="#4a9a5a" stroke-width="1.5" fill="none" stroke-linecap="round"/><ellipse cx="14" cy="3.5" rx="5" ry="2" fill="#4a9a5a" transform="rotate(20 14 3.5)"/></svg>
-      <svg width="32" height="40" viewBox="0 0 32 40" fill="none"><ellipse cx="16" cy="22" rx="14" ry="18" fill="#ffe135" stroke="#ffd000" stroke-width="1.5"/><ellipse cx="11" cy="16" rx="6" ry="8" fill="#fff8a0" opacity=".6"/><ellipse cx="3" cy="22" rx="4" ry="3" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><ellipse cx="29" cy="22" rx="4" ry="3" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><path d="M15 3Q16 1 17 3" stroke="#4a9a5a" stroke-width="2" fill="none" stroke-linecap="round"/><ellipse cx="19" cy="3.5" rx="6" ry="2.5" fill="#4a9a5a" transform="rotate(22 19 3.5)"/></svg>
+    <div class="env-mini-hearts">
+      <svg width="22" height="20" viewBox="0 0 22 20" fill="none"><path d="M11 18 C 4 12, 1 7, 4 3 C 7 0, 9 1, 11 4 C 13 1, 15 0, 18 3 C 21 7, 18 12, 11 18 Z" fill="#ff3d8a"/></svg>
+      <svg width="18" height="16" viewBox="0 0 18 16" fill="none" style="margin-bottom:4px"><path d="M9 14 C 3 9, 1 5, 3 2 C 5 0, 7 1, 9 3 C 11 1, 13 0, 15 2 C 17 5, 15 9, 9 14 Z" fill="#ff7a1a"/></svg>
+      <svg width="22" height="20" viewBox="0 0 22 20" fill="none"><path d="M11 18 C 4 12, 1 7, 4 3 C 7 0, 9 1, 11 4 C 13 1, 15 0, 18 3 C 21 7, 18 12, 11 18 Z" fill="#ff3d8a"/></svg>
     </div>
-    <p class="env-greeting">Вы приглашены на нашу свадьбу!</p>
-    <div class="env-names">Александр <span class="env-amp">&amp;</span> Ангелина</div>
-    
-    <div class="env-seal">
-      <svg width="38" height="38" viewBox="0 0 38 38" fill="none"><ellipse cx="19" cy="22" rx="16" ry="17" fill="#ff7b29"/><ellipse cx="14" cy="16" rx="7" ry="8" fill="#ffb800" opacity=".45"/><ellipse cx="4" cy="22" rx="5" ry="4" fill="#ff7b29" stroke="#e05500" stroke-width=".8"/><ellipse cx="34" cy="22" rx="5" ry="4" fill="#ff7b29" stroke="#e05500" stroke-width=".8"/><path d="M18 4Q19 2 20 4" stroke="#2d7a3a" stroke-width="2" fill="none" stroke-linecap="round"/><ellipse cx="22" cy="4.5" rx="7" ry="3" fill="#4a9a5a" transform="rotate(22 22 4.5)"/></svg>
-      <div class="env-seal-text">открыть<br>здесь</div>
+    <div class="env-eyebrow">Приглашение</div>
+    <p class="env-greeting">с радостью приглашаем<br>Вас на нашу свадьбу</p>
+    <div class="env-names">Александр<br><span class="amp">&</span><br>Ангелина</div>
+    <div class="env-seal-wrap">
+      <div class="env-seal">
+        <span class="env-pulse"></span>
+        <svg width="32" height="28" viewBox="0 0 32 28" fill="none">
+          <path d="M16 26 C 5 18, 1 11, 4 5 C 8 0, 12 2, 16 6 C 20 2, 24 0, 28 5 C 31 11, 27 18, 16 26 Z" fill="white"/>
+        </svg>
+        <span class="env-seal-text">открыть</span>
+      </div>
     </div>
-    <div class="env-from">with love, Александр и Ангелина 🍋</div>
+    <div class="env-from">— с любовью</div>
   </div>
 </div>
 
-<div class="petals" id="petals"></div>
+<!-- Floating hearts -->
+<div class="hearts" id="hearts"></div>
 
 <div class="page">
 
-<!-- HERO -->
+<!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="hero-label">Мы женимся!</div>
-  <div class="hero-names">Александр <span class="hero-amp">&amp;</span> Ангелина</div>
-  <div class="hero-divider">
-    <span class="hline"></span>
-    <svg width="22" height="27" viewBox="0 0 22 27" fill="none"><ellipse cx="11" cy="16" rx="9" ry="11" fill="#ffe135" stroke="#ffd000" stroke-width="1.2"/><ellipse cx="8" cy="12" rx="4" ry="5" fill="#fff8a0" opacity=".6"/><ellipse cx="3" cy="16" rx="3" ry="2" fill="#ffe135" stroke="#ffd000" stroke-width=".8"/><ellipse cx="19" cy="16" rx="3" ry="2" fill="#ffe135" stroke="#ffd000" stroke-width=".8"/><path d="M10 4Q11 2 12 4" stroke="#4a9a5a" stroke-width="1.4" fill="none" stroke-linecap="round"/><ellipse cx="13" cy="4.5" rx="4.5" ry="1.8" fill="#4a9a5a" transform="rotate(20 13 4.5)"/></svg>
-    <span class="hline"></span>
+  <!-- Decorative corner hearts -->
+  <svg class="hero-decor tl" width="50" height="46" viewBox="0 0 50 46" fill="none" style="opacity:.7"><path d="M25 42 C 8 28, 2 18, 6 8 C 12 0, 18 2, 25 12 C 32 2, 38 0, 44 8 C 48 18, 42 28, 25 42 Z" fill="#ff3d8a"/></svg>
+  <svg class="hero-decor tr" width="40" height="48" viewBox="0 0 40 48" fill="none" style="opacity:.7"><ellipse cx="20" cy="28" rx="14" ry="18" fill="#ffd60a"/><ellipse cx="16" cy="22" rx="6" ry="8" fill="#fff7e0" opacity=".5"/><path d="M19 8 Q20 2 24 0" stroke="#4a7a30" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+  <svg class="hero-decor bl" width="40" height="48" viewBox="0 0 40 48" fill="none" style="opacity:.7"><ellipse cx="20" cy="28" rx="14" ry="18" fill="#ffd60a"/><ellipse cx="16" cy="22" rx="6" ry="8" fill="#fff7e0" opacity=".5"/><path d="M19 8 Q20 2 24 0" stroke="#4a7a30" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+  <svg class="hero-decor br" width="50" height="46" viewBox="0 0 50 46" fill="none" style="opacity:.7"><path d="M25 42 C 8 28, 2 18, 6 8 C 12 0, 18 2, 25 12 C 32 2, 38 0, 44 8 C 48 18, 42 28, 25 42 Z" fill="#ff7a1a"/></svg>
+
+  <div class="hero-eyebrow">Save the date</div>
+  <h1 class="hero-names">Александр <span class="amp">&</span> Ангелина</h1>
+  <div class="hero-rule">
+    <span class="line"></span>
+    <svg viewBox="0 0 24 22" fill="none"><path d="M12 20 C 4 14, 1 8, 4 4 C 8 0, 10 2, 12 5 C 14 2, 16 0, 20 4 C 23 8, 20 14, 12 20 Z" fill="#ff3d8a"/></svg>
+    <span class="line"></span>
   </div>
   <p class="hero-invite">Мы приглашаем Вас разделить с нами один из самых важных и трепетных дней нашей жизни.</p>
-  <div class="hero-lemon-row">
-    <svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#fff8a0" opacity=".6"/><ellipse cx="9" cy="13" rx="7" ry="9" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/><path d="M8 3Q9 1 10 3" stroke="rgba(255,255,255,.7)" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
-    <svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#fff8a0" opacity=".6"/><ellipse cx="9" cy="13" rx="7" ry="9" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/><path d="M8 3Q9 1 10 3" stroke="rgba(255,255,255,.7)" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
-    <svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#fff8a0" opacity=".6"/><ellipse cx="9" cy="13" rx="7" ry="9" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/><path d="M8 3Q9 1 10 3" stroke="rgba(255,255,255,.7)" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
-  </div>
 </section>
 
-<!-- CALENDAR -->
-<section class="sec sec-alt reveal">
-  <div class="sec-title">Когда?</div>
-  <div class="divider-lemon"><span class="dl"></span><svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><path d="M8 3Q9 1 10 3" stroke="#4a9a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/><ellipse cx="11" cy="3.5" rx="3.5" ry="1.5" fill="#4a9a5a" transform="rotate(20 11 3.5)"/></svg><span class="dl"></span></div>
-  <div class="calendar-wrap">
+<!-- ═══ CALENDAR — YELLOW ═══ -->
+<section class="block block-yellow reveal">
+  <div class="block-eyebrow">Когда</div>
+  <h2 class="block-title">День <em>торжества</em></h2>
+  <div class="block-rule"><span class="line"></span></div>
+  <div class="calendar">
     <div class="cal-month">Июль 2026</div>
     <div class="cal-grid">
       <div class="cal-dayname">Пн</div><div class="cal-dayname">Вт</div><div class="cal-dayname">Ср</div><div class="cal-dayname">Чт</div><div class="cal-dayname">Пт</div><div class="cal-dayname">Сб</div><div class="cal-dayname">Вс</div>
@@ -255,56 +998,87 @@ body.env-active{overflow:hidden;}
       <div class="cal-cell">20</div><div class="cal-cell">21</div><div class="cal-cell">22</div><div class="cal-cell">23</div><div class="cal-cell">24</div><div class="cal-cell">25</div><div class="cal-cell">26</div>
       <div class="cal-cell">27</div><div class="cal-cell">28</div><div class="cal-cell">29</div><div class="cal-cell">30</div><div class="cal-cell">31</div><div class="cal-cell empty"></div><div class="cal-cell empty"></div>
     </div>
+    <p class="cal-caption">пятница, 17 июля</p>
   </div>
 </section>
 
-<!-- TIMELINE -->
-<section class="sec reveal">
-  <div class="sec-title green">Тайминг дня</div>
-  <div class="divider-lemon"><span class="dl"></span><svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><path d="M8 3Q9 1 10 3" stroke="#4a9a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/><ellipse cx="11" cy="3.5" rx="3.5" ry="1.5" fill="#4a9a5a" transform="rotate(20 11 3.5)"/></svg><span class="dl"></span></div>
+<!-- ═══ TIMELINE — PINK ═══ -->
+<section class="block block-pink reveal">
+  <div class="block-eyebrow">Программа</div>
+  <h2 class="block-title">Тайминг <em>дня</em></h2>
+  <div class="block-rule"><span class="line"></span></div>
+
   <div class="timeline">
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15:00</div><div class="tl-title">Сбор гостей и Welcome-фуршет</div><div class="tl-desc">Подарите нам улыбку и возьмите хорошее настроение</div></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16:00</div><div class="tl-title">Церемония</div><div class="tl-desc">Может быть трогательно — слёзы радости приветствуются</div></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:00</div><div class="tl-title">Свадебный ужин и программа</div><div class="tl-desc">Еда, танцы и развлечения от ведущего</div></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">21:00</div><div class="tl-title">Торт</div><div class="tl-desc">Сладкий момент, который запомнится навсегда</div></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">23:00</div><div class="tl-title">Завершение праздника</div><div class="tl-desc">С теплом в сердце и незабываемыми воспоминаниями</div></div>
+    <div class="tl-item">
+      <div class="tl-time">15:00</div>
+      <div class="tl-heart"><svg viewBox="0 0 22 20" fill="none"><path d="M11 18 C 4 12, 1 7, 4 3 C 7 0, 9 1, 11 4 C 13 1, 15 0, 18 3 C 21 7, 18 12, 11 18 Z" fill="#ffd60a"/></svg></div>
+      <div class="tl-title">Сбор гостей и Welcome-фуршет</div>
+      <div class="tl-desc">Подарите нам улыбку и возьмите хорошее настроение</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">16:00</div>
+      <div class="tl-heart"><svg viewBox="0 0 22 20" fill="none"><path d="M11 18 C 4 12, 1 7, 4 3 C 7 0, 9 1, 11 4 C 13 1, 15 0, 18 3 C 21 7, 18 12, 11 18 Z" fill="#ffd60a"/></svg></div>
+      <div class="tl-title">Церемония</div>
+      <div class="tl-desc">Может быть трогательно — слёзы радости приветствуются</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">17:00</div>
+      <div class="tl-heart"><svg viewBox="0 0 22 20" fill="none"><path d="M11 18 C 4 12, 1 7, 4 3 C 7 0, 9 1, 11 4 C 13 1, 15 0, 18 3 C 21 7, 18 12, 11 18 Z" fill="#ffd60a"/></svg></div>
+      <div class="tl-title">Свадебный ужин и программа</div>
+      <div class="tl-desc">Еда, танцы и развлечения от ведущего</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">21:00</div>
+      <div class="tl-heart"><svg viewBox="0 0 22 20" fill="none"><path d="M11 18 C 4 12, 1 7, 4 3 C 7 0, 9 1, 11 4 C 13 1, 15 0, 18 3 C 21 7, 18 12, 11 18 Z" fill="#ffd60a"/></svg></div>
+      <div class="tl-title">Торт</div>
+      <div class="tl-desc">Сладкий момент, который запомнится навсегда</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">23:00</div>
+      <div class="tl-heart"><svg viewBox="0 0 22 20" fill="none"><path d="M11 18 C 4 12, 1 7, 4 3 C 7 0, 9 1, 11 4 C 13 1, 15 0, 18 3 C 21 7, 18 12, 11 18 Z" fill="#ffd60a"/></svg></div>
+      <div class="tl-title">Завершение праздника</div>
+      <div class="tl-desc">С теплом в сердце и незабываемыми воспоминаниями</div>
+    </div>
   </div>
 </section>
 
-<!-- VENUE -->
-<section class="sec sec-alt reveal">
-  <div class="sec-title">Место</div>
-  <div class="divider-lemon"><span class="dl"></span><svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><path d="M8 3Q9 1 10 3" stroke="#4a9a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/><ellipse cx="11" cy="3.5" rx="3.5" ry="1.5" fill="#4a9a5a" transform="rotate(20 11 3.5)"/></svg><span class="dl"></span></div>
-  <div class="venue-box">
-    <div class="venue-img-wrap"><img src="place/peshkovo.jpeg" alt="Ферма Пешково" loading="lazy"></div>
-    <div class="venue-name">Ферма Пешково</div>
+<!-- ═══ VENUE — ORANGE ═══ -->
+<section class="block block-orange reveal">
+  <div class="block-eyebrow">Локация</div>
+  <h2 class="block-title">Место <em>встречи</em></h2>
+  <div class="block-rule"><span class="line"></span></div>
+
+  <div class="venue">
+    <div class="venue-photo"><img src="place/peshkovo.jpeg" alt="Ферма Пешково" loading="lazy"></div>
+    <h3 class="venue-name">Ферма Пешково</h3>
     <p class="venue-text">Наша свадьба пройдёт по адресу: <strong>Московская область, Богородский городской округ, деревня Пешково.</strong></p>
     <p class="venue-text">Для гостей предусмотрена бесплатная охраняемая парковка.</p>
-    <a href="https://yandex.ru/profile/208940694038?lang=ru" target="_blank" rel="noopener" class="venue-btn">🗺 Построить маршрут</a>
+    <a href="https://yandex.ru/profile/208940694038?lang=ru" target="_blank" rel="noopener" class="venue-btn">Построить маршрут</a>
   </div>
 </section>
 
-<!-- DRESSCODE -->
-<section class="sec reveal">
-  <div class="sec-title pink">Дресс-код</div>
-  <div class="divider-lemon"><span class="dl"></span><svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><path d="M8 3Q9 1 10 3" stroke="#4a9a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/><ellipse cx="11" cy="3.5" rx="3.5" ry="1.5" fill="#4a9a5a" transform="rotate(20 11 3.5)"/></svg><span class="dl"></span></div>
+<!-- ═══ DRESSCODE — YELLOW ═══ -->
+<section class="block block-yellow reveal">
+  <div class="block-eyebrow">Ваш образ</div>
+  <h2 class="block-title">Дресс-<em>код</em></h2>
+  <div class="block-rule"><span class="line"></span></div>
 
   <p class="dc-intro">Будет здорово, если вы поддержите гамму нашего праздника в своих нарядах.</p>
 
-  <div class="dc-palette-row" style="max-width:460px;margin:0 auto 2rem;">
-    <div class="sw" style="background:#fff9b8"></div>
-    <div class="sw" style="background:#ffe135"></div>
-    <div class="sw" style="background:#ffb800"></div>
-    <div class="sw" style="background:#ff7b29"></div>
-    <div class="sw" style="background:#ffd6e0"></div>
-    <div class="sw" style="background:#ff6b8a"></div>
-    <div class="sw" style="background:#fff2cc"></div>
-    <div class="sw" style="background:#e8d5a0"></div>
+  <div class="dc-palette">
+    <div class="dc-sw" style="background:#ffd700"></div>
+    <div class="dc-sw" style="background:#ffb000"></div>
+    <div class="dc-sw" style="background:#ff7800"></div>
+    <div class="dc-sw" style="background:#ff3d00"></div>
+    <div class="dc-sw" style="background:#ff3d8a"></div>
+    <div class="dc-sw" style="background:#ff8aac"></div>
+    <div class="dc-sw" style="background:#fff2a0"></div>
+    <div class="dc-sw" style="background:#ffe8b3"></div>
   </div>
 
-  <!-- Девушки -->
   <div class="dc-block">
-    <div class="dc-block-title ladies">Для девушек</div>
+    <div class="dc-block-eyebrow">Для девушек</div>
+    <h3 class="dc-block-title">Лёгкость и тёплая палитра</h3>
     <p class="dc-block-text">Мы будем рады, если девушки выберут однотонные платья или брючные костюмы розовых, жёлтых, оранжевых или тёплых нейтральных оттенков. Приветствуются натуральные ткани — лён, шёлк, хлопок.</p>
     <div class="carousel" data-carousel>
       <div class="carousel-track" data-track>
@@ -316,15 +1090,15 @@ body.env-active{overflow:hidden;}
         <div class="carousel-slide"><img src="girls/6.jpeg" alt="Образ для девушек 6" loading="lazy"></div>
         <div class="carousel-slide"><img src="girls/7.jpeg" alt="Образ для девушек 7" loading="lazy"></div>
       </div>
-      <button class="carousel-arrow prev" data-prev aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
-      <button class="carousel-arrow next" data-next aria-label="Следующее фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+      <button class="carousel-arrow prev" data-prev aria-label="Предыдущее"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="carousel-arrow next" data-next aria-label="Следующее"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
     </div>
     <div class="carousel-dots" data-dots></div>
   </div>
 
-  <!-- Мужчины -->
   <div class="dc-block">
-    <div class="dc-block-title gents">Для мужчин</div>
+    <div class="dc-block-eyebrow gents">Для мужчин</div>
+    <h3 class="dc-block-title">Классика в нейтральных тонах</h3>
     <p class="dc-block-text">Идеальным выбором станут костюмы и рубашки из натуральных тканей светлых нейтральных оттенков и цветов в гамме праздника.</p>
     <div class="carousel" data-carousel>
       <div class="carousel-track" data-track>
@@ -336,51 +1110,62 @@ body.env-active{overflow:hidden;}
         <div class="carousel-slide"><img src="boys/6.jpeg" alt="Образ для мужчин 6" loading="lazy"></div>
         <div class="carousel-slide"><img src="boys/7.jpeg" alt="Образ для мужчин 7" loading="lazy"></div>
       </div>
-      <button class="carousel-arrow prev" data-prev aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
-      <button class="carousel-arrow next" data-next aria-label="Следующее фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+      <button class="carousel-arrow prev" data-prev aria-label="Предыдущее"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="carousel-arrow next" data-next aria-label="Следующее"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
     </div>
     <div class="carousel-dots" data-dots></div>
   </div>
 
-  <p class="dc-intro" style="margin-top:1.5rem;">При хорошей погоде весь праздник пройдёт под открытым небом — не лишними будут головные уборы и солнцезащитные очки.</p>
-  <p class="dc-intro" style="margin-top:.8rem;">Просим также учитывать при выборе обуви, что праздник пройдёт в окружении природы, поэтому не стоит выбирать обувь на высоком каблуке.</p>
+  <div class="dc-extra">
+    <p>При хорошей погоде весь праздник пройдёт под открытым небом — не лишними будут головные уборы и солнцезащитные очки.</p>
+    <p>Просим также учитывать при выборе обуви, что праздник пройдёт в окружении природы, поэтому не стоит выбирать обувь на высоком каблуке.</p>
+  </div>
 
-  <div class="dc-avoid">✗ Просим воздержаться от чёрного и ярко-белого</div>
+  <div class="dc-avoid">Просим воздержаться от чёрного и ярко-белого</div>
 </section>
 
-<!-- ПОЖЕЛАНИЯ -->
-<section class="sec sec-pink reveal">
-  <div class="sec-title pink">Пожелания</div>
-  <div class="divider-lemon"><span class="dl"></span><svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><path d="M8 3Q9 1 10 3" stroke="#4a9a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg><span class="dl"></span></div>
-  <div class="wishes-box">
-    
+<!-- ═══ WISHES — PINK ═══ -->
+<section class="block block-pink reveal">
+  <div class="block-eyebrow">От души</div>
+  <h2 class="block-title">Пожелания</h2>
+  <div class="block-rule"><span class="line"></span></div>
+
+  <div class="wishes">
+    <div class="wishes-hearts">
+      <svg width="22" height="20" viewBox="0 0 22 20" fill="none"><path d="M11 18 C 4 12, 1 7, 4 3 C 7 0, 9 1, 11 4 C 13 1, 15 0, 18 3 C 21 7, 18 12, 11 18 Z" fill="#ffd60a"/></svg>
+      <svg width="28" height="26" viewBox="0 0 28 26" fill="none"><path d="M14 24 C 5 16, 1 9, 5 4 C 9 0, 12 1, 14 5 C 16 1, 19 0, 23 4 C 27 9, 23 16, 14 24 Z" fill="white"/></svg>
+      <svg width="22" height="20" viewBox="0 0 22 20" fill="none"><path d="M11 18 C 4 12, 1 7, 4 3 C 7 0, 9 1, 11 4 C 13 1, 15 0, 18 3 C 21 7, 18 12, 11 18 Z" fill="#ffd60a"/></svg>
+    </div>
     <p class="wishes-text">Если хотите подарить нам ценный и нужный подарок — мы будем очень благодарны за вклад в бюджет нашей молодой семьи.</p>
     <p class="wishes-text">Просим не обременять себя выбором цветов. Вместо них Вы можете принести корм для животных — мы отвезём его в приют, где пушистые комочки счастья ждут своих хозяев.</p>
   </div>
 </section>
 
-<!-- RSVP -->
-<section class="sec sec-alt reveal">
-  <div class="sec-title">Анкета</div>
-  <div class="divider-lemon"><span class="dl"></span><svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><path d="M8 3Q9 1 10 3" stroke="#4a9a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg><span class="dl"></span></div>
-  <p style="text-align:center;font-size:.92rem;color:var(--ink-soft);font-style:italic;margin-bottom:1.8rem;line-height:1.6;">Пожалуйста, заполните небольшую анкету. Это очень поможет нам лучше подготовиться к празднику.</p>
-  <form class="form-wrap" id="rsvpForm" action="https://formsubmit.co/nasonov.al17@gmail.com" method="POST">
+<!-- ═══ RSVP — CREAM ═══ -->
+<section class="block block-cream reveal">
+  <div class="block-eyebrow">RSVP</div>
+  <h2 class="block-title">Анкета</h2>
+  <div class="block-rule"><span class="line"></span></div>
+
+  <p class="form-intro">Пожалуйста, заполните небольшую анкету. Это очень поможет нам лучше подготовиться к празднику.</p>
+
+  <form class="form" id="rsvpForm" action="https://formsubmit.co/nasonov.al17@gmail.com" method="POST">
     <input type="hidden" name="_subject" value="Анкета гостя — свадьба Александра и Ангелины">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
-    <div class="fg"><label class="fl">Ваше Имя и Фамилия</label><input type="text" class="fi" name="name" required placeholder="Мария Иванова"></div>
-    <div class="fg"><label class="fl">Ваш номер телефона</label><input type="tel" class="fi" name="phone" placeholder="+7 (___) ___-__-__"></div>
+    <div class="fg"><label class="fl">Имя и Фамилия</label><input type="text" class="fi" name="name" required placeholder="Мария Иванова"></div>
+    <div class="fg"><label class="fl">Номер телефона</label><input type="tel" class="fi" name="phone" placeholder="+7 (___) ___-__-__"></div>
     <div class="fg">
       <label class="fl">Планируете ли вы прийти?</label>
       <div class="radio-row">
-        <div class="ro"><input type="radio" id="yes" name="attendance" value="Да, с удовольствием" required><label for="yes">Да, с удовольствием!</label></div>
+        <div class="ro"><input type="radio" id="yes" name="attendance" value="Да, с удовольствием" required><label for="yes">Да, с удовольствием</label></div>
         <div class="ro"><input type="radio" id="no" name="attendance" value="К сожалению, не смогу"><label for="no">Не смогу, увы</label></div>
       </div>
     </div>
-    <div class="fg"><label class="fl">В каком составе?</label><input type="text" class="fi" name="companion" placeholder="Приду с парой"></div>
+    <div class="fg"><label class="fl">В каком составе</label><input type="text" class="fi" name="companion" placeholder="Приду с парой"></div>
     <div class="fg">
-      <label class="fl">Какие напитки предпочитаете?</label>
-      <p class="hint">(можно несколько)</p>
+      <label class="fl">Какие напитки предпочитаете</label>
+      <p class="hint">можно выбрать несколько</p>
       <div class="chk-grid">
         <div class="co"><input type="checkbox" id="d1" name="drinks[]" value="Безалкогольные"><label for="d1">Безалкогольные</label></div>
         <div class="co"><input type="checkbox" id="d2" name="drinks[]" value="Вино белое"><label for="d2">Вино белое</label></div>
@@ -388,56 +1173,68 @@ body.env-active{overflow:hidden;}
         <div class="co"><input type="checkbox" id="d5" name="drinks[]" value="Виски"><label for="d5">Виски</label></div>
         <div class="co"><input type="checkbox" id="d6" name="drinks[]" value="Коньяк"><label for="d6">Коньяк</label></div>
         <div class="co"><input type="checkbox" id="d7" name="drinks[]" value="Водка"><label for="d7">Водка</label></div>
-        <div class="co"><input type="checkbox" id="d8" name="drinks[]" value="Другое"><label for="d8">Другое:</label></div>
+        <div class="co"><input type="checkbox" id="d8" name="drinks[]" value="Другое"><label for="d8">Другое</label></div>
       </div>
-      <input type="text" class="fi" name="drinks_other" placeholder="Укажите, если выбрали «Другое»" style="margin-top:.6rem;">
+      <input type="text" class="fi" name="drinks_other" placeholder="Если выбрали «Другое», укажите" style="margin-top:.5rem;">
     </div>
     <div class="fg">
-      <label class="fl">Ограничения в еде?</label>
+      <label class="fl">Ограничения в еде</label>
       <div class="chk-grid">
         <div class="co"><input type="checkbox" id="f1" name="food[]" value="Нет"><label for="f1">Нет</label></div>
         <div class="co"><input type="checkbox" id="f2" name="food[]" value="Не ем мясо"><label for="f2">Не ем мясо</label></div>
         <div class="co"><input type="checkbox" id="f3" name="food[]" value="Не ем рыбу"><label for="f3">Не ем рыбу</label></div>
         <div class="co"><input type="checkbox" id="f4" name="food[]" value="Непереносимость лактозы"><label for="f4">Непереносимость лактозы</label></div>
         <div class="co"><input type="checkbox" id="f5" name="food[]" value="Непереносимость глютена"><label for="f5">Непереносимость глютена</label></div>
-        <div class="co"><input type="checkbox" id="f6" name="food[]" value="Другое"><label for="f6">Другое:</label></div>
+        <div class="co"><input type="checkbox" id="f6" name="food[]" value="Другое"><label for="f6">Другое</label></div>
       </div>
-      <input type="text" class="fi" name="food_other" placeholder="Укажите, если выбрали «Другое»" style="margin-top:.6rem;">
+      <input type="text" class="fi" name="food_other" placeholder="Если выбрали «Другое», укажите" style="margin-top:.5rem;">
     </div>
-    <div class="fg"><label class="fl">Аллергия?</label><input type="text" class="fi" name="allergy" placeholder="Нет"></div>
-    <div class="fg"><label class="fl">Пожелания молодожёнам 💛</label><textarea class="fta" name="wishes" placeholder="Напишите что-нибудь тёплое..."></textarea></div>
-    <button type="submit" class="fbtn">Отправить анкету 🍋</button>
+    <div class="fg"><label class="fl">Аллергия</label><input type="text" class="fi" name="allergy" placeholder="Нет"></div>
+    <div class="fg"><label class="fl">Пожелания молодожёнам</label><textarea class="fta" name="wishes" placeholder="Напишите что-нибудь тёплое..."></textarea></div>
+    <button type="submit" class="fbtn">Отправить</button>
   </form>
-  <div class="fsuccess" id="formSuccess"><h3>Спасибо! 💛</h3><p>Ваш ответ получен. Мы с нетерпением ждём встречи!</p></div>
+  <div class="fsuccess" id="formSuccess"><h3>Спасибо!</h3><p>Ваш ответ получен. Мы с нетерпением ждём встречи.</p></div>
 </section>
 
-<!-- CHAT -->
-<section class="sec reveal">
-  <div class="chat-box">
-    <div class="chat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e05500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
-    <div class="chat-title">ЧАТ ДЛЯ ГОСТЕЙ</div>
+<!-- ═══ CHAT — ORANGE ═══ -->
+<section class="block block-orange reveal">
+  <div class="chat-card">
+    <div class="chat-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </div>
+    <div class="chat-eyebrow">Telegram</div>
+    <h2 class="chat-title">Чат для <em>гостей</em></h2>
     <p class="chat-desc">Мы создали группу в Telegram, где будет собрана вся важная информация о нашем торжестве.</p>
     <a href="https://t.me/+YOUR_LINK_HERE" target="_blank" rel="noopener" class="chat-btn">Присоединиться</a>
-    <p class="chat-note">Там можно будет делиться фото и видео со свадьбы — мы сохраним лучшие моменты вместе! Позже появятся ссылки с кадрами от наших фотографа и видеографа.</p>
+    <p class="chat-note">Там можно будет делиться фото и видео со свадьбы. Позже появятся ссылки с кадрами от наших фотографа и видеографа.</p>
   </div>
 </section>
 
-<!-- CONTACTS -->
-<section class="sec sec-alt reveal">
-  <div class="sec-title">Контакты</div>
-  <div class="divider-lemon"><span class="dl"></span><svg width="18" height="22" viewBox="0 0 18 22" fill="none"><ellipse cx="9" cy="13" rx="7" ry="9" fill="#ffe135" stroke="#ffd000" stroke-width="1"/><path d="M8 3Q9 1 10 3" stroke="#4a9a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg><span class="dl"></span></div>
-  <div class="contacts-box">
-    <div class="contacts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-    
-    <p class="contacts-desc">Если у вас возникнут вопросы, пожалуйста, обращайтесь к нашему свадебному организатору&nbsp;— Ирине, она с радостью поможет вам.</p>
-    <a href="tel:+79175869463" class="contacts-phone">+7 (917) 586-94-63</a>
+<!-- ═══ CONTACTS — CREAM ═══ -->
+<section class="block block-cream reveal">
+  <div class="block-eyebrow">Связь</div>
+  <h2 class="block-title">Контакты</h2>
+  <div class="block-rule"><span class="line"></span></div>
+
+  <div class="contacts">
+    <div class="contacts-hearts">
+      <svg width="20" height="18" viewBox="0 0 20 18" fill="none"><path d="M10 16 C 3 11, 1 6, 3 2 C 6 0, 8 1, 10 4 C 12 1, 14 0, 17 2 C 19 6, 17 11, 10 16 Z" fill="#ff3d8a"/></svg>
+      <svg width="24" height="22" viewBox="0 0 24 22" fill="none"><path d="M12 20 C 4 14, 1 8, 4 4 C 8 0, 10 2, 12 5 C 14 2, 16 0, 20 4 C 23 8, 20 14, 12 20 Z" fill="#ff7a1a"/></svg>
+      <svg width="20" height="18" viewBox="0 0 20 18" fill="none"><path d="M10 16 C 3 11, 1 6, 3 2 C 6 0, 8 1, 10 4 C 12 1, 14 0, 17 2 C 19 6, 17 11, 10 16 Z" fill="#ff3d8a"/></svg>
+    </div>
+    <p class="contacts-desc">Если у Вас возникнут вопросы, пожалуйста, обращайтесь к нашему свадебному организатору <span class="contacts-name">Ирине</span> — она с радостью поможет Вам.</p>
+    <a href="tel:+79175869463" class="contacts-phone">+7 917 586 94 63</a>
   </div>
 </section>
 
-<!-- COUNTDOWN -->
-<section class="sec sec-orange reveal">
-  <div class="countdown-label-top">До свадьбы осталось</div>
-  <div class="countdown-grid">
+<!-- ═══ COUNTDOWN — PINK ═══ -->
+<section class="block block-pink reveal">
+  <div class="block-eyebrow" style="color:rgba(255,255,255,.85)">До свадьбы осталось</div>
+  <div class="block-rule"><span class="line"></span></div>
+  <div class="cd-grid">
     <div class="cd-item"><div class="cd-num" id="days">—</div><div class="cd-lbl">Дней</div></div>
     <div class="cd-item"><div class="cd-num" id="hours">—</div><div class="cd-lbl">Часов</div></div>
     <div class="cd-item"><div class="cd-num" id="minutes">—</div><div class="cd-lbl">Минут</div></div>
@@ -448,9 +1245,14 @@ body.env-active{overflow:hidden;}
 </div>
 
 <footer class="site-footer">
-  <div class="footer-names">Александр &amp; Ангелина</div>
+  <div class="footer-hearts">
+    <svg width="18" height="16" viewBox="0 0 18 16" fill="none"><path d="M9 14 C 3 9, 1 5, 3 2 C 5 0, 7 1, 9 3 C 11 1, 13 0, 15 2 C 17 5, 15 9, 9 14 Z" fill="#ff3d8a"/></svg>
+    <svg width="22" height="20" viewBox="0 0 22 20" fill="none"><path d="M11 18 C 4 12, 1 7, 4 3 C 7 0, 9 1, 11 4 C 13 1, 15 0, 18 3 C 21 7, 18 12, 11 18 Z" fill="#ff7a1a"/></svg>
+    <svg width="18" height="16" viewBox="0 0 18 16" fill="none"><path d="M9 14 C 3 9, 1 5, 3 2 C 5 0, 7 1, 9 3 C 11 1, 13 0, 15 2 C 17 5, 15 9, 9 14 Z" fill="#ff3d8a"/></svg>
+  </div>
+  <div class="footer-names">Александр <span class="amp">&</span> Ангелина</div>
   <div class="footer-date">17 · 07 · 2026</div>
-  <p class="footer-love">С любовью и волнением ждём этого дня вместе с Вами 🍋</p>
+  <p class="footer-love">С любовью и волнением ждём этого дня вместе с Вами.</p>
 </footer>
 
 <script>
@@ -467,12 +1269,6 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
 document.getElementById('rsvpForm').addEventListener('submit',function(e){if(this.action&&this.action.includes('formsubmit.co/nasonov'))return;e.preventDefault();this.style.display='none';document.getElementById('formSuccess').classList.add('active');});
 
-const pc=document.getElementById('petals');
-function mkLemon(){const el=document.createElement('div');el.className='petal';const s=Math.random()*12+9;const colors=['#ffe135','#ffb800','#fff8a0'];const c=colors[Math.floor(Math.random()*colors.length)];el.style.cssText=`left:${Math.random()*100}vw;width:${s}px;height:${s*1.25}px;animation-duration:${Math.random()*9+8}s;animation-delay:${Math.random()*3}s;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(ellipse at 30% 30%,#fff9b8 0%,${c} 60%,${c==='#ffe135'?'#ffb800':'#ff8c00'} 100%);box-shadow:inset -2px -3px 5px rgba(180,120,0,.25),inset 2px 2px 4px rgba(255,255,255,.5);`;const stem=document.createElement('div');stem.style.cssText='position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:3px;height:4px;background:#4a9a5a;border-radius:50% 50% 0 0;';el.appendChild(stem);pc.appendChild(el);setTimeout(()=>el.remove(),18000);}
-for(let i=0;i<10;i++)setTimeout(mkLemon,i*700);
-setInterval(mkLemon,1200);
-
-// CAROUSELS
 document.querySelectorAll('[data-carousel]').forEach(carousel=>{
   const track=carousel.querySelector('[data-track]');
   const slides=Array.from(track.children);
@@ -480,42 +1276,31 @@ document.querySelectorAll('[data-carousel]').forEach(carousel=>{
   const next=carousel.querySelector('[data-next]');
   const dotsWrap=carousel.parentElement.querySelector('[data-dots]');
   let current=0;
-
-  // Build dots
-  slides.forEach((_,i)=>{
-    const d=document.createElement('button');
-    d.className='carousel-dot'+(i===0?' active':'');
-    d.setAttribute('aria-label','Слайд '+(i+1));
-    d.addEventListener('click',()=>goTo(i));
-    dotsWrap.appendChild(d);
-  });
+  slides.forEach((_,i)=>{const d=document.createElement('button');d.className='carousel-dot'+(i===0?' active':'');d.setAttribute('aria-label','Слайд '+(i+1));d.addEventListener('click',()=>goTo(i));dotsWrap.appendChild(d);});
   const dots=Array.from(dotsWrap.children);
-
-  function update(){
-    dots.forEach((d,i)=>d.classList.toggle('active',i===current));
-    prev.disabled=(current===0);
-    next.disabled=(current===slides.length-1);
-  }
-  function goTo(i){
-    current=Math.max(0,Math.min(slides.length-1,i));
-    track.scrollTo({left:current*track.clientWidth,behavior:'smooth'});
-    update();
-  }
+  function update(){dots.forEach((d,i)=>d.classList.toggle('active',i===current));prev.disabled=(current===0);next.disabled=(current===slides.length-1);}
+  function goTo(i){current=Math.max(0,Math.min(slides.length-1,i));track.scrollTo({left:current*track.clientWidth,behavior:'smooth'});update();}
   prev.addEventListener('click',()=>goTo(current-1));
   next.addEventListener('click',()=>goTo(current+1));
-
-  // Sync on manual swipe
-  let scrollTimer;
-  track.addEventListener('scroll',()=>{
-    clearTimeout(scrollTimer);
-    scrollTimer=setTimeout(()=>{
-      current=Math.round(track.scrollLeft/track.clientWidth);
-      update();
-    },80);
-  });
-
+  let scrollTimer;track.addEventListener('scroll',()=>{clearTimeout(scrollTimer);scrollTimer=setTimeout(()=>{current=Math.round(track.scrollLeft/track.clientWidth);update();},80);});
   update();
 });
+
+// Floating hearts
+const heartsContainer=document.getElementById('hearts');
+function mkHeart(){
+  const colors=['#ff3d8a','#ffd60a','#ff7a1a'];
+  const c=colors[Math.floor(Math.random()*colors.length)];
+  const s=Math.random()*14+10;
+  const el=document.createElement('div');
+  el.className='heart';
+  el.innerHTML=`<svg width="${s}" height="${s*0.9}" viewBox="0 0 22 20" fill="none"><path d="M11 18 C 4 12, 1 7, 4 3 C 7 0, 9 1, 11 4 C 13 1, 15 0, 18 3 C 21 7, 18 12, 11 18 Z" fill="${c}"/></svg>`;
+  el.style.cssText=`left:${Math.random()*100}vw;animation-duration:${Math.random()*8+10}s;animation-delay:${Math.random()*3}s;`;
+  heartsContainer.appendChild(el);
+  setTimeout(()=>el.remove(),20000);
+}
+for(let i=0;i<8;i++)setTimeout(mkHeart,i*900);
+setInterval(mkHeart,1800);
 </script>
 </body>
 </html>
